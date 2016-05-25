@@ -17,7 +17,7 @@ class CreateGamesTable extends Migration
           $table->increments('id');
           $table->string('name', 100);
           $table->string('short_name');
-          $table->string('slug');
+          $table->string('slug')->unique();
           $table->string('logo');
           $table->string('banner');
           $table->integer('platform_id')->unsigned();

@@ -16,7 +16,7 @@ class CreateRolesTable extends Migration
           $table->increments('id');
           $table->string('role');
           $table->integer('level');
-          $table->string('notes', 500);
+          $table->string('description', 500);
         });
     }
 
