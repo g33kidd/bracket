@@ -39,7 +39,13 @@ class PlatformsController extends Controller
      */
     public function store(Request $request)
     {
-        # return a redirect() to the new platform
+        $platform = new Platform;
+        $platform->name = $request->input('name');
+        $platform->short_name = $request->input('short_name');
+        $platform->slug = $request->input('slug');
+        $platform->save();
+
+        return redirect()->action('Admin\PlatformsController@show', $platform);
     }
 
     /**
@@ -50,7 +56,8 @@ class PlatformsController extends Controller
      */
     public function show($id)
     {
-        //
+        $platform = Platform::find($id);
+        return view('admin.platforms.show', ['platform' => $platform]);
     }
 
     /**
@@ -84,6 +91,8 @@ class PlatformsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $platform = Platform::find($id);
+        $platform->delete();
+        return redirect()->action('Admin\PlatformsController@index');
     }
 }
