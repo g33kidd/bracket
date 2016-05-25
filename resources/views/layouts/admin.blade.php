@@ -13,14 +13,22 @@
 </head>
 <body id="app-layout default">
 
-  @include('layouts.shared.app-header')
+  @include('layouts.shared.admin-header')
 
-  @yield('content')
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        @include('layouts.shared.admin-sidebar')
+      </div>
+      <div class="col-md-9">
+        @yield('content')        
+      </div>
+    </div>
+  </div>
 
   <!-- JavaScripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
-
 </body>
 </html>

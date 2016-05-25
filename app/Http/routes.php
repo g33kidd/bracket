@@ -13,6 +13,17 @@
 
 Route::auth();
 
+# Just some static pages
 Route::get('/', 'HomeController@welcome');
 Route::get('/home', 'HomeController@index');
 Route::get('/news', 'HomeController@news');
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
+  Route::get('/', 'DashboardController@index');
+  Route::resource('games', 'GamesController');
+  Route::resource('platforms', 'PlatformsController');
+});
+
+# admin
+# api
+# forum
