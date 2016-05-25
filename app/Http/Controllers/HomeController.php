@@ -29,6 +29,7 @@ class HomeController extends Controller
 
     /**
      * Show the application welcome page.
+     *
      * @return \Illuminate\Http\Response
      */
     public function welcome()
