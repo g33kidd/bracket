@@ -55,11 +55,19 @@
                         <label class="col-md-4 control-label">Platform/Console</label>
 
                         <div class="col-md-6">
-                            <select class="form-control" name="platform_id">
+                            @foreach(App\Platform::all() as $platform)
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" name="platforms[]" value="{{ $platform->id }}">
+                                {{ $platform->name }}
+                              </label>
+                            </div>
+                            @endforeach
+                            {{-- <select class="form-control" name="platform_id">
                               @foreach(App\Platform::all() as $platform)
                                 <option value="{{ $platform->id }}">{{ $platform->name }}</option>
                               @endforeach
-                            </select>
+                            </select> --}}
 
                             @if ($errors->has('platform_id'))
                                 <span class="help-block">

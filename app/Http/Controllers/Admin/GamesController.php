@@ -44,7 +44,7 @@ class GamesController extends Controller
         $game->name = $request->input('name');
         $game->short_name = $request->input('short_name');
         $game->slug = $request->input('slug');
-        $game->platform_id = $request->input('platform_id');
+        $game->platforms()->sync($request->input('platforms'));
         $game->save();
 
         return redirect()->action('Admin\GamesController@show', $game);

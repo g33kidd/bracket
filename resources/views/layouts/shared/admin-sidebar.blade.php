@@ -2,7 +2,7 @@
   <div class="panel-heading">Games</div>
   <div class="panel-body">
     @foreach (App\Game::all() as $game)
-      <div><a href="{{ url('/admin/games', $game->id) }}">{{ $game->name }}</a> [{{ $game->platform->short_name }}]</div>
+      <div><a href="{{ url('/admin/games', $game->id) }}">{{ $game->name }}</a> [{{ $game->platforms()->count() }}]</div>
     @endforeach
   </div>
 </div>
