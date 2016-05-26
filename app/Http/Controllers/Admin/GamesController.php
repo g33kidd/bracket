@@ -39,7 +39,11 @@ class GamesController extends Controller
      */
     public function store(Request $request)
     {
-        ## Probably should do some checking here :)
+        $this->validate($request, [
+          'name' => 'required|max:255',
+          'slug' => 'required|max:100',
+        ]);
+
         $game = new Game;
         $game->name = $request->input('name');
         $game->short_name = $request->input('short_name');

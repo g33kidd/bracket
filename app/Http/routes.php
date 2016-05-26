@@ -22,6 +22,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
   Route::get('/', 'DashboardController@index');
   Route::resource('games', 'GamesController');
   Route::resource('platforms', 'PlatformsController');
+  Route::resource('users', 'UsersController');
+  Route::resource('tournaments', 'TournamentsController');
 });
 
 # admin

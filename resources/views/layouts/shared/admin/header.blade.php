@@ -11,6 +11,15 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin/platforms') }}">Platforms</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/tournaments') }}">Tournaments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Leagues</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/users') }}">Users</a>
+      </li>
     </ul>
 
     @include('layouts.shared.user-dropdown')
