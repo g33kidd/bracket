@@ -1,1 +1,2 @@
+import 'jquery';
 import 'bootstrap';
