@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-
-use App\Platform;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Platform;
+use Illuminate\Http\Request;
 
 class PlatformsController extends Controller
 {
@@ -18,6 +16,7 @@ class PlatformsController extends Controller
     public function index()
     {
         $platforms = Platform::all();
+
         return view('admin.platforms.index', ['platforms' => $platforms]);
     }
 
@@ -34,12 +33,13 @@ class PlatformsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $platform = new Platform;
+        $platform = new Platform();
         $platform->name = $request->input('name');
         $platform->short_name = $request->input('short_name');
         $platform->slug = $request->input('slug');
@@ -51,19 +51,22 @@ class PlatformsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $platform = Platform::find($id);
+
         return view('admin.platforms.show', ['platform' => $platform]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -74,8 +77,9 @@ class PlatformsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -86,13 +90,15 @@ class PlatformsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $platform = Platform::find($id);
         $platform->delete();
+
         return redirect()->action('Admin\PlatformsController@index');
     }
 }

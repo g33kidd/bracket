@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-
 use App\Game;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class GamesController extends Controller
 {
@@ -18,6 +16,7 @@ class GamesController extends Controller
     public function index()
     {
         $games = Game::all();
+
         return view('admin.games.index', ['games' => $games]);
     }
 
@@ -34,7 +33,8 @@ class GamesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -44,7 +44,7 @@ class GamesController extends Controller
           'slug' => 'required|max:100',
         ]);
 
-        $game = new Game;
+        $game = new Game();
         $game->name = $request->input('name');
         $game->short_name = $request->input('short_name');
         $game->slug = $request->input('slug');
@@ -57,19 +57,22 @@ class GamesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $game = Game::find($id);
+
         return view('admin.games.show', ['game' => $game]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -80,8 +83,9 @@ class GamesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -92,13 +96,15 @@ class GamesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $game = Game::find($id);
         $game->delete();
+
         return redirect()->action('App\GamesController@index');
     }
 }

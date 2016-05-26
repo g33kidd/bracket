@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class UpdateForumTableThreads extends Migration
 {
@@ -12,8 +12,7 @@ class UpdateForumTableThreads extends Migration
      */
     public function up()
     {
-        Schema::table('forum_threads', function (Blueprint $table)
-        {
+        Schema::table('forum_threads', function (Blueprint $table) {
             $table->renameColumn('parent_category', 'category_id');
         });
     }
@@ -25,8 +24,7 @@ class UpdateForumTableThreads extends Migration
      */
     public function down()
     {
-        Schema::table('forum_threads', function (Blueprint $table)
-        {
+        Schema::table('forum_threads', function (Blueprint $table) {
             $table->renameColumn('category_id', 'parent_category');
         });
     }
