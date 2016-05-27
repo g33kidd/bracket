@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateForumTablePosts extends Migration
 {
@@ -12,8 +12,7 @@ class CreateForumTablePosts extends Migration
      */
     public function up()
     {
-        Schema::create('forum_posts', function (Blueprint $table)
-        {
+        Schema::create('forum_posts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('thread_id')->unsigned();
             $table->integer('author_id')->unsigned();
