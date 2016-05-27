@@ -13648,8 +13648,7 @@ return jQuery;
 },{}],14:[function(require,module,exports){
 'use strict';
 
-require('jquery');
-
+window.$ = window.jQuery = require('jquery');
 require('bootstrap');
 
 },{"bootstrap":1,"jquery":13}]},{},[14]);
