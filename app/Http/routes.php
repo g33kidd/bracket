@@ -19,13 +19,13 @@ Route::get('/home', 'HomeController@index');
 Route::get('/news', 'HomeController@news');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function () {
-  Route::get('/', 'DashboardController@index');
-  Route::resource('games', 'GamesController');
-  Route::resource('platforms', 'PlatformsController');
-  Route::resource('users', 'UsersController');
-  Route::resource('tournaments', 'TournamentsController');
+  Route::get('/{any}', 'DashboardController@index');
+  // Route::resource('games', 'GamesController');
+  // Route::resource('platforms', 'PlatformsController');
+  // Route::resource('users', 'UsersController');
+  // Route::resource('tournaments', 'TournamentsController');
 });
 
-// admin
-// api
-// forum
+// Add some auth middleware to this...
+Route::group(['namespace' => 'Api', 'prefix' => 'api'], function() {
+});
