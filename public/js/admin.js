@@ -26784,7 +26784,86 @@ var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHi
 
 (0, _reactDom.render)(_react2.default.createElement(_Root2.default, { history: history, store: store }), document.getElementById('root'));
 
-},{"./containers/Root.jsx":264,"./store/configureStore.jsx":267,"react":243,"react-dom":50,"react-router":96,"react-router-redux":63}],261:[function(require,module,exports){
+},{"./containers/Root.jsx":266,"./store/configureStore.jsx":269,"react":243,"react-dom":50,"react-router":96,"react-router-redux":63}],261:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouter = require('react-router');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MainHeader = function (_Component) {
+	_inherits(MainHeader, _Component);
+
+	function MainHeader() {
+		_classCallCheck(this, MainHeader);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(MainHeader).apply(this, arguments));
+	}
+
+	_createClass(MainHeader, [{
+		key: 'render',
+		value: function render() {
+			// Make the nav items customizable in the future
+			return _react2.default.createElement(
+				'nav',
+				{ className: 'navbar navbar-full navbar-dark bg-inverse' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'container' },
+					_react2.default.createElement(
+						'a',
+						{ className: 'navbar-brand' },
+						'Bracket'
+					),
+					_react2.default.createElement(
+						'ul',
+						{ className: 'nav navbar-nav' },
+						_react2.default.createElement(
+							'li',
+							{ className: 'nav-item' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/admin/games', className: 'nav-link' },
+								'Games'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							{ className: 'nav-item' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/admin/platforms', className: 'nav-link' },
+								'Platforms'
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return MainHeader;
+}(_react.Component);
+
+exports.default = MainHeader;
+
+},{"react":243,"react-router":96}],262:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26801,6 +26880,10 @@ var _reactRedux = require('react-redux');
 
 var _reactRouter = require('react-router');
 
+var _MainHeader = require('../components/MainHeader.jsx');
+
+var _MainHeader2 = _interopRequireDefault(_MainHeader);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26808,6 +26891,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import SecondaryHeader from '../components/SecondaryHeader.jsx'
 
 var App = function (_Component) {
 	_inherits(App, _Component);
@@ -26826,22 +26911,12 @@ var App = function (_Component) {
 			return _react2.default.createElement(
 				'div',
 				null,
+				_react2.default.createElement(_MainHeader2.default, null),
 				_react2.default.createElement(
-					'p',
-					null,
-					'This is an app.... Okay.'
-				),
-				_react2.default.createElement(
-					_reactRouter.Link,
-					{ to: '/admin/games' },
-					'Games'
-				),
-				_react2.default.createElement(
-					_reactRouter.Link,
-					{ to: '/admin/platforms' },
-					'Platforms'
-				),
-				children
+					'div',
+					{ className: 'container m-t-2' },
+					children
+				)
 			);
 		}
 	}]);
@@ -26855,7 +26930,64 @@ App.propTypes = {
 
 exports.default = App;
 
-},{"react":243,"react-redux":53,"react-router":96}],262:[function(require,module,exports){
+},{"../components/MainHeader.jsx":261,"react":243,"react-redux":53,"react-router":96}],263:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var DashboardPage = function (_Component) {
+	_inherits(DashboardPage, _Component);
+
+	function DashboardPage(props) {
+		_classCallCheck(this, DashboardPage);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(DashboardPage).call(this, props));
+	}
+
+	_createClass(DashboardPage, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					'p',
+					null,
+					_react2.default.createElement(
+						'b',
+						null,
+						'Ayyyy LMAO'
+					),
+					' This is an app...'
+				)
+			);
+		}
+	}]);
+
+	return DashboardPage;
+}(_react.Component);
+
+exports.default = DashboardPage;
+
+},{"react":243,"react-redux":53}],264:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26915,7 +27047,7 @@ var GamesPage = function (_Component) {
 
 exports.default = GamesPage;
 
-},{"react":243,"react-redux":53}],263:[function(require,module,exports){
+},{"react":243,"react-redux":53}],265:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26975,7 +27107,7 @@ var PlatformsPage = function (_Component) {
 
 exports.default = PlatformsPage;
 
-},{"react":243,"react-redux":53}],264:[function(require,module,exports){
+},{"react":243,"react-redux":53}],266:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27043,7 +27175,7 @@ Root.propTypes = {
 	history: _react.PropTypes.object.isRequired
 };
 
-},{"../routes.jsx":266,"react":243,"react-redux":53,"react-router":96}],265:[function(require,module,exports){
+},{"../routes.jsx":268,"react":243,"react-redux":53,"react-router":96}],267:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27083,7 +27215,7 @@ var rootReducer = (0, _redux.combineReducers)({
 
 exports.default = rootReducer;
 
-},{"../actions/index.jsx":259,"react-router-redux":63,"redux":249}],266:[function(require,module,exports){
+},{"../actions/index.jsx":259,"react-router-redux":63,"redux":249}],268:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27108,16 +27240,21 @@ var _PlatformsPage = require('./containers/PlatformsPage.jsx');
 
 var _PlatformsPage2 = _interopRequireDefault(_PlatformsPage);
 
+var _DashboardPage = require('./containers/DashboardPage.jsx');
+
+var _DashboardPage2 = _interopRequireDefault(_DashboardPage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _react2.default.createElement(
 	_reactRouter.Route,
 	{ path: '/admin', component: _App2.default },
+	_react2.default.createElement(_reactRouter.IndexRoute, { component: _DashboardPage2.default }),
 	_react2.default.createElement(_reactRouter.Route, { path: 'games', component: _GamesPage2.default }),
 	_react2.default.createElement(_reactRouter.Route, { path: 'platforms', component: _PlatformsPage2.default })
 );
 
-},{"./containers/App.jsx":261,"./containers/GamesPage.jsx":262,"./containers/PlatformsPage.jsx":263,"react":243,"react-router":96}],267:[function(require,module,exports){
+},{"./containers/App.jsx":262,"./containers/DashboardPage.jsx":263,"./containers/GamesPage.jsx":264,"./containers/PlatformsPage.jsx":265,"react":243,"react-router":96}],269:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27139,6 +27276,6 @@ function configureStore(preloadedState) {
 	return store;
 }
 
-},{"../reducers/index.jsx":265,"redux":249}]},{},[260]);
+},{"../reducers/index.jsx":267,"redux":249}]},{},[260]);
 
 //# sourceMappingURL=admin.js.map

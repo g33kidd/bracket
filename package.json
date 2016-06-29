@@ -10,6 +10,8 @@
     "bootstrap-sass": "^3.3.0"
   },
   "dependencies": {
+    "humps": "^1.1.0",
+    "isomorphic-fetch": "^2.2.1",
     "jquery": "^2.2.4",
     "lodash": "^4.13.1",
     "react": "^15.1.0",

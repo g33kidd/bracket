@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory, Link } from 'react-router'
+import MainHeader from '../components/MainHeader.jsx'
+// import SecondaryHeader from '../components/SecondaryHeader.jsx'
 
 class App extends Component {
 
@@ -12,10 +14,10 @@ class App extends Component {
 		const { children } = this.props
 		return (
 			<div>
-				<p>This is an app.... Okay.</p>
-				<Link to={`/admin/games`}>Games</Link>
-				<Link to={`/admin/platforms`}>Platforms</Link>
-				{children}
+				<MainHeader />
+				<div className="container m-t-2">
+					{children}
+				</div>
 			</div>
 		)
 	}
