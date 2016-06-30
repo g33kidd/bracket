@@ -15,6 +15,10 @@ function callApi(endpoint, schema) {
 			}
 
 			const camelizedJson = camelizeKeys(json)
-			
+
 		})
+}
+
+export default store => next => action => {
+	
 }

@@ -8,7 +8,7 @@ export default class MainHeader extends Component {
 		return (
 			<nav className="navbar navbar-full navbar-dark bg-inverse">
 				<div className="container">
-					<a className="navbar-brand">Bracket</a>
+					<Link to={`/admin`} className="navbar-brand">Bracket</Link>
 					<ul className="nav navbar-nav">
 						<li className="nav-item">
 							<Link to={`/admin/games`} className="nav-link">Games</Link>
