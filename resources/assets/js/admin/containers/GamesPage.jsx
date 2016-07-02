@@ -1,13 +1,18 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-// Load the actions here
-// import { loadGames } from '../actions.jsx'
+import { fetchGames } from '../actions/index.jsx'
 
 // import individual components here
+import GameListCard from '../components/GameListCard.jsx'
 
 class GamesPage extends Component {
 	constructor(props) {
 		super(props)
+	}
+
+	componentDidMount() {
+		fetchGames()
+		// dispatch(fetchGames())
 	}
 
 	// componentWillMount() {}
