@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Platform;
@@ -17,17 +17,7 @@ class PlatformsController extends Controller
     {
         $platforms = Platform::all();
 
-        return view('admin.platforms.index', ['platforms' => $platforms]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin.platforms.create');
+        return response()->json(['platforms' => $platforms]);
     }
 
     /**
@@ -45,7 +35,7 @@ class PlatformsController extends Controller
         $platform->slug = $request->input('slug');
         $platform->save();
 
-        return redirect()->action('Admin\PlatformsController@show', $platform);
+        return response()->json($platform->toArray());
     }
 
     /**
@@ -59,19 +49,7 @@ class PlatformsController extends Controller
     {
         $platform = Platform::find($id);
 
-        return view('admin.platforms.show', ['platform' => $platform]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return response()->json($platform->toArray());
     }
 
     /**
@@ -84,7 +62,7 @@ class PlatformsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // same for GamesController..
     }
 
     /**
@@ -99,6 +77,6 @@ class PlatformsController extends Controller
         $platform = Platform::find($id);
         $platform->delete();
 
-        return redirect()->action('Admin\PlatformsController@index');
+        return response(null, 200);
     }
 }

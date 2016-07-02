@@ -27582,11 +27582,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 // game actions
+var REQUEST_GAMES = exports.REQUEST_GAMES = 'REQUEST_GAMES';
+var RECEIVE_GAMES = exports.RECEIVE_GAMES = 'RECEIVE_GAMES';
 var ADD_GAME = exports.ADD_GAME = 'ADD_GAME';
 var UPDATE_GAME = exports.UPDATE_GAME = 'UPDATE_GAME';
 var REMOVE_GAME = exports.REMOVE_GAME = 'REMOVE_GAME';
 
 // platform actions
+var REQUEST_PLATFORMS = exports.REQUEST_PLATFORMS = 'REQUEST_PLATFORMS';
+var RECEIVE_PLATFORMS = exports.RECEIVE_PLATFORMS = 'RECEIVE_PLATFORMS';
 var ADD_PLATFORM = exports.ADD_PLATFORM = 'ADD_PLATFORM';
 var UPDATE_PLATFORM = exports.UPDATE_PLATFORM = 'UPDATE_PLATFORM';
 var REMOVE_PLATFORM = exports.REMOVE_PLATFORM = 'REMOVE_PLATFORM';
@@ -28155,8 +28159,10 @@ var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function configureStore(preloadedState) {
-	var store = (0, _redux.createStore)(_index2.default, preloadedState);
+var logger = (0, _reduxLogger2.default)();
+
+function configureStore(initialState) {
+	var store = (0, _redux.createStore)(_index2.default, initialState, applyMIddleware(_reduxThunk2.default, logger));
 
 	return store;
 }

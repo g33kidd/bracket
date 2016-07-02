@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
 
 use App\Game;
 use App\Http\Controllers\Controller;
@@ -16,18 +16,7 @@ class GamesController extends Controller
     public function index()
     {
         $games = Game::all();
-
-        return view('admin.games.index', ['games' => $games]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin.games.create');
+        return response()->json(['games' => $games]);
     }
 
     /**
@@ -51,7 +40,7 @@ class GamesController extends Controller
         $game->save();
         $game->platforms()->attach($request->input('platforms'));
 
-        return redirect()->action('Admin\GamesController@show', $game);
+        return response()->json($game->toArray());
     }
 
     /**
@@ -65,19 +54,8 @@ class GamesController extends Controller
     {
         $game = Game::find($id);
 
+        return response()->json($game->toArray());
         return view('admin.games.show', ['game' => $game]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -90,7 +68,8 @@ class GamesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // can there be a helper class to just do the same thing in store/update
+        // it would make a ton of sense and save a ton of time...
     }
 
     /**
@@ -105,6 +84,6 @@ class GamesController extends Controller
         $game = Game::find($id);
         $game->delete();
 
-        return redirect()->action('App\GamesController@index');
+        return response(null, 200);
     }
 }

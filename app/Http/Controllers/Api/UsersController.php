@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\User;
 
 class UsersController extends Controller
 {
 
     public function index()
     {
-        return view('admin.users');
+    	$users = User::all();
+    	return response()->json(['users' => $users]);
     }
 
 }

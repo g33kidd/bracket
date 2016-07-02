@@ -4,10 +4,16 @@ import createLogger from 'redux-logger'
 import api from '../middleware/api.js'
 import rootReducer from '../reducers/index.jsx'
 
-export default function configureStore(preloadedState) {
+const logger = createLogger()
+
+export default function configureStore(initialState) {
 	const store = createStore(
 		rootReducer,
-		preloadedState
+		initialState,
+		applyMIddleware(
+			thunk,
+			logger
+		)
 	)
 
 	return store
