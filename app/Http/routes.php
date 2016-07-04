@@ -14,7 +14,7 @@
 Route::auth();
 
 // Just some static pages
-Route::get('/', 'HomeController@welcome');
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/news', 'HomeController@news');
 

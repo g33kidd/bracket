@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Game;
+use App\Platform;
+use App\User;
+
 class HomeController extends Controller
 {
     /**
@@ -10,17 +15,20 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('home');
-    }
+    {   
+        $pagevars = [
+            'games' => Game::all(),
+            'platforms' => Platform::all(),
+            'user_count' => User::all()->count(),
+        ];
 
-    /**
-     * Show the application welcome page.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function welcome()
-    {
-        return view('welcome');
+
+        // Could probably have this in the blade template and
+        // 
+        if(Auth::check()) {
+            return view('site.home-member', $pagevars);            
+        }else {
+            return view('site.home-guest', $pagevars);
+        }
     }
 }

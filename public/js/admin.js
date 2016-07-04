@@ -27576,98 +27576,75 @@ module.exports = warning;
 })(typeof self !== 'undefined' ? self : this);
 
 },{}],264:[function(require,module,exports){
-'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.REMOVE_PLATFORM = exports.UPDATE_PLATFORM = exports.ADD_PLATFORM = exports.RECEIVE_PLATFORMS = exports.REQUEST_PLATFORMS = exports.REMOVE_GAME = exports.UPDATE_GAME = exports.ADD_GAME = exports.RECEIVE_GAMES = exports.REQUEST_GAMES = undefined;
-exports.requestGames = requestGames;
-exports.requestPlatforms = requestPlatforms;
-exports.receiveGames = receiveGames;
-exports.receivePlatforms = receivePlatforms;
-exports.fetchGames = fetchGames;
-exports.fetchPlatforms = fetchPlatforms;
 
-var _isomorphicFetch = require('isomorphic-fetch');
+// import fetch from 'isomorphic-fetch'
 
-var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
+// // game actions
+// export const REQUEST_GAMES = 'REQUEST_GAMES'
+// export const RECEIVE_GAMES = 'RECEIVE_GAMES'
+// export const ADD_GAME = 'ADD_GAME'
+// export const UPDATE_GAME = 'UPDATE_GAME'
+// export const REMOVE_GAME = 'REMOVE_GAME'
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+// // platform actions
+// export const REQUEST_PLATFORMS = 'REQUEST_PLATFORMS'
+// export const RECEIVE_PLATFORMS = 'RECEIVE_PLATFORMS'
+// export const ADD_PLATFORM = 'ADD_PLATFORM'
+// export const UPDATE_PLATFORM = 'UPDATE_PLATFORM'
+// export const REMOVE_PLATFORM = 'REMOVE_PLATFORM'
 
-// game actions
-var REQUEST_GAMES = exports.REQUEST_GAMES = 'REQUEST_GAMES';
-var RECEIVE_GAMES = exports.RECEIVE_GAMES = 'RECEIVE_GAMES';
-var ADD_GAME = exports.ADD_GAME = 'ADD_GAME';
-var UPDATE_GAME = exports.UPDATE_GAME = 'UPDATE_GAME';
-var REMOVE_GAME = exports.REMOVE_GAME = 'REMOVE_GAME';
+// // some test "actions"
 
-// platform actions
-var REQUEST_PLATFORMS = exports.REQUEST_PLATFORMS = 'REQUEST_PLATFORMS';
-var RECEIVE_PLATFORMS = exports.RECEIVE_PLATFORMS = 'RECEIVE_PLATFORMS';
-var ADD_PLATFORM = exports.ADD_PLATFORM = 'ADD_PLATFORM';
-var UPDATE_PLATFORM = exports.UPDATE_PLATFORM = 'UPDATE_PLATFORM';
-var REMOVE_PLATFORM = exports.REMOVE_PLATFORM = 'REMOVE_PLATFORM';
+// export function requestGames() {
+// 	return {
+// 		type: REQUEST_GAMES
+// 	}
+// }
 
-// some test "actions"
+// export function requestPlatforms() {
+// 	return {
+// 		type: REQUEST_PLATFORMS
+// 	}
+// }
 
-function requestGames() {
-	return {
-		type: REQUEST_GAMES
-	};
-}
+// export function receiveGames(json) {
+// 	console.log(json)
+// 	return {
+// 		type: RECEIVE_GAMES,
+// 		games: json.data.children.map(child => child.data),
+// 		receivedAt: Date.now()
+// 	}
+// }
 
-function requestPlatforms() {
-	return {
-		type: REQUEST_PLATFORMS
-	};
-}
+// export function receivePlatforms(json) {
+// 	return {
+// 		type: RECEIVE_PLATFORMS,
+// 		platforms: json.data.children.map(child => child.data)
+// 	}
+// }
 
-function receiveGames(json) {
-	console.log(json);
-	return {
-		type: RECEIVE_GAMES,
-		games: json.data.children.map(function (child) {
-			return child.data;
-		}),
-		receivedAt: Date.now()
-	};
-}
+// export function fetchGames() {
+// 	return dispatch => {
+// 		dispatch(requestGames())
+// 		return fetch(`bracket.dev/api/games`)
+// 			.then(response => console.log(response))
+// 			.then(response => reponse.json())
+// 			.then(json => dispatch(receiveGames(json)))
+// 	}
+// }
 
-function receivePlatforms(json) {
-	return {
-		type: RECEIVE_PLATFORMS,
-		platforms: json.data.children.map(function (child) {
-			return child.data;
-		})
-	};
-}
+// export function fetchPlatforms() {
+// 	return dispatch => {
+// 		dispatch(requestPlatforms())
+// 		return fetch(`bracket.dev/api/platforms`)
+// 			.then(response => response.json())
+// 			.then(json => dispatch(receivePlatforms(json)))
+// 	}
+// }
+"use strict";
 
-function fetchGames() {
-	return function (dispatch) {
-		dispatch(requestGames());
-		return (0, _isomorphicFetch2.default)('bracket.dev/api/games').then(function (response) {
-			return console.log(response);
-		}).then(function (response) {
-			return reponse.json();
-		}).then(function (json) {
-			return dispatch(receiveGames(json));
-		});
-	};
-}
-
-function fetchPlatforms() {
-	return function (dispatch) {
-		dispatch(requestPlatforms());
-		return (0, _isomorphicFetch2.default)('bracket.dev/api/platforms').then(function (response) {
-			return response.json();
-		}).then(function (json) {
-			return dispatch(receivePlatforms(json));
-		});
-	};
-}
-
-},{"isomorphic-fetch":50}],265:[function(require,module,exports){
+},{}],265:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -28029,16 +28006,6 @@ var GamesPage = function (_Component) {
 	}
 
 	_createClass(GamesPage, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			(0, _index.fetchGames)();
-			// dispatch(fetchGames())
-		}
-
-		// componentWillMount() {}
-		// componentWillReceiveProps() {}
-
-	}, {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
@@ -28225,76 +28192,66 @@ exports.default = function (store) {
 };
 
 },{"humps":48,"isomorphic-fetch":50}],274:[function(require,module,exports){
-'use strict';
+// import { combineReducers } from 'redux'
+// import { routerReducer as routing } from 'react-router-redux'
+// import {
+// 	REQUEST_GAMES, REQUEST_PLATFORMS,
+// 	RECEIVE_GAMES, RECEIVE_PLATFORMS
+// } from '../actions/index.jsx'
 
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
+// // Fetch the games from the API
+// function games(state = {
+// 	isFetching: false,
+// 	games: []
+// }, action) {
+// 	switch(action.type) {
+// 		case REQUEST_GAMES:
+// 			return Object.assign({}, state, {
+// 				isFetching: true
+// 			})
+// 		case RECEIVE_GAMES:
+// 			return Object.assign({}, state, {
+// 				isFetching: false,
+// 				games: action.games,
+// 				lastUpdated: action.receivedAt
+// 			})
+// 		default:
+// 			return state
+// 	}
+// }
 
-var _redux = require('redux');
+// // Fetch the platforms from the API
+// function platforms(state = {
+// 	isFetching: false,
+// 	platforms: []
+// }, action) {
+// 	switch(action.type) {
+// 		case REQUEST_PLATFORMS:
+// 			return Object.assign({}, state, {
+// 				isFetching: true
+// 			})
+// 		case RECEIVE_PLATFORMS:
+// 			return Object.assign({}, state, {
+// 				isFetching: false,
+// 				platforms: action.platforms,
+// 				lastUpdated: action.receivedAt
+// 			})
+// 		default:
+// 			return state
+// 	}
+// }
 
-var _reactRouterRedux = require('react-router-redux');
+// // All the reducer functions combined.
+// const rootReducer = combineReducers({
+// 	games,
+// 	platforms,
+// 	routing
+// })
 
-var _index = require('../actions/index.jsx');
+// export default rootReducer
+"use strict";
 
-// Fetch the games from the API
-function games() {
-	var state = arguments.length <= 0 || arguments[0] === undefined ? {
-		isFetching: false,
-		games: []
-	} : arguments[0];
-	var action = arguments[1];
-
-	switch (action.type) {
-		case _index.REQUEST_GAMES:
-			return Object.assign({}, state, {
-				isFetching: true
-			});
-		case _index.RECEIVE_GAMES:
-			return Object.assign({}, state, {
-				isFetching: false,
-				games: action.games,
-				lastUpdated: action.receivedAt
-			});
-		default:
-			return state;
-	}
-}
-
-// Fetch the platforms from the API
-function platforms() {
-	var state = arguments.length <= 0 || arguments[0] === undefined ? {
-		isFetching: false,
-		platforms: []
-	} : arguments[0];
-	var action = arguments[1];
-
-	switch (action.type) {
-		case _index.REQUEST_PLATFORMS:
-			return Object.assign({}, state, {
-				isFetching: true
-			});
-		case _index.RECEIVE_PLATFORMS:
-			return Object.assign({}, state, {
-				isFetching: false,
-				platforms: action.platforms,
-				lastUpdated: action.receivedAt
-			});
-		default:
-			return state;
-	}
-}
-
-// All the reducer functions combined.
-var rootReducer = (0, _redux.combineReducers)({
-	games: games,
-	platforms: platforms,
-	routing: _reactRouterRedux.routerReducer
-});
-
-exports.default = rootReducer;
-
-},{"../actions/index.jsx":264,"react-router-redux":65,"redux":253}],275:[function(require,module,exports){
+},{}],275:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

@@ -10,14 +10,6 @@ class GamesPage extends Component {
 		super(props)
 	}
 
-	componentDidMount() {
-		fetchGames()
-		// dispatch(fetchGames())
-	}
-
-	// componentWillMount() {}
-	// componentWillReceiveProps() {}
-
 	render() {
 		return (
 			<div>

@@ -9,6 +9,6 @@ const store = configureStore()
 const history = syncHistoryWithStore(browserHistory, store)
 
 render(
-	<Root history={history} store={store} />, 
+	<Root history={history} store={store} />,
 	document.getElementById('root')
 )
