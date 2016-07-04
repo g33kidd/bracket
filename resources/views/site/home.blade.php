@@ -27,5 +27,14 @@
             </div>
         @endif
     </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Users</h1>
+            @foreach($users as $user)
+                <div>{{$user->username}}</div>
+            @endforeach
+        </div>
+    </div>
 </div>
 @endsection

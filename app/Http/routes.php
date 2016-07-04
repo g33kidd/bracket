@@ -13,15 +13,27 @@
 
 Route::auth();
 
-// Just some static pages
-Route::get('/', 'Site\HomeController@index');
-// Route::get('/settings', 'Site\SettingsController@index');
+// No authorization required
 // Route::get('/players', 'Site\ProfileController@index');
 // Route::get('/profile/{username}', 'Site\ProfileController@show');
 // Route::get('/teams', 'Site\TeamsController@index');
 // Route::get('/teams/{slug}', 'Site\TeamsController@show');
 // Route::get('/tournaments', 'Site\TournamentsController@index');
 // Route::get('/{page}', 'Site\PageController@show');
+
+Route::group(['namespace' => 'Site'], function() {
+	Route::get('/', 'HomeController@index');
+	Route::get('/profile/{any}', 'ProfileController@show');
+	Route::get('/teams', 'TeamsController@index');
+	Route::get('/teams/{slug}', 'TeamsController@show');
+
+	Route::group(['prefix' => 'settings'], function() {
+		Route::get('/', 'SettingsController@index');
+		Route::get('/teams', 'TeamSettingsController@index');
+	});
+
+	Route::get('/{any}', 'PageController@index');
+});
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function () {
 	Route::get('/', 'DashboardController@index');
