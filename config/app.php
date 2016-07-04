@@ -156,11 +156,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        // Packages
-        Riari\Forum\ForumServiceProvider::class,
-
-        'Riari\Forum\Frontend\ForumFrontendServiceProvider',
-
     ],
 
     /*

@@ -6,9 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*",
-        "riari/laravel-forum": "~3.0",
-        "riari/laravel-forum-frontend": "~1.0"
+        "laravel/framework": "5.2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
