@@ -15,7 +15,13 @@ Route::auth();
 
 // Just some static pages
 Route::get('/', 'Site\HomeController@index');
-// Route::get('/home', 'Site\NewsController@index');
+// Route::get('/settings', 'Site\SettingsController@index');
+// Route::get('/players', 'Site\ProfileController@index');
+// Route::get('/profile/{username}', 'Site\ProfileController@show');
+// Route::get('/teams', 'Site\TeamsController@index');
+// Route::get('/teams/{slug}', 'Site\TeamsController@show');
+// Route::get('/tournaments', 'Site\TournamentsController@index');
+// Route::get('/{page}', 'Site\PageController@show');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function () {
 	Route::get('/', 'DashboardController@index');

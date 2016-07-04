@@ -20,6 +20,7 @@ class MainController extends Controller
         $page_data = [
             'games' => Game::all(),
             'platforms' => Platform::all(),
+            'users' => User::all(),
             'user_count' => User::all()->count(),
             'other' => [
                 'data' => "Some test data.",
@@ -28,5 +29,5 @@ class MainController extends Controller
         ];
 
         return view('site.' . $view, $page_data);
-    } 
+    }
 }
