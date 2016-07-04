@@ -1,5 +1,3 @@
-
-
 <ul class="nav navbar-nav pull-right">
   @if(Auth::guest())
   <li class="nav-item"><a href="{{ url('/login' )}}" class="btn btn-primary-outline">Login</a></li>

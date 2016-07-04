@@ -14,9 +14,8 @@
 Route::auth();
 
 // Just some static pages
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
-Route::get('/news', 'HomeController@news');
+Route::get('/', 'Site\HomeController@index');
+// Route::get('/home', 'Site\NewsController@index');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function () {
 	Route::get('/', 'DashboardController@index');
