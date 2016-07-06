@@ -11,6 +11,5 @@ class Game extends Model
     public function platforms()
     {
         return $this->belongsToMany('App\Platform', 'platform_game');
-                  // ->withPivot('name', 'short_name');
     }
 }

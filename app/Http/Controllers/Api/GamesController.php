@@ -16,7 +16,7 @@ class GamesController extends Controller
     public function index()
     {
         $games = Game::all();
-        return response()->json(['games' => $games]);
+        return response()->json($games->toArray());
     }
 
     /**
@@ -55,7 +55,6 @@ class GamesController extends Controller
         $game = Game::find($id);
 
         return response()->json($game->toArray());
-        return view('admin.games.show', ['game' => $game]);
     }
 
     /**

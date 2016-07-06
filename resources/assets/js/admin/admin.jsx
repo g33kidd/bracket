@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
-import rootReducer from './reducers/index.jsx';
+import rootReducer from './redux/reducers.jsx';
 import Root from './containers/Root.jsx';
 
 const logger = createLogger();

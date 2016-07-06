@@ -1,19 +1,27 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchGames } from '../actions/index.jsx'
-
-// import individual components here
-import GameListCard from '../components/GameListCard.jsx'
+import { fetchGames, addGame } from '../redux/actions.jsx';
+import AddGame from '../components/games/AddGame.jsx';
+import GamesTable from '../components/games/GamesTable.jsx';
 
 class GamesPage extends Component {
 	constructor(props) {
 		super(props)
 	}
 
+	componentDidMount() {
+		this.props.dispatchGetGames();
+	}
+
 	render() {
 		return (
-			<div>
-				<p>A list of supported games.</p>
+			<div className="row">
+				<div className="col-md-3">
+					<AddGame addGame={this.props.dispatchAddGame} />
+				</div>
+				<div className="col-md-9">
+					<GamesTable games={this.props.games} />
+				</div>
 			</div>
 		)
 	}
@@ -21,13 +29,18 @@ class GamesPage extends Component {
 
 function mapStateToProps(state) {
 	return {
-
+		games: state.games
 	};
 }
 
 function mapDispatchToProps(dispatch, componentProps) {
 	return {
-
+		dispatchAddGame: (data) => {
+			dispatch(addGame(data));
+		},
+		dispatchGetGames: () => {
+			dispatch(fetchGames());
+		}
 	};
 }
 

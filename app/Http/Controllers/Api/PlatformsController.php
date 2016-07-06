@@ -17,7 +17,7 @@ class PlatformsController extends Controller
     {
         $platforms = Platform::all();
 
-        return response()->json(['platforms' => $platforms]);
+        return response()->json($platforms->toArray());
     }
 
     /**

@@ -1,25 +1,49 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-// Load the actions here
-// import { loadPlatforms } from '../actions/index.jsx'
+import { fetchPlatforms, addPlatform } from '../redux/actions.jsx';
 
 // import individual components here
+import AddPlatform from '../components/platforms/AddPlatform.jsx';
+import PlatformsTable from '../components/platforms/PlatformsTable.jsx';
 
 class PlatformsPage extends Component {
 	constructor(props) {
 		super(props)
 	}
 
-	// componentWillMount() {}
-	// componentWillReceiveProps() {}
+	componentDidMount() {
+		this.props.dispatchGetPlatforms();
+	}
 
 	render() {
 		return (
-			<div>
-				<p>Some list of platforms.</p>
+			<div className="row">
+				<div className="col-md-3">
+					<AddPlatform addPlatform={this.props.dispatchAddPlatform} />
+				</div>
+				<div className="col-md-9">
+					<PlatformsTable platforms={this.props.platforms} />
+				</div>
 			</div>
 		)
 	}
 }
 
-export default PlatformsPage
+function mapStateToProps(state) {
+	return {
+		platforms: state.platforms
+	};
+};
+
+function mapDispatchToProps(dispatch, componentProps) {
+	return {
+		dispatchAddPlatform: (data) => {
+			dispatch(addPlatform(data));
+		},
+		dispatchGetPlatforms: () => {
+			dispatch(fetchPlatforms());
+		}
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlatformsPage);
