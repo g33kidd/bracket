@@ -19,4 +19,16 @@ class GamesPage extends Component {
 	}
 }
 
-export default GamesPage
+function mapStateToProps(state) {
+	return {
+
+	};
+}
+
+function mapDispatchToProps(dispatch, componentProps) {
+	return {
+
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GamesPage);

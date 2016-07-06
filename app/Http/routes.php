@@ -13,6 +13,19 @@
 
 Route::auth();
 
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function () {
+	Route::get('/', 'DashboardController@index');
+ 	Route::get('/{any}', 'DashboardController@index');
+});
+
+// Add some auth middleware to this...
+Route::group(['namespace' => 'Api', 'prefix' => 'api'], function() {
+	Route::resource('games', 'GamesController');
+	Route::resource('platforms', 'PlatformsController');
+	Route::resource('users', 'UsersController');
+	Route::resource('tournaments', 'TournamentsController');
+});
+
 // Main site routes, actions and controllers.
 Route::group(['namespace' => 'Site'], function() {
 	Route::get('/', 'HomeController@index');
@@ -34,17 +47,4 @@ Route::group(['namespace' => 'Site'], function() {
 	});
 
 	Route::get('/{any}', 'PageController@index');
-});
-
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function () {
-	Route::get('/', 'DashboardController@index');
- 	Route::get('/{any}', 'DashboardController@index');
-});
-
-// Add some auth middleware to this...
-Route::group(['namespace' => 'Api', 'prefix' => 'api'], function() {
-	Route::resource('games', 'GamesController');
-	Route::resource('platforms', 'PlatformsController');
-	Route::resource('users', 'UsersController');
-	Route::resource('tournaments', 'TournamentsController');
 });

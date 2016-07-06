@@ -10,6 +10,7 @@
     "bootstrap-sass": "^3.3.0"
   },
   "dependencies": {
+    "axios": "^0.12.0",
     "humps": "^1.1.0",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^2.2.4",

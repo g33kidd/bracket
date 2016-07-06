@@ -1,8 +1,5 @@
 import { combineReducers } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'
-
-import { combineReducers } from 'redux'
-import { routerReducer as routing } from 'react-router-redux'
 import {
 	REQUEST_GAMES, REQUEST_PLATFORMS,
 	RECEIVE_GAMES, RECEIVE_PLATFORMS
