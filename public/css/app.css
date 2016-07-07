@@ -4581,4 +4581,7 @@ a.bg-danger:focus, a.bg-danger:hover {
   .hidden-print {
     display: none !important; } }
 
+.navbar.secondary {
+  padding: 0.1rem 1rem; }
+
 /*# sourceMappingURL=app.css.map */

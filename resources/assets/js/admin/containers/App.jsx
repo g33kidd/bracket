@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory, Link } from 'react-router'
-import MainHeader from '../components/MainHeader.jsx'
-// import SecondaryHeader from '../components/SecondaryHeader.jsx'
+import { changeNav } from '../actions/navigation.jsx';
+import MainHeader from '../components/header/MainHeader.jsx'
+import SecondaryHeader from '../components/header/SecondaryHeader.jsx';
 
 class App extends Component {
 
@@ -10,11 +11,18 @@ class App extends Component {
 		super(props)
 	}
 
+	componentDidMount() {
+		this.props.dispatchNav();
+	}
+
 	render() {
 		const { children } = this.props
 		return (
 			<div>
-				<MainHeader />
+				<header>
+					<MainHeader nav={this.props.nav} />
+					<SecondaryHeader nav={this.props.nav} />
+				</header>
 				<div className="container m-t-2">
 					{children}
 				</div>
@@ -24,8 +32,18 @@ class App extends Component {
 
 }
 
-App.propTypes = {
-	children: PropTypes.node
+function mapStateToProps(state) {
+	return {
+		nav: state.nav
+	};
 }
 
-export default App
+function mapDispatchToProps(dispatch, componentProps) {
+	return {
+		dispatchNav: () => {
+			dispatch(changeNav());
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -4,3 +4,9 @@
 // Bootstrap 4
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "components/buttons";
+
+.navbar {
+	&.secondary {
+		padding: 0.1rem 1rem;
+	}
+}
