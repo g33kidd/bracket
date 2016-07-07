@@ -11,9 +11,11 @@ import DashboardPage from './containers/DashboardPage.jsx'
 export default (
 	<Route path="/admin" component={App}>
 		<IndexRoute component={DashboardPage} />
+		
 		<Route path="settings" component={SettingsPage} />
+		<Route path="settings/games" component={GamesPage} />
+		<Route path="settings/platforms" component={PlatformsPage} />
+
 		<Route path="overview" component={OverviewPage} />
-		<Route path="games" component={GamesPage} />
-		<Route path="platforms" component={PlatformsPage} />
 	</Route>
 )

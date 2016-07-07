@@ -31103,7 +31103,7 @@ var INIT_NAV_STATE = {
 			title: 'Overview',
 			subLinks: {
 				stats: {
-					location: '/admin/games',
+					location: '/admin/overview/games',
 					title: 'Stats'
 				}
 			}
@@ -31115,17 +31115,17 @@ var INIT_NAV_STATE = {
 			subLinks: {
 				games: {
 					id: 'games',
-					location: '/admin/games',
+					location: '/admin/settings/games',
 					title: "Games"
 				},
 				platforms: {
 					id: 'platforms',
-					location: '/admin/platforms',
+					location: '/admin/settings/platforms',
 					title: "Platforms"
 				},
 				tournaments: {
 					id: 'tournaments',
-					location: '/admin/platforms',
+					location: '/admin/settings/platforms',
 					title: "Tournaments"
 				}
 			}
@@ -31146,13 +31146,16 @@ function nav() {
 
 	switch (action.type) {
 		case "@@router/LOCATION_CHANGE":
-			var newSecondary = _underscore2.default.find(state.primary, function (link) {
-				return link.location === action.payload.pathname;
+			var path = action.payload.pathname;
+			var parentId = path.split('/')[2];
+			var secondary = _underscore2.default.find(state.primary, function (link) {
+				console.log(link.location.split('/')[2]);
+				return link.location.split('/')[2] === parentId;
 			});
 
-			if (newSecondary) {
+			if (secondary) {
 				return Object.assign({}, state, {
-					secondary: newSecondary.subLinks
+					secondary: secondary.subLinks
 				});
 			} else {
 				return state;
@@ -31250,9 +31253,9 @@ exports.default = _react2.default.createElement(
 	{ path: '/admin', component: _App2.default },
 	_react2.default.createElement(_reactRouter.IndexRoute, { component: _DashboardPage2.default }),
 	_react2.default.createElement(_reactRouter.Route, { path: 'settings', component: _SettingsPage2.default }),
-	_react2.default.createElement(_reactRouter.Route, { path: 'overview', component: _OverviewPage2.default }),
-	_react2.default.createElement(_reactRouter.Route, { path: 'games', component: _GamesPage2.default }),
-	_react2.default.createElement(_reactRouter.Route, { path: 'platforms', component: _PlatformsPage2.default })
+	_react2.default.createElement(_reactRouter.Route, { path: 'settings/games', component: _GamesPage2.default }),
+	_react2.default.createElement(_reactRouter.Route, { path: 'settings/platforms', component: _PlatformsPage2.default }),
+	_react2.default.createElement(_reactRouter.Route, { path: 'overview', component: _OverviewPage2.default })
 );
 
 },{"./containers/App.jsx":293,"./containers/DashboardPage.jsx":294,"./containers/GamesPage.jsx":295,"./containers/OverviewPage.jsx":296,"./containers/PlatformsPage.jsx":297,"./containers/SettingsPage.jsx":299,"react":262,"react-router":115}]},{},[284]);

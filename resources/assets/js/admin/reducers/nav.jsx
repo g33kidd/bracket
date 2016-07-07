@@ -10,7 +10,7 @@ const INIT_NAV_STATE = {
 			title: 'Overview',
 			subLinks: {
 				stats: {
-					location: '/admin/games',
+					location: '/admin/overview/games',
 					title: 'Stats'
 				}
 			}
@@ -22,17 +22,17 @@ const INIT_NAV_STATE = {
 			subLinks: {
 				games: {
 					id: 'games',
-					location: '/admin/games',
+					location: '/admin/settings/games',
 					title: "Games"
 				},
 				platforms: {
 					id: 'platforms',
-					location: '/admin/platforms',
+					location: '/admin/settings/platforms',
 					title: "Platforms"
 				},
 				tournaments: {
 					id: 'tournaments',
-					location: '/admin/platforms',
+					location: '/admin/settings/platforms',
 					title: "Tournaments"
 				}
 			}
@@ -51,13 +51,16 @@ const INIT_NAV_STATE = {
 export function nav(state=INIT_NAV_STATE, action) {
 	switch(action.type) {
 		case "@@router/LOCATION_CHANGE":
-			const newSecondary = _.find(state.primary, (link) => {
-				return link.location === action.payload.pathname;
+			let path = action.payload.pathname;
+			let parentId = path.split('/')[2];
+			let secondary = _.find(state.primary, (link) => {
+				console.log(link.location.split('/')[2])
+				return link.location.split('/')[2] === parentId;
 			});
 			
-			if(newSecondary) {
+			if(secondary) {
 				return Object.assign({}, state, {
-					secondary: newSecondary.subLinks
+					secondary: secondary.subLinks
 				});
 			}else{
 				return state;
