@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchGames, fetchPlatforms } from '../redux/actions.jsx';
+import { fetchPlatforms } from '../actions/platforms.jsx';
+import { fetchGames } from '../actions/games.jsx';
 
 import GamesCard from '../components/games/GamesCard.jsx';
 import PlatformsCard from '../components/platforms/PlatformsCard.jsx';

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchPlatforms, addPlatform } from '../redux/actions.jsx';
+import { fetchPlatforms, addPlatform } from '../actions/platforms.jsx';
 
 // import individual components here
 import AddPlatform from '../components/platforms/AddPlatform.jsx';

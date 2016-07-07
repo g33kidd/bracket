@@ -28134,6 +28134,152 @@ module.exports = warning;
 },{"_process":68}],280:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.ADDED_GAME = exports.ADDING_GAME = exports.RECEIVE_GAMES = exports.REQUEST_GAMES = undefined;
+exports.requestGames = requestGames;
+exports.receiveGames = receiveGames;
+exports.addedGame = addedGame;
+exports.addingGame = addingGame;
+exports.fetchGames = fetchGames;
+exports.addGame = addGame;
+
+var _axios = require('axios');
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var REQUEST_GAMES = exports.REQUEST_GAMES = 'REQUEST_GAMES';
+var RECEIVE_GAMES = exports.RECEIVE_GAMES = 'RECEIVE_GAMES';
+var ADDING_GAME = exports.ADDING_GAME = 'ADDING_GAME';
+var ADDED_GAME = exports.ADDED_GAME = 'ADDED_GAME';
+
+function requestGames() {
+	return {
+		type: REQUEST_GAMES
+	};
+};
+
+function receiveGames(data) {
+	return {
+		type: RECEIVE_GAMES,
+		payload: data
+	};
+};
+
+function addedGame(data) {
+	return {
+		type: ADDED_GAME,
+		payload: data
+	};
+};
+
+function addingGame() {
+	return {
+		type: ADDING_GAME
+	};
+};
+
+function fetchGames() {
+	return function (dispatch) {
+		dispatch(requestGames());
+		_axios2.default.get('/api/games').then(function (response) {
+			return dispatch(receiveGames(response.data));
+		}).catch(function (err) {
+			return console.log("There was an error.", err);
+		});
+	};
+};
+
+function addGame(data) {
+	return function (dispatch) {
+		dispatch(addingGame());
+		_axios2.default.post('/api/games', data).then(function (response) {
+			return dispatch(addedGame(response.data));
+		}).catch(function (err) {
+			return console.log("There was an error.", err);
+		});
+	};
+};
+
+},{"axios":1}],281:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.ADDED_PLATFORM = exports.ADDING_PLATFORM = exports.RECEIVE_PLATFORMS = exports.REQUEST_PLATFORMS = undefined;
+exports.requestPlatforms = requestPlatforms;
+exports.receivePlatforms = receivePlatforms;
+exports.addingPlatform = addingPlatform;
+exports.addedPlatform = addedPlatform;
+exports.fetchPlatforms = fetchPlatforms;
+exports.addPlatform = addPlatform;
+
+var _axios = require('axios');
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var REQUEST_PLATFORMS = exports.REQUEST_PLATFORMS = 'REQUEST_PLATFORMS';
+var RECEIVE_PLATFORMS = exports.RECEIVE_PLATFORMS = 'RECEIVE_PLATFORMS';
+var ADDING_PLATFORM = exports.ADDING_PLATFORM = 'ADDING_PLATFORM';
+var ADDED_PLATFORM = exports.ADDED_PLATFORM = 'ADDED_PLATFORM';
+
+function requestPlatforms() {
+	return {
+		type: REQUEST_PLATFORMS
+	};
+};
+
+function receivePlatforms(data) {
+	return {
+		type: RECEIVE_PLATFORMS,
+		payload: data
+	};
+};
+
+function addingPlatform() {
+	return {
+		type: ADDING_PLATFORM
+	};
+};
+
+function addedPlatform(data) {
+	return {
+		type: ADDED_PLATFORM,
+		payload: data
+	};
+};
+
+function fetchPlatforms() {
+	return function (dispatch) {
+		dispatch(requestPlatforms());
+		_axios2.default.get('/api/platforms').then(function (response) {
+			return dispatch(receivePlatforms(response.data));
+		}).catch(function (err) {
+			return console.log("There was an error.", err);
+		});
+	};
+};
+
+function addPlatform(data) {
+	return function (dispatch) {
+		dispatch(addingPlatform());
+		_axios2.default.post('/api/platforms', data).then(function (respose) {
+			return dispatch(addedPlatform(response.data));
+		}).catch(function (err) {
+			return console.log("There was an error.", err);
+		});
+	};
+};
+
+},{"axios":1}],282:[function(require,module,exports){
+'use strict';
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -28154,9 +28300,9 @@ var _reduxLogger = require('redux-logger');
 
 var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
-var _reducers = require('./redux/reducers.jsx');
+var _index = require('./reducers/index.jsx');
 
-var _reducers2 = _interopRequireDefault(_reducers);
+var _index2 = _interopRequireDefault(_index);
 
 var _Root = require('./containers/Root.jsx');
 
@@ -28165,13 +28311,13 @@ var _Root2 = _interopRequireDefault(_Root);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var logger = (0, _reduxLogger2.default)();
-var store = (0, _redux.createStore)(_reducers2.default, {}, (0, _redux.applyMiddleware)(_reduxThunk2.default, logger));
+var store = (0, _redux.createStore)(_index2.default, {}, (0, _redux.applyMiddleware)(_reduxThunk2.default, logger));
 
 var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, store);
 
 (0, _reactDom.render)(_react2.default.createElement(_Root2.default, { history: history, store: store }), document.getElementById('root'));
 
-},{"./containers/Root.jsx":292,"./redux/reducers.jsx":294,"react":262,"react-dom":69,"react-router":115,"react-router-redux":82,"redux":270,"redux-logger":263,"redux-thunk":264}],281:[function(require,module,exports){
+},{"./containers/Root.jsx":294,"./reducers/index.jsx":296,"react":262,"react-dom":69,"react-router":115,"react-router-redux":82,"redux":270,"redux-logger":263,"redux-thunk":264}],283:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28226,7 +28372,7 @@ var MainHeader = function MainHeader(props) {
 
 exports.default = MainHeader;
 
-},{"react":262,"react-router":115}],282:[function(require,module,exports){
+},{"react":262,"react-router":115}],284:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28320,7 +28466,7 @@ var AddGame = function AddGame(props) {
 
 exports.default = AddGame;
 
-},{"react":262}],283:[function(require,module,exports){
+},{"react":262}],285:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28378,7 +28524,7 @@ var GamesCard = function GamesCard(props) {
 
 exports.default = GamesCard;
 
-},{"react":262}],284:[function(require,module,exports){
+},{"react":262}],286:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28450,7 +28596,7 @@ var GamesTable = function GamesTable(props) {
 
 exports.default = GamesTable;
 
-},{"react":262}],285:[function(require,module,exports){
+},{"react":262}],287:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28509,7 +28655,7 @@ var AddGame = function AddGame(props) {
 
 exports.default = AddGame;
 
-},{"react":262}],286:[function(require,module,exports){
+},{"react":262}],288:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28568,7 +28714,7 @@ var PlatformsCard = function PlatformsCard(props) {
 
 exports.default = PlatformsCard;
 
-},{"react":262}],287:[function(require,module,exports){
+},{"react":262}],289:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28640,7 +28786,7 @@ var PlatformsTable = function PlatformsTable(props) {
 
 exports.default = PlatformsTable;
 
-},{"react":262}],288:[function(require,module,exports){
+},{"react":262}],290:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28707,7 +28853,7 @@ App.propTypes = {
 
 exports.default = App;
 
-},{"../components/MainHeader.jsx":281,"react":262,"react-redux":72,"react-router":115}],289:[function(require,module,exports){
+},{"../components/MainHeader.jsx":283,"react":262,"react-redux":72,"react-router":115}],291:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28722,7 +28868,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
-var _actions = require('../redux/actions.jsx');
+var _platforms = require('../actions/platforms.jsx');
+
+var _games = require('../actions/games.jsx');
 
 var _GamesCard = require('../components/games/GamesCard.jsx');
 
@@ -28793,17 +28941,17 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch, componentProps) {
 	return {
 		dispatchPlatforms: function dispatchPlatforms() {
-			dispatch((0, _actions.fetchPlatforms)());
+			dispatch((0, _platforms.fetchPlatforms)());
 		},
 		dispatchGames: function dispatchGames() {
-			dispatch((0, _actions.fetchGames)());
+			dispatch((0, _games.fetchGames)());
 		}
 	};
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(DashboardPage);
 
-},{"../components/games/GamesCard.jsx":283,"../components/platforms/PlatformsCard.jsx":286,"../redux/actions.jsx":293,"react":262,"react-redux":72}],290:[function(require,module,exports){
+},{"../actions/games.jsx":280,"../actions/platforms.jsx":281,"../components/games/GamesCard.jsx":285,"../components/platforms/PlatformsCard.jsx":288,"react":262,"react-redux":72}],292:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28818,7 +28966,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
-var _actions = require('../redux/actions.jsx');
+var _games = require('../actions/games.jsx');
 
 var _AddGame = require('../components/games/AddGame.jsx');
 
@@ -28882,17 +29030,17 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch, componentProps) {
 	return {
 		dispatchAddGame: function dispatchAddGame(data) {
-			dispatch((0, _actions.addGame)(data));
+			dispatch((0, _games.addGame)(data));
 		},
 		dispatchGetGames: function dispatchGetGames() {
-			dispatch((0, _actions.fetchGames)());
+			dispatch((0, _games.fetchGames)());
 		}
 	};
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(GamesPage);
 
-},{"../components/games/AddGame.jsx":282,"../components/games/GamesTable.jsx":284,"../redux/actions.jsx":293,"react":262,"react-redux":72}],291:[function(require,module,exports){
+},{"../actions/games.jsx":280,"../components/games/AddGame.jsx":284,"../components/games/GamesTable.jsx":286,"react":262,"react-redux":72}],293:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28907,7 +29055,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
-var _actions = require('../redux/actions.jsx');
+var _platforms = require('../actions/platforms.jsx');
 
 var _AddPlatform = require('../components/platforms/AddPlatform.jsx');
 
@@ -28974,17 +29122,17 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch, componentProps) {
 	return {
 		dispatchAddPlatform: function dispatchAddPlatform(data) {
-			dispatch((0, _actions.addPlatform)(data));
+			dispatch((0, _platforms.addPlatform)(data));
 		},
 		dispatchGetPlatforms: function dispatchGetPlatforms() {
-			dispatch((0, _actions.fetchPlatforms)());
+			dispatch((0, _platforms.fetchPlatforms)());
 		}
 	};
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PlatformsPage);
 
-},{"../components/platforms/AddPlatform.jsx":285,"../components/platforms/PlatformsTable.jsx":287,"../redux/actions.jsx":293,"react":262,"react-redux":72}],292:[function(require,module,exports){
+},{"../actions/platforms.jsx":281,"../components/platforms/AddPlatform.jsx":287,"../components/platforms/PlatformsTable.jsx":289,"react":262,"react-redux":72}],294:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29019,145 +29167,50 @@ var Root = function Root(props) {
 
 exports.default = Root;
 
-},{"../routes.jsx":295,"react":262,"react-redux":72,"react-router":115}],293:[function(require,module,exports){
+},{"../routes.jsx":298,"react":262,"react-redux":72,"react-router":115}],295:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.ADDED_PLATFORM = exports.ADDING_PLATFORM = exports.RECEIVE_PLATFORMS = exports.REQUEST_PLATFORMS = exports.ADDED_GAME = exports.ADDING_GAME = exports.RECEIVE_GAMES = exports.REQUEST_GAMES = undefined;
-exports.requestGames = requestGames;
-exports.receiveGames = receiveGames;
-exports.addedGame = addedGame;
-exports.addingGame = addingGame;
-exports.fetchGames = fetchGames;
-exports.addGame = addGame;
-exports.requestPlatforms = requestPlatforms;
-exports.receivePlatforms = receivePlatforms;
-exports.addingPlatform = addingPlatform;
-exports.addedPlatform = addedPlatform;
-exports.fetchPlatforms = fetchPlatforms;
-exports.addPlatform = addPlatform;
+exports.default = games;
 
-var _axios = require('axios');
+var _games = require('../actions/games.jsx');
 
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// TODO: Move to own files and such...
-
-// GAME ACTIONS
-// =====================================================
-var REQUEST_GAMES = exports.REQUEST_GAMES = 'REQUEST_GAMES';
-var RECEIVE_GAMES = exports.RECEIVE_GAMES = 'RECEIVE_GAMES';
-var ADDING_GAME = exports.ADDING_GAME = 'ADDING_GAME';
-var ADDED_GAME = exports.ADDED_GAME = 'ADDED_GAME';
-
-function requestGames() {
-	return {
-		type: REQUEST_GAMES
-	};
+var GAMES_INIT_STATE = {
+	isFetching: false,
+	isAddingGame: false,
+	items: []
 };
 
-function receiveGames(data) {
-	return {
-		type: RECEIVE_GAMES,
-		payload: data
-	};
-};
+function games() {
+	var state = arguments.length <= 0 || arguments[0] === undefined ? GAMES_INIT_STATE : arguments[0];
+	var action = arguments[1];
 
-function addedGame(data) {
-	return {
-		type: ADDED_GAME,
-		payload: data
-	};
-};
+	switch (action.type) {
+		case _games.REQUEST_GAMES:
+			return Object.assign({}, state, {
+				isFetching: true
+			});
+		case _games.RECEIVE_GAMES:
+			return Object.assign({}, state, {
+				isFetching: false,
+				items: action.payload
+			});
+		case _games.ADDING_GAME:
+			return Object.assign({}, state, {
+				isAddingGame: true
+			});
+		case _games.ADDED_GAME:
+			return Object.assign({}, state, {
+				items: state.items.concat(action.payload)
+			});
+		default:
+			return state;
+	}
+}
 
-function addingGame() {
-	return {
-		type: ADDING_GAME
-	};
-};
-
-function fetchGames() {
-	return function (dispatch) {
-		dispatch(requestGames());
-		_axios2.default.get('/api/games').then(function (response) {
-			return dispatch(receiveGames(response.data));
-		}).catch(function (err) {
-			return console.log("There was an error.", err);
-		});
-	};
-};
-
-function addGame(data) {
-	return function (dispatch) {
-		dispatch(addingGame());
-		_axios2.default.post('/api/games', data).then(function (response) {
-			return dispatch(addedGame(response.data));
-		}).catch(function (err) {
-			return console.log("There was an error.", err);
-		});
-	};
-};
-
-// PLATFORM ACTIONS
-// =====================================================
-var REQUEST_PLATFORMS = exports.REQUEST_PLATFORMS = 'REQUEST_PLATFORMS';
-var RECEIVE_PLATFORMS = exports.RECEIVE_PLATFORMS = 'RECEIVE_PLATFORMS';
-var ADDING_PLATFORM = exports.ADDING_PLATFORM = 'ADDING_PLATFORM';
-var ADDED_PLATFORM = exports.ADDED_PLATFORM = 'ADDED_PLATFORM';
-
-function requestPlatforms() {
-	return {
-		type: REQUEST_PLATFORMS
-	};
-};
-
-function receivePlatforms(data) {
-	return {
-		type: RECEIVE_PLATFORMS,
-		payload: data
-	};
-};
-
-function addingPlatform() {
-	return {
-		type: ADDING_PLATFORM
-	};
-};
-
-function addedPlatform(data) {
-	return {
-		type: ADDED_PLATFORM,
-		payload: data
-	};
-};
-
-function fetchPlatforms() {
-	return function (dispatch) {
-		dispatch(requestPlatforms());
-		_axios2.default.get('/api/platforms').then(function (response) {
-			return dispatch(receivePlatforms(response.data));
-		}).catch(function (err) {
-			return console.log("There was an error.", err);
-		});
-	};
-};
-
-function addPlatform(data) {
-	return function (dispatch) {
-		dispatch(addingPlatform());
-		_axios2.default.post('/api/platforms', data).then(function (respose) {
-			return dispatch(addedPlatform(response.data));
-		}).catch(function (err) {
-			return console.log("There was an error.", err);
-		});
-	};
-};
-
-},{"axios":1}],294:[function(require,module,exports){
+},{"../actions/games.jsx":280}],296:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29168,13 +29221,33 @@ var _redux = require('redux');
 
 var _reactRouterRedux = require('react-router-redux');
 
-var _actions = require('./actions.jsx');
+var _games = require('../reducers/games.jsx');
 
-var GAMES_INIT_STATE = {
-	isFetching: false,
-	isAddingGame: false,
-	items: []
-};
+var _games2 = _interopRequireDefault(_games);
+
+var _platforms = require('../reducers/platforms.jsx');
+
+var _platforms2 = _interopRequireDefault(_platforms);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var rootReducer = (0, _redux.combineReducers)({
+	games: _games2.default,
+	platforms: _platforms2.default,
+	routing: _reactRouterRedux.routerReducer
+});
+
+exports.default = rootReducer;
+
+},{"../reducers/games.jsx":295,"../reducers/platforms.jsx":297,"react-router-redux":82,"redux":270}],297:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = platforms;
+
+var _platforms = require('../actions/platforms.jsx');
 
 var PLATFORMS_INIT_STATE = {
 	isFetching: false,
@@ -29182,52 +29255,25 @@ var PLATFORMS_INIT_STATE = {
 	items: []
 };
 
-function games() {
-	var state = arguments.length <= 0 || arguments[0] === undefined ? GAMES_INIT_STATE : arguments[0];
-	var action = arguments[1];
-
-	switch (action.type) {
-		case _actions.REQUEST_GAMES:
-			return Object.assign({}, state, {
-				isFetching: true
-			});
-		case _actions.RECEIVE_GAMES:
-			return Object.assign({}, state, {
-				isFetching: false,
-				items: action.payload
-			});
-		case _actions.ADDING_GAME:
-			return Object.assign({}, state, {
-				isAddingGame: true
-			});
-		case _actions.ADDED_GAME:
-			return Object.assign({}, state, {
-				items: state.items.concat(action.payload)
-			});
-		default:
-			return state;
-	}
-}
-
 function platforms() {
 	var state = arguments.length <= 0 || arguments[0] === undefined ? PLATFORMS_INIT_STATE : arguments[0];
 	var action = arguments[1];
 
 	switch (action.type) {
-		case _actions.REQUEST_PLATFORMS:
+		case _platforms.REQUEST_PLATFORMS:
 			return Object.assign({}, state, {
 				isFetching: true
 			});
-		case _actions.RECEIVE_PLATFORMS:
+		case _platforms.RECEIVE_PLATFORMS:
 			return Object.assign({}, state, {
 				isFetching: false,
 				items: action.payload
 			});
-		case _actions.ADDING_PLATFORM:
+		case _platforms.ADDING_PLATFORM:
 			return Object.assign({}, state, {
 				isAddingPlatform: true
 			});
-		case _actions.ADDED_PLATFORM:
+		case _platforms.ADDED_PLATFORM:
 			return Object.assign({}, state, {
 				isAddingPlatform: false,
 				items: state.items.concat(action.payload)
@@ -29237,15 +29283,7 @@ function platforms() {
 	}
 }
 
-var rootReducer = (0, _redux.combineReducers)({
-	games: games,
-	platforms: platforms,
-	routing: _reactRouterRedux.routerReducer
-});
-
-exports.default = rootReducer;
-
-},{"./actions.jsx":293,"react-router-redux":82,"redux":270}],295:[function(require,module,exports){
+},{"../actions/platforms.jsx":281}],298:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29284,6 +29322,6 @@ exports.default = _react2.default.createElement(
 	_react2.default.createElement(_reactRouter.Route, { path: 'platforms', component: _PlatformsPage2.default })
 );
 
-},{"./containers/App.jsx":288,"./containers/DashboardPage.jsx":289,"./containers/GamesPage.jsx":290,"./containers/PlatformsPage.jsx":291,"react":262,"react-router":115}]},{},[280]);
+},{"./containers/App.jsx":290,"./containers/DashboardPage.jsx":291,"./containers/GamesPage.jsx":292,"./containers/PlatformsPage.jsx":293,"react":262,"react-router":115}]},{},[282]);
 
 //# sourceMappingURL=admin.js.map
