@@ -22,8 +22,8 @@ class Controller extends BaseController
     // 	$this->middleware('auth');
     // }
 
-    public function renderView($view = 'home')
-    {
+    public function renderView($view = 'home', $data = ['extra' => "No Extra Data"])
+    {   
         $page_data = [
             'games' => Game::all(),
             'platforms' => Platform::all(),
@@ -32,6 +32,11 @@ class Controller extends BaseController
             'user_count' => User::all()->count()
         ];
 
-        return view('site.' . $view, $page_data);
+        // TODO: figure out how to extract needed values? if this is wanted I suppose
+        // renderView('members', ['members', 'teams', 'tournaments']);
+        // renderView('members', 'view', ['members', 'teams', 'tournaments']);
+
+        $final_page_data = array_merge($page_data, $data);
+        return view('site.' . $view, $final_page_data);
     }
 }

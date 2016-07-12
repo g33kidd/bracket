@@ -33,14 +33,8 @@ Route::group(['namespace' => 'Site'], function() {
 	Route::get('/teams', 'TeamController@index');
 	Route::get('/teams/{id}', 'TeamController@show');
 
-	// Route::get('/players', 'ProfileController@index');
-	// Route::get('/player/{any}', 'ProfileController@show');
-
-	// Route::get('/news', 'PostController@index');
-	// Route::get('/news/{slug}', 'PostController@show');
-
-	// Route::get('/tournaments', 'TournamentsController@index');
-
+	Route::get('/players', 'PlayerController@index');
+	Route::get('/players/{username}', 'PlayerController@show');
 });
 
 /**

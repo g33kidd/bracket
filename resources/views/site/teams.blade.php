@@ -1,7 +1,10 @@
 @extends ('layouts.app')
 
 @section('content')
-@foreach($teams as $team)
-	<h1>{{ $team->name }}</h1>
-@endforeach
+	<div class="container m-t-2">
+		<h1>Just a list of teams.</h1>
+		@foreach($teams as $team)
+			<h4>{{ $team->name }}</h4>
+		@endforeach
+	</div>
 @endsection
