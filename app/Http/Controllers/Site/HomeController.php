@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Http\Controllers\MainController;
+use App\Http\Controllers\Controller;
 
-class HomeController extends MainController
+class HomeController extends Controller
 {
     /**
      * Show the application dashboard.
@@ -13,6 +13,6 @@ class HomeController extends MainController
      */
     public function index()
     {
-        return MainController::renderView('home');
+        return $this->renderView('home');
     }
 }
