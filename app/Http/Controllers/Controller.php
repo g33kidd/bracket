@@ -11,10 +11,16 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Game;
 use App\User;
 use App\Platform;
+use App\Team;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
+
+    // public function __construct()
+    // {
+    // 	$this->middleware('auth');
+    // }
 
     public function renderView($view = 'home')
     {
@@ -22,6 +28,7 @@ class Controller extends BaseController
             'games' => Game::all(),
             'platforms' => Platform::all(),
             'users' => User::all(),
+            'teams' => Team::all(),
             'user_count' => User::all()->count()
         ];
 

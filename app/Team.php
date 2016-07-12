@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Mpociiot\Teamwork\TeamworkTeam;
+use Mpociot\Teamwork\TeamworkTeam;
 
 class Team extends TeamworkTeam
 {

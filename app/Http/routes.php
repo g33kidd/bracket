@@ -30,17 +30,17 @@ Route::group(['namespace' => 'Api', 'prefix' => 'api'], function() {
 Route::group(['namespace' => 'Site'], function() {
 	Route::get('/', 'HomeController@index');
 
-	Route::get('/players', 'ProfileController@index');
-	Route::get('/player/{any}', 'ProfileController@show');
+	Route::get('/teams', 'TeamController@index');
+	Route::get('/teams/{id}', 'TeamController@show');
 
-	Route::get('/news', 'PostController@index');
-	Route::get('/news/{slug}', 'PostController@show');
+	// Route::get('/players', 'ProfileController@index');
+	// Route::get('/player/{any}', 'ProfileController@show');
 
-	Route::get('/tournaments', 'TournamentsController@index');
+	// Route::get('/news', 'PostController@index');
+	// Route::get('/news/{slug}', 'PostController@show');
 
-	Route::group(['prefix' => 'settings'], function() {
-		Route::get('/', 'SettingsController@index');
-	});
+	// Route::get('/tournaments', 'TournamentsController@index');
+
 });
 
 /**

@@ -26,9 +26,8 @@
 		    <div class="dropdown-menu">
 		      <a class="dropdown-item" href="{{ url('/admin') }}">Go to Admin</a>
 		      <div class="dropdown-divider"></div>
-		      <a class="dropdown-item" href="#">My Profile</a>
-		      <a class="dropdown-item" href="#">My Teams</a>
-		      <a class="dropdown-item" href="#">My Guilds</a>
+		      <a class="dropdown-item" href="#">View Profile</a>
+		      <a class="dropdown-item" href="/settings/teams">Team Settings</a>
 		      <div class="dropdown-divider"></div>
 		      <a class="dropdown-item" href="#">Settings</a>
 		      <div class="dropdown-divider"></div>

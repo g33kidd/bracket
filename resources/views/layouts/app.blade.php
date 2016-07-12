@@ -13,10 +13,10 @@
 </head>
 <body id="app-layout default">
 
-  @include('layouts.shared.app.header')
+  @include('layouts.shared.header')
   @yield('content')
-  @include('layouts.shared.app.footer')
+  @include('layouts.shared.footer')
 
-  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="/js/app.js"></script>
 </body>
 </html>

@@ -20,7 +20,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return view('teamwork.index')
+        return view('site.teams.index')
             ->with('teams', auth()->user()->teams);
     }
 
@@ -31,7 +31,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('teamwork.create');
+        return view('site.teams.create');
     }
 
     /**
@@ -87,7 +87,7 @@ class TeamController extends Controller
             abort(403);
         }
 
-        return view('teamwork.edit')->withTeam($team);
+        return view('site.teams.edit')->withTeam($team);
     }
 
     /**
