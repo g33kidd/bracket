@@ -40,14 +40,13 @@ Route::group(['namespace' => 'Site'], function() {
 
 	Route::group(['prefix' => 'settings'], function() {
 		Route::get('/', 'SettingsController@index');
-		Route::get('/teams', 'TeamSettingsController@index');
 	});
 });
 
 /**
  * Teamwork routes
  */
-Route::group(['prefix' => 'teams', 'namespace' => 'Teamwork'], function()
+Route::group(['prefix' => 'settings/teams', 'namespace' => 'Teamwork'], function()
 {
     Route::get('/', 'TeamController@index')->name('teams.index');
     Route::get('create', 'TeamController@create')->name('teams.create');
