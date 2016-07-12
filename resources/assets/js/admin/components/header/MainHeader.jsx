@@ -3,13 +3,14 @@ import { Link } from 'react-router'
 import _ from 'underscore';
 
 const MainHeader = (props) => {
-	console.log(props.nav.primary);
 	const links = _.map(props.nav.primary, function(link) {
-		return (
-			<li className="nav-item" key={link.id}>
-				<Link to={link.location} onClick={props.updateNav} className="nav-link">{link.title}</Link>
-			</li>
-		)
+		if(typeof link.title !== 'undefined') {
+			return (
+				<li className="nav-item" key={link.id}>
+					<Link to={link.location} onClick={props.updateNav} className="nav-link">{link.title}</Link>
+				</li>
+			)
+		}
 	});
 
 	return (

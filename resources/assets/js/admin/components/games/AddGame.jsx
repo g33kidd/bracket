@@ -16,7 +16,6 @@ const AddGame = (props) => {
       <div className="card-header">Add New Game</div>
       <div className="card-block">
         <form onSubmit={addGameSubmit}>
-
           <div className="form-group">
             <label className="form-control-label">Name</label>
             <input type="text" placeholder="Game Name" name="gameName" className="form-control" />

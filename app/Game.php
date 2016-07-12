@@ -12,4 +12,17 @@ class Game extends Model
     {
         return $this->belongsToMany('App\Platform', 'platform_game');
     }
+
+    public function toArray()
+    {
+    	$data = parent::toArray();
+
+        if ($this->platforms) {
+            $data['platforms'] = $this->platforms->toArray();
+        } else {
+            $data['platforms'] = null;
+        }
+
+        return $data;
+    }
 }

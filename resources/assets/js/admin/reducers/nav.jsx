@@ -1,9 +1,13 @@
 import { combineReducers } from 'redux';
 import { PRIMARY_NAV_CHANGED } from '../actions/navigation.jsx';
-import _ from 'underscore';
+import _ from 'lodash';
 
 const INIT_NAV_STATE = {
 	primary: {
+		dashboard: {
+			id: 'dashboard',
+			location: '/admin'
+		},
 		overview: {
 			id: 'overview',
 			location: '/admin/overview',
@@ -41,27 +45,18 @@ const INIT_NAV_STATE = {
 	secondary: null
 };
 
-// set initial state primary/secondary
-// click link -> run action -> go to reducer
-// -> find link obj with pathname from router
-// -> update the secondary nav object with the sublinks of that obj
-// -> re-render I suppose
-
-
 export function nav(state=INIT_NAV_STATE, action) {
 	switch(action.type) {
 		case "@@router/LOCATION_CHANGE":
 			let path = action.payload.pathname;
 			let parentId = path.split('/')[2];
+			let parent = _.find(state.primary, (link) => { return link.location === path; });
 			let secondary = _.find(state.primary, (link) => {
-				console.log(link.location.split('/')[2])
 				return link.location.split('/')[2] === parentId;
 			});
 			
 			if(secondary) {
-				return Object.assign({}, state, {
-					secondary: secondary.subLinks
-				});
+				return { ...state, secondary: secondary.subLinks };
 			}else{
 				return state;
 			}

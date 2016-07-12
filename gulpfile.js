@@ -11,8 +11,15 @@ var elixir = require('laravel-elixir');
  |
  */
 
+ elixir.config.js.browserify.transformers
+ 	.find(transformer => transformer.name === 'babelify')
+ 	.options.plugins = [
+ 		'transform-object-rest-spread',
+ 		'lodash'
+ 	];
+
 elixir(function(mix) {
-    mix.sass('app.scss')
-       .browserify('app.js')
-       .browserify('admin/admin.jsx');
+  mix.sass('app.scss');
+  mix.browserify('app.js');
+  mix.browserify('admin/admin.jsx');
 });

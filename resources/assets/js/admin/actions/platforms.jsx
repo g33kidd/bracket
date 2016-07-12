@@ -44,7 +44,7 @@ export function addPlatform(data) {
 	return dispatch => {
 		dispatch(addingPlatform());
 		axios.post('/api/platforms', data)
-			.then((respose) => dispatch(addedPlatform(response.data)))
+			.then((response) => dispatch(addedPlatform(response.data)))
 			.catch((err) => console.log("There was an error.", err));
 	};
 };

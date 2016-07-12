@@ -14,22 +14,13 @@ const GAMES_INIT_STATE = {
 export default function games(state=GAMES_INIT_STATE, action) {
 	switch(action.type) {
 		case REQUEST_GAMES:
-			return Object.assign({}, state, {
-				isFetching: true
-			});
+			return { ...state, isFetching: true};
 		case RECEIVE_GAMES:
-			return Object.assign({}, state, {
-				isFetching: false,
-				items: action.payload
-			});
+			return { ...state, isFetching: false, items: action.payload };
 		case ADDING_GAME:
-			return Object.assign({}, state, {
-				isAddingGame: true
-			});
+			return { ...state, isAddingGame: true };
 		case ADDED_GAME:
-			return Object.assign({}, state, {
-				items: state.items.concat(action.payload)
-			});
+			return { ...state, items: state.items.concat(action.payload) };
 		default:
 			return state;
 	}

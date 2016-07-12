@@ -14,23 +14,17 @@ const PLATFORMS_INIT_STATE = {
 export default function platforms(state=PLATFORMS_INIT_STATE, action) {
 	switch(action.type) {
 		case REQUEST_PLATFORMS:
-			return Object.assign({}, state, {
-				isFetching: true
-			});
+			return { ...state, isFetching: true };
 		case RECEIVE_PLATFORMS:
-			return Object.assign({}, state, {
-				isFetching: false,
-				items: action.payload
-			});
+			return { ...state, isFetching: false, items: action.payload };
 		case ADDING_PLATFORM:
-			return Object.assign({}, state, {
-				isAddingPlatform: true
-			});
+			return { ...state, isAddingPlatform: true };
 		case ADDED_PLATFORM:
-			return Object.assign({}, state, {
-				isAddingPlatform: false,
+			return { 
+				...state, 
+				isAddingPlatform: false, 
 				items: state.items.concat(action.payload)
-			});
+			};
 		default:
 			return state;
 	}

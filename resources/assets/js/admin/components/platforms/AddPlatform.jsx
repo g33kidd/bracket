@@ -3,7 +3,11 @@ import React, { Component, PropTypes } from 'react';
 const AddGame = (props) => { 
   const addPlatformSubmit = (event) => {
     event.preventDefault();
-    props.addPlatform({});
+    props.addPlatform({
+      name: event.target.platformName.value,
+      short_name: event.target.shortName.value,
+      slug: event.target.slug.value
+    });
   }
 
   return (
@@ -14,7 +18,17 @@ const AddGame = (props) => {
 
           <div className="form-group">
             <label className="form-control-label">Name</label>
-            <input type="text" placeholder="Game Name" name="gameName" className="form-control" />
+            <input type="text" placeholder="Platform Name" name="platformName" className="form-control" />
+          </div>
+
+          <div className="form-group">
+            <label className="form-control-label">Short Name</label>
+            <input type="text" placeholder="Short Name" name="shortName" className="form-control" />
+          </div>
+
+          <div className="form-group">
+            <label className="form-control-label">URL Slug</label>
+            <input type="text" placeholder="URL Slug" name="slug" className="form-control" />
           </div>
           
           <div className="form-group ">

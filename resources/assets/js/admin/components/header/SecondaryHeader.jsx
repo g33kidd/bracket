@@ -3,7 +3,6 @@ import { Link } from 'react-router'
 import _ from 'underscore';
 
 const SecondaryHeader = (props) => {
-	console.log(props.nav.secondary);
 	const links = _.map(props.nav.secondary, function(link) {
 		return (
 			<li className="nav-item" key={link.id}>
