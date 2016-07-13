@@ -20,8 +20,8 @@ class TeamPolicy
         //
     }
 
-    public function create(User $user, Team $team)
+    public function allows(User $user, Team $team)
     {
-        
+        return $team->owner_id == $user->id;
     }
 }

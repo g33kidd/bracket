@@ -9,6 +9,11 @@ use App\Team;
 
 class TeamController extends Controller
 {
+
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
     
 	public function index()
 	{
@@ -17,8 +22,7 @@ class TeamController extends Controller
 
 	public function show($id)
 	{
-		$team = Team::find($id);
-		return view('site.team-view', ['team' => $team]);
+		return $this->renderView('team-view', ['team' => Team::find($id)]);
 	}
 
 }
