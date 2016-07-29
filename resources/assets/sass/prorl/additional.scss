@@ -1,0 +1,407 @@
+/* Button Stuffs */
+.btn-slanted {
+  display: inline-block;
+  background: #f9b200;
+  -ms-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+  -webkit-transform: skewX(-20deg);
+}
+.btn-slanted.login > .btn-slanted-content {
+  padding: 10px 25px;
+}
+.btn-slanted:hover {
+  background: #c78f00;
+}
+.btn-slanted-content {
+  -ms-transform: skewX(20deg);
+  -webkit-transform: skewX(20deg);
+  transform: skewX(20deg);
+  color: #000;
+  font-weight: 600;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+/* Choose Team Stuff */
+.choose-team {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.choose-team img {
+  max-width: 100%;
+  height: auto;
+}
+.choose-team .current {
+  background-color: #f9b200;
+}
+.choose-team .current-team {
+  font-size: 18px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.choose-team h2 {
+  font-size: 30px;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.choose-team .team {
+  padding: 15px 0;
+}
+.choose-team .team-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+.choose-team .btn-choose-team {
+  background: #f9b200;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 5px 15px;
+}
+.choose-team .btn-choose-team:hover {
+  background: #c78f00;
+}
+
+.footer-column {
+    text-align: left;
+    font-weight: 300;
+}
+.footer-column h4 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+.termsofservice {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: medium;
+}
+.termsofservice h1,
+.termsofservice h3 {
+    font-weight: bold;
+}
+.termsofservice h1 {
+    text-align: center;
+}
+.termsofservice hr {
+    border: none;
+    height: 2px;
+    background-color: #333;
+}
+.align-left {
+    text-align: left;
+}
+.ui-dialog {
+    background-color: #fff;
+    border: 3px #f9b700 solid;
+    padding: 20px;
+}
+.member-nav a {
+    width: 100%;
+    margin: 5px;
+    white-space: normal;
+}
+.member-nav ul {
+    padding-left: 0px;
+    list-style:none;
+}
+.btn-alt {
+    margin: 20px;
+}
+.modal-dialog {
+    background: #fff;
+}
+.no-padding {
+    padding: 0px;
+}
+input[type="radio"]:checked + label {
+    background-color: black;
+}
+a, a:link, a:hover {
+	text-decoration:none;
+}
+.social-left {
+	position:absolute;
+	top:250px;
+	left:0px;
+	width:80px;
+	height:200px;
+	z-index:99999;
+}
+.news-article {
+    border: 5px solid #d6d6d6;
+    padding: 10px;
+    margin-bottom: 10px;
+    height: 100%;
+}
+.rocket {
+        min-height: 300px;
+	background:url(./images/rocketbg.jpg) top left no-repeat;
+        background-color: #0d0d0d;
+	padding:18px 0px;
+	color:#fff;
+	border-bottom:2px solid #f9b200;
+	border-top:2px solid #f9b200;
+}
+.rocket h3 {
+	text-align:right;
+}
+.well {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #eaeaea;
+  border: 1px solid #d8d8d8;
+  border-radius: 0px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.overwatch {
+        min-height: 300px;
+	background:url(./images/overbg.jpg) top right no-repeat;
+        background-color: #0d0d0d;
+	padding:18px 0px;
+	color:#fff;
+}
+img {
+	max-width:100%;
+	height:auto;
+}
+#dropdown-menu-2btn-7 .hide-buttons [data-button] {
+  display: none !important;
+}
+#dropdown-menu-2btn-7 .nav .link,
+#dropdown-menu-2btn-7 .dropdown-item {
+  font-size: 1.2em;
+  font-weight:400;
+  color: #ffffff;
+  font-family: 'Titillium Web', sans-serif;
+}
+#dropdown-menu-2btn-7 .nav .link:hover {
+  color: #f9b200;
+}
+#dropdown-menu-2btn-7 .navbar,
+#dropdown-menu-2btn-7 .dropdown-menu {
+  background: #0d0d0d;
+  margi-top:38px;
+}
+#dropdown-menu-2btn-7 .dropdown-menu .dropdown-toggle[aria-expanded="true"],
+#dropdown-menu-2btn-7 .dropdown-menu a:hover,
+#dropdown-menu-2btn-7 .dropdown-menu a:focus {
+  background: #111;
+}
+#dropdown-menu-2btn-7 .navbar-toggler {
+  color: #f9b200;
+}
+#content5-3 .header .header__text {
+  text-align: center;
+  color: #fff;
+}
+#content5-3 .header .header__subtext {
+  text-align: center;
+  color: #fff;
+}
+#content5-3 .article {
+  color: #fff;
+}
+.parallax-background {
+	margin-top:80px;
+}
+.btn-danger {
+    border-color: #f9b200;
+    color: #fff;
+    background-color: #f9b200;
+    border-color: #f9b200;
+}
+.btn-default.inverse, .btn-inverse .btn-default {
+    border-color: #f9b200;
+    color: #fff;
+}
+.btn-info {
+    border-color: #f9b200;
+    color: #ffffff;
+    background-color: #f9b200;
+    border-color: #f9b200;
+}
+h1, h2, h3, h4, h5 {
+	font-family: 'Lato', Arial, sans-serif;
+	font-weight:300;
+	letter-spacing: 1px;
+	margin:2px 0px;
+	padding:0px;
+}
+.header {
+  padding-top:10px;
+  position: relative;
+  text-align: left;
+  border-bottom:2px solid #f9b200;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+.header h3 {
+	font-size:28px;
+}
+.footer {
+	background:#0d0d0d;
+	color:#fff;
+	border-top:2px solid #f9b200;
+  padding: 30px 0 !important;
+}
+.footer h1, .footer h2, .footer h3, .footer h4 {
+	color:#fff;
+	text-transform:uppercase;
+	font-family:'Titillium Web', Arial, sans-serif;
+}
+.footer ul, .footer li {
+	list-style:none;
+	padding:0px;
+	margin:0px;
+}
+.footer a, .footer a:link {
+	color:#fff;
+}
+.footer a:hover {
+	color:#f9b200;
+}
+.topbar {
+	background:#0d0d0d;
+	border-bottom:3px solid #f9b200;
+	text-align:right;
+	padding:10px 0;
+	font-size:14px;
+	z-index:99999;
+	color:#fff;
+}
+.topbar .container {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.topbar a, .topbar a:link {
+	color:#f9b200;
+}
+.topbar a:hover {
+	color:#fff;
+}
+.navbar-dropdown {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    position: relative;
+    transition: all 0.25s ease;
+    z-index: 1030;
+}
+.navbar-dropdown .navbar-nav {
+  margin: 16px 0 !important;
+}
+.image-icon {
+	float:left;
+	width:50px;
+}
+.page-title {
+	background:url(./images/title-bg.jpg) top center no-repeat;
+	text-align:right;
+	color:#fff;
+	padding:90px 0px;
+	height:300px;
+	min-height:240px;
+	border-bottom:2px solid f9b200;
+	border-top:2px solid f9b200;
+}
+.page-title-rocket {
+	background:url(./images/rocketbg.jpg) top left no-repeat;
+	text-align:right;
+	color:#fff;
+	padding:90px 0px;
+	height:300px;
+	min-height:240px;
+	border-bottom:2px solid f9b200;
+	border-top:2px solid f9b200;
+}
+.page-title-overwatch {
+	background:url(./images/overbg2.jpg) top left no-repeat;
+	text-align:right;
+	color:#fff;
+	padding:90px 0px;
+	height:300px;
+	min-height:240px;
+	border-bottom:2px solid f9b200;
+	border-top:2px solid f9b200;
+}
+.table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 0px solid #fff;
+}
+
+.table {
+	border:5px solid #d6d6d6;
+	margin-top:30px;
+}
+
+tr {
+	background:#fff;
+	border-bottom:5px solid #d6d6d6;
+}
+.rocket .table > thead > tr > th, .overwatch .table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 0px solid #fff;
+}
+
+.rocket .table, .overwatch .table {
+	border:3px solid #111;
+	margin-top:5px;
+}
+
+.rocket tr, .overwatch tr {
+	background:#000;
+	border-bottom:3px solid #111;
+}
+
+.rocket .table-hover > tbody > tr:hover, .overwatch .table-hover > tbody > tr:hover {
+    background-color: #080808;
+}
+
+.sidebar-actionbar {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.comment-options,
+.sidebar-actionbar, .inbox-nav {
+    list-style-type: none;
+}
+.comment-options li,
+.sidebar-actionbar li {
+    display: inline-block;
+    margin-right: 10px;
+}
+.small-img,
+.news-comment img,
+.inbox-response img,
+.sidebar-actionbar img {
+    max-height: 50px;
+}
+.inbox-nav li {
+    margin-bottom: 10px;
+}
+.settings-page .data-header-actions.tabs {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 20px;
+}
+.settings-page .data-header-actions.tabs li {
+    display: inline;
+    margin-right: 10px;
+    background: #f9b200;
+    padding: 10px;
+}
+.settings-page .data-header-actions.tabs li a {
+    color: #000000;
+}
+.settings-page .data-header-actions.tabs li:hover {
+    opacity: .75;
+    background: #CCCCCC;
+}

@@ -11,7 +11,6 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Game;
 use App\User;
 use App\Platform;
-use App\Team;
 
 class Controller extends BaseController
 {
@@ -28,7 +27,6 @@ class Controller extends BaseController
             'games' => Game::all(),
             'platforms' => Platform::all(),
             'users' => User::all(),
-            'teams' => Team::all(),
             'user_count' => User::all()->count()
         ];
 

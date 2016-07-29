@@ -5,6 +5,8 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "components/buttons";
 
+@import "prorl/styles";
+
 .navbar {
 	&.secondary {
 		padding: 0.1rem 1rem;
