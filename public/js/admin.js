@@ -33086,34 +33086,31 @@ var _reactRouterRedux = require('react-router-redux');
 
 var _reactRouter = require('react-router');
 
-var _redux = require('redux');
+var _routes = require('./config/routes');
 
-var _reduxThunk = require('redux-thunk');
+var _routes2 = _interopRequireDefault(_routes);
 
-var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+var _store = require('./config/store');
 
-var _reduxLogger = require('redux-logger');
+var _store2 = _interopRequireDefault(_store);
 
-var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
-
-var _index = require('./reducers/index.jsx');
+var _index = require('./reducers/index');
 
 var _index2 = _interopRequireDefault(_index);
 
-var _Root = require('./containers/Root.jsx');
+var _Root = require('./containers/Root');
 
 var _Root2 = _interopRequireDefault(_Root);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var logger = (0, _reduxLogger2.default)();
-var store = (0, _redux.createStore)(_index2.default, {}, (0, _redux.applyMiddleware)(_reduxThunk2.default, logger));
-
+// Creates the store for the application.
+var store = (0, _store2.default)(_index2.default, {});
 var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, store);
 
-(0, _reactDom.render)(_react2.default.createElement(_Root2.default, { history: history, store: store }), document.getElementById('root'));
+(0, _reactDom.render)(_react2.default.createElement(_Root2.default, { history: history, store: store, routes: _routes2.default }), document.getElementById('root'));
 
-},{"./containers/Root.jsx":408,"./reducers/index.jsx":411,"react":369,"react-dom":176,"react-router":222,"react-router-redux":189,"redux":377,"redux-logger":370,"redux-thunk":371}],393:[function(require,module,exports){
+},{"./config/routes":402,"./config/store":403,"./containers/Root":410,"./reducers/index":413,"react":369,"react-dom":176,"react-router":222,"react-router-redux":189}],393:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33693,6 +33690,106 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouter = require('react-router');
+
+var _App = require('../containers/App');
+
+var _App2 = _interopRequireDefault(_App);
+
+var _Settings = require('../containers/Settings');
+
+var _Settings2 = _interopRequireDefault(_Settings);
+
+var _Overview = require('../containers/Overview');
+
+var _Overview2 = _interopRequireDefault(_Overview);
+
+var _Games = require('../containers/Games');
+
+var _Games2 = _interopRequireDefault(_Games);
+
+var _Platforms = require('../containers/Platforms');
+
+var _Platforms2 = _interopRequireDefault(_Platforms);
+
+var _Dashboard = require('../containers/Dashboard');
+
+var _Dashboard2 = _interopRequireDefault(_Dashboard);
+
+var _Posts = require('../containers/Posts');
+
+var _Posts2 = _interopRequireDefault(_Posts);
+
+var _AddPost = require('../components/posts/AddPost');
+
+var _AddPost2 = _interopRequireDefault(_AddPost);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Containers
+exports.default = _react2.default.createElement(
+	_reactRouter.Route,
+	{ path: 'admin', component: _App2.default },
+	_react2.default.createElement(_reactRouter.IndexRoute, { component: _Dashboard2.default }),
+	_react2.default.createElement(_reactRouter.Route, { path: 'overview', component: _Overview2.default }),
+	_react2.default.createElement(
+		_reactRouter.Route,
+		{ path: 'settings', component: _Settings2.default },
+		_react2.default.createElement(_reactRouter.Route, { path: 'games', component: _Games2.default }),
+		_react2.default.createElement(_reactRouter.Route, { path: 'platforms', component: _Platforms2.default })
+	),
+	_react2.default.createElement(
+		_reactRouter.Route,
+		{ path: 'posts', component: _Posts2.default },
+		_react2.default.createElement(_reactRouter.Route, { path: 'add', component: _AddPost2.default })
+	)
+);
+
+// Components that go inside the containers
+
+},{"../components/posts/AddPost":401,"../containers/App":404,"../containers/Dashboard":405,"../containers/Games":406,"../containers/Overview":407,"../containers/Platforms":408,"../containers/Posts":409,"../containers/Settings":411,"react":369,"react-router":222}],403:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = initStore;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _redux = require('redux');
+
+var _reduxThunk = require('redux-thunk');
+
+var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+var _reduxLogger = require('redux-logger');
+
+var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function initStore(reducer) {
+	var initState = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+	var logger = (0, _reduxLogger2.default)();
+	var middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default, logger);
+	return (0, _redux.createStore)(reducer, initState, middleware);
+};
+
+},{"react":369,"redux":377,"redux-logger":370,"redux-thunk":371}],404:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -33703,13 +33800,13 @@ var _reactRedux = require('react-redux');
 
 var _reactRouter = require('react-router');
 
-var _navigation = require('../actions/navigation.jsx');
+var _navigation = require('../actions/navigation');
 
-var _MainHeader = require('../components/header/MainHeader.jsx');
+var _MainHeader = require('../components/header/MainHeader');
 
 var _MainHeader2 = _interopRequireDefault(_MainHeader);
 
-var _SecondaryHeader = require('../components/header/SecondaryHeader.jsx');
+var _SecondaryHeader = require('../components/header/SecondaryHeader');
 
 var _SecondaryHeader2 = _interopRequireDefault(_SecondaryHeader);
 
@@ -33777,7 +33874,7 @@ function mapDispatchToProps(dispatch, componentProps) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
-},{"../actions/navigation.jsx":389,"../components/header/MainHeader.jsx":396,"../components/header/SecondaryHeader.jsx":397,"react":369,"react-redux":179,"react-router":222}],403:[function(require,module,exports){
+},{"../actions/navigation":389,"../components/header/MainHeader":396,"../components/header/SecondaryHeader":397,"react":369,"react-redux":179,"react-router":222}],405:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -33792,15 +33889,15 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
-var _platforms = require('../actions/platforms.jsx');
+var _platforms = require('../actions/platforms');
 
-var _games = require('../actions/games.jsx');
+var _games = require('../actions/games');
 
-var _GamesCard = require('../components/games/GamesCard.jsx');
+var _GamesCard = require('../components/games/GamesCard');
 
 var _GamesCard2 = _interopRequireDefault(_GamesCard);
 
-var _PlatformsCard = require('../components/platforms/PlatformsCard.jsx');
+var _PlatformsCard = require('../components/platforms/PlatformsCard');
 
 var _PlatformsCard2 = _interopRequireDefault(_PlatformsCard);
 
@@ -33812,16 +33909,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var DashboardPage = function (_Component) {
-	_inherits(DashboardPage, _Component);
+var Dashboard = function (_Component) {
+	_inherits(Dashboard, _Component);
 
-	function DashboardPage(props) {
-		_classCallCheck(this, DashboardPage);
+	function Dashboard(props) {
+		_classCallCheck(this, Dashboard);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(DashboardPage).call(this, props));
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Dashboard).call(this, props));
 	}
 
-	_createClass(DashboardPage, [{
+	_createClass(Dashboard, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			this.props.dispatchGames();
@@ -33852,7 +33949,7 @@ var DashboardPage = function (_Component) {
 		}
 	}]);
 
-	return DashboardPage;
+	return Dashboard;
 }(_react.Component);
 
 function mapStateToProps(state) {
@@ -33873,9 +33970,9 @@ function mapDispatchToProps(dispatch, componentProps) {
 	};
 }
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(DashboardPage);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Dashboard);
 
-},{"../actions/games.jsx":388,"../actions/platforms.jsx":390,"../components/games/GamesCard.jsx":394,"../components/platforms/PlatformsCard.jsx":399,"react":369,"react-redux":179}],404:[function(require,module,exports){
+},{"../actions/games":388,"../actions/platforms":390,"../components/games/GamesCard":394,"../components/platforms/PlatformsCard":399,"react":369,"react-redux":179}],406:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -33890,13 +33987,13 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
-var _games = require('../actions/games.jsx');
+var _games = require('../actions/games');
 
-var _AddGame = require('../components/games/AddGame.jsx');
+var _AddGame = require('../components/games/AddGame');
 
 var _AddGame2 = _interopRequireDefault(_AddGame);
 
-var _GamesTable = require('../components/games/GamesTable.jsx');
+var _GamesTable = require('../components/games/GamesTable');
 
 var _GamesTable2 = _interopRequireDefault(_GamesTable);
 
@@ -33908,16 +34005,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var GamesPage = function (_Component) {
-	_inherits(GamesPage, _Component);
+var Games = function (_Component) {
+	_inherits(Games, _Component);
 
-	function GamesPage(props) {
-		_classCallCheck(this, GamesPage);
+	function Games(props) {
+		_classCallCheck(this, Games);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(GamesPage).call(this, props));
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Games).call(this, props));
 	}
 
-	_createClass(GamesPage, [{
+	_createClass(Games, [{
 		key: 'componentWillMount',
 		value: function componentWillMount() {
 			this.props.dispatchGetGames();
@@ -33942,7 +34039,7 @@ var GamesPage = function (_Component) {
 		}
 	}]);
 
-	return GamesPage;
+	return Games;
 }(_react.Component);
 
 function mapStateToProps(state) {
@@ -33962,9 +34059,9 @@ function mapDispatchToProps(dispatch, componentProps) {
 	};
 }
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(GamesPage);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Games);
 
-},{"../actions/games.jsx":388,"../components/games/AddGame.jsx":393,"../components/games/GamesTable.jsx":395,"react":369,"react-redux":179}],405:[function(require,module,exports){
+},{"../actions/games":388,"../components/games/AddGame":393,"../components/games/GamesTable":395,"react":369,"react-redux":179}],407:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -33979,15 +34076,15 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
-var _platforms = require('../actions/platforms.jsx');
+var _platforms = require('../actions/platforms');
 
-var _games = require('../actions/games.jsx');
+var _games = require('../actions/games');
 
-var _GamesCard = require('../components/games/GamesCard.jsx');
+var _GamesCard = require('../components/games/GamesCard');
 
 var _GamesCard2 = _interopRequireDefault(_GamesCard);
 
-var _PlatformsCard = require('../components/platforms/PlatformsCard.jsx');
+var _PlatformsCard = require('../components/platforms/PlatformsCard');
 
 var _PlatformsCard2 = _interopRequireDefault(_PlatformsCard);
 
@@ -33999,16 +34096,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var OverviewPage = function (_Component) {
-	_inherits(OverviewPage, _Component);
+var Overview = function (_Component) {
+	_inherits(Overview, _Component);
 
-	function OverviewPage(props) {
-		_classCallCheck(this, OverviewPage);
+	function Overview(props) {
+		_classCallCheck(this, Overview);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(OverviewPage).call(this, props));
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Overview).call(this, props));
 	}
 
-	_createClass(OverviewPage, [{
+	_createClass(Overview, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			this.props.dispatchGames();
@@ -34039,7 +34136,7 @@ var OverviewPage = function (_Component) {
 		}
 	}]);
 
-	return OverviewPage;
+	return Overview;
 }(_react.Component);
 
 function mapStateToProps(state) {
@@ -34060,9 +34157,9 @@ function mapDispatchToProps(dispatch, componentProps) {
 	};
 }
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(OverviewPage);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Overview);
 
-},{"../actions/games.jsx":388,"../actions/platforms.jsx":390,"../components/games/GamesCard.jsx":394,"../components/platforms/PlatformsCard.jsx":399,"react":369,"react-redux":179}],406:[function(require,module,exports){
+},{"../actions/games":388,"../actions/platforms":390,"../components/games/GamesCard":394,"../components/platforms/PlatformsCard":399,"react":369,"react-redux":179}],408:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34077,13 +34174,13 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
-var _platforms = require('../actions/platforms.jsx');
+var _platforms = require('../actions/platforms');
 
-var _AddPlatform = require('../components/platforms/AddPlatform.jsx');
+var _AddPlatform = require('../components/platforms/AddPlatform');
 
 var _AddPlatform2 = _interopRequireDefault(_AddPlatform);
 
-var _PlatformsTable = require('../components/platforms/PlatformsTable.jsx');
+var _PlatformsTable = require('../components/platforms/PlatformsTable');
 
 var _PlatformsTable2 = _interopRequireDefault(_PlatformsTable);
 
@@ -34098,16 +34195,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // import individual components here
 
 
-var PlatformsPage = function (_Component) {
-	_inherits(PlatformsPage, _Component);
+var Platforms = function (_Component) {
+	_inherits(Platforms, _Component);
 
-	function PlatformsPage(props) {
-		_classCallCheck(this, PlatformsPage);
+	function Platforms(props) {
+		_classCallCheck(this, Platforms);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(PlatformsPage).call(this, props));
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Platforms).call(this, props));
 	}
 
-	_createClass(PlatformsPage, [{
+	_createClass(Platforms, [{
 		key: 'componentWillMount',
 		value: function componentWillMount() {
 			this.props.dispatchGetPlatforms();
@@ -34132,7 +34229,7 @@ var PlatformsPage = function (_Component) {
 		}
 	}]);
 
-	return PlatformsPage;
+	return Platforms;
 }(_react.Component);
 
 function mapStateToProps(state) {
@@ -34152,9 +34249,9 @@ function mapDispatchToProps(dispatch, componentProps) {
 	};
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PlatformsPage);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Platforms);
 
-},{"../actions/platforms.jsx":390,"../components/platforms/AddPlatform.jsx":398,"../components/platforms/PlatformsTable.jsx":400,"react":369,"react-redux":179}],407:[function(require,module,exports){
+},{"../actions/platforms":390,"../components/platforms/AddPlatform":398,"../components/platforms/PlatformsTable":400,"react":369,"react-redux":179}],409:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34179,16 +34276,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var PostsPage = function (_Component) {
-	_inherits(PostsPage, _Component);
+var Posts = function (_Component) {
+	_inherits(Posts, _Component);
 
-	function PostsPage(props) {
-		_classCallCheck(this, PostsPage);
+	function Posts(props) {
+		_classCallCheck(this, Posts);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(PostsPage).call(this, props));
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Posts).call(this, props));
 	}
 
-	_createClass(PostsPage, [{
+	_createClass(Posts, [{
 		key: 'componentWillMount',
 		value: function componentWillMount() {
 			this.props.dispatchGetPosts();
@@ -34212,7 +34309,7 @@ var PostsPage = function (_Component) {
 		}
 	}]);
 
-	return PostsPage;
+	return Posts;
 }(_react.Component);
 
 ;
@@ -34234,9 +34331,9 @@ function mapDispatchToProps(dispatch, componentProps) {
 	};
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PostsPage);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Posts);
 
-},{"../actions/posts":391,"react":369,"react-redux":179}],408:[function(require,module,exports){
+},{"../actions/posts":391,"react":369,"react-redux":179}],410:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34251,10 +34348,6 @@ var _reactRedux = require('react-redux');
 
 var _reactRouter = require('react-router');
 
-var _routes = require('../routes.jsx');
-
-var _routes2 = _interopRequireDefault(_routes);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Root = function Root(props) {
@@ -34264,14 +34357,14 @@ var Root = function Root(props) {
 		_react2.default.createElement(
 			'div',
 			{ className: 'content' },
-			_react2.default.createElement(_reactRouter.Router, { history: props.history, routes: _routes2.default })
+			_react2.default.createElement(_reactRouter.Router, { history: props.history, routes: props.routes })
 		)
 	);
 };
 
 exports.default = Root;
 
-},{"../routes.jsx":414,"react":369,"react-redux":179,"react-router":222}],409:[function(require,module,exports){
+},{"react":369,"react-redux":179,"react-router":222}],411:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34286,15 +34379,15 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
-var _platforms = require('../actions/platforms.jsx');
+var _platforms = require('../actions/platforms');
 
-var _games = require('../actions/games.jsx');
+var _games = require('../actions/games');
 
-var _GamesCard = require('../components/games/GamesCard.jsx');
+var _GamesCard = require('../components/games/GamesCard');
 
 var _GamesCard2 = _interopRequireDefault(_GamesCard);
 
-var _PlatformsCard = require('../components/platforms/PlatformsCard.jsx');
+var _PlatformsCard = require('../components/platforms/PlatformsCard');
 
 var _PlatformsCard2 = _interopRequireDefault(_PlatformsCard);
 
@@ -34306,16 +34399,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SettingsPage = function (_Component) {
-	_inherits(SettingsPage, _Component);
+var Settings = function (_Component) {
+	_inherits(Settings, _Component);
 
-	function SettingsPage(props) {
-		_classCallCheck(this, SettingsPage);
+	function Settings(props) {
+		_classCallCheck(this, Settings);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(SettingsPage).call(this, props));
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Settings).call(this, props));
 	}
 
-	_createClass(SettingsPage, [{
+	_createClass(Settings, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			this.props.dispatchGames();
@@ -34346,7 +34439,7 @@ var SettingsPage = function (_Component) {
 		}
 	}]);
 
-	return SettingsPage;
+	return Settings;
 }(_react.Component);
 
 function mapStateToProps(state) {
@@ -34367,9 +34460,9 @@ function mapDispatchToProps(dispatch, componentProps) {
 	};
 }
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SettingsPage);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Settings);
 
-},{"../actions/games.jsx":388,"../actions/platforms.jsx":390,"../components/games/GamesCard.jsx":394,"../components/platforms/PlatformsCard.jsx":399,"react":369,"react-redux":179}],410:[function(require,module,exports){
+},{"../actions/games":388,"../actions/platforms":390,"../components/games/GamesCard":394,"../components/platforms/PlatformsCard":399,"react":369,"react-redux":179}],412:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34380,7 +34473,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 exports.default = games;
 
-var _games = require('../actions/games.jsx');
+var _games = require('../actions/games');
 
 var GAMES_INIT_STATE = {
 	isFetching: false,
@@ -34406,7 +34499,7 @@ function games() {
 	}
 }
 
-},{"../actions/games.jsx":388}],411:[function(require,module,exports){
+},{"../actions/games":388}],413:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34417,15 +34510,15 @@ var _redux = require('redux');
 
 var _reactRouterRedux = require('react-router-redux');
 
-var _games = require('../reducers/games.jsx');
+var _games = require('../reducers/games');
 
 var _games2 = _interopRequireDefault(_games);
 
-var _platforms = require('../reducers/platforms.jsx');
+var _platforms = require('../reducers/platforms');
 
 var _platforms2 = _interopRequireDefault(_platforms);
 
-var _nav = require('../reducers/nav.jsx');
+var _nav = require('../reducers/nav');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34438,7 +34531,7 @@ var rootReducer = (0, _redux.combineReducers)({
 
 exports.default = rootReducer;
 
-},{"../reducers/games.jsx":410,"../reducers/nav.jsx":412,"../reducers/platforms.jsx":413,"react-router-redux":189,"redux":377}],412:[function(require,module,exports){
+},{"../reducers/games":412,"../reducers/nav":414,"../reducers/platforms":415,"react-router-redux":189,"redux":377}],414:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34455,7 +34548,7 @@ exports.nav = nav;
 
 var _redux = require('redux');
 
-var _navigation = require('../actions/navigation.jsx');
+var _navigation = require('../actions/navigation');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34538,7 +34631,7 @@ function nav() {
 	}
 }
 
-},{"../actions/navigation.jsx":389,"lodash/find":152,"redux":377}],413:[function(require,module,exports){
+},{"../actions/navigation":389,"lodash/find":152,"redux":377}],415:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34549,7 +34642,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 exports.default = platforms;
 
-var _platforms = require('../actions/platforms.jsx');
+var _platforms = require('../actions/platforms');
 
 var PLATFORMS_INIT_STATE = {
 	isFetching: false,
@@ -34578,68 +34671,6 @@ function platforms() {
 	}
 }
 
-},{"../actions/platforms.jsx":390}],414:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouter = require('react-router');
-
-var _App = require('./containers/App.jsx');
-
-var _App2 = _interopRequireDefault(_App);
-
-var _SettingsPage = require('./containers/SettingsPage.jsx');
-
-var _SettingsPage2 = _interopRequireDefault(_SettingsPage);
-
-var _OverviewPage = require('./containers/OverviewPage.jsx');
-
-var _OverviewPage2 = _interopRequireDefault(_OverviewPage);
-
-var _GamesPage = require('./containers/GamesPage.jsx');
-
-var _GamesPage2 = _interopRequireDefault(_GamesPage);
-
-var _PlatformsPage = require('./containers/PlatformsPage.jsx');
-
-var _PlatformsPage2 = _interopRequireDefault(_PlatformsPage);
-
-var _DashboardPage = require('./containers/DashboardPage.jsx');
-
-var _DashboardPage2 = _interopRequireDefault(_DashboardPage);
-
-var _PostsPage = require('./containers/PostsPage');
-
-var _PostsPage2 = _interopRequireDefault(_PostsPage);
-
-var _AddPost = require('./components/posts/AddPost');
-
-var _AddPost2 = _interopRequireDefault(_AddPost);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _react2.default.createElement(
-	_reactRouter.Route,
-	{ path: 'admin', component: _App2.default },
-	_react2.default.createElement(_reactRouter.IndexRoute, { component: _DashboardPage2.default }),
-	_react2.default.createElement(_reactRouter.Route, { path: 'settings', component: _SettingsPage2.default }),
-	_react2.default.createElement(_reactRouter.Route, { path: 'settings/games', component: _GamesPage2.default }),
-	_react2.default.createElement(_reactRouter.Route, { path: 'settings/platforms', component: _PlatformsPage2.default }),
-	_react2.default.createElement(_reactRouter.Route, { path: 'overview', component: _OverviewPage2.default }),
-	_react2.default.createElement(
-		_reactRouter.Route,
-		{ path: 'posts', component: _PostsPage2.default },
-		_react2.default.createElement(_reactRouter.Route, { path: 'add', component: _AddPost2.default })
-	)
-);
-
-},{"./components/posts/AddPost":401,"./containers/App.jsx":402,"./containers/DashboardPage.jsx":403,"./containers/GamesPage.jsx":404,"./containers/OverviewPage.jsx":405,"./containers/PlatformsPage.jsx":406,"./containers/PostsPage":407,"./containers/SettingsPage.jsx":409,"react":369,"react-router":222}]},{},[392]);
+},{"../actions/platforms":390}]},{},[392]);
 
 //# sourceMappingURL=admin.js.map

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts, addPost } from '../actions/posts';
 
-class PostsPage extends Component {
+class Posts extends Component {
 	constructor(props) {
 		super(props);
 	}
@@ -41,4 +41,4 @@ function mapDispatchToProps(dispatch, componentProps) {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(Posts);

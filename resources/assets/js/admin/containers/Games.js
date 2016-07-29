@@ -4,7 +4,7 @@ import { fetchGames, addGame } from '../actions/games';
 import AddGame from '../components/games/AddGame';
 import GamesTable from '../components/games/GamesTable';
 
-class GamesPage extends Component {
+class Games extends Component {
 	constructor(props) {
 		super(props)
 	}
@@ -44,4 +44,4 @@ function mapDispatchToProps(dispatch, componentProps) {
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GamesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(Games);

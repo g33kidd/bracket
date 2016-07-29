@@ -6,7 +6,7 @@ import { fetchPlatforms, addPlatform } from '../actions/platforms';
 import AddPlatform from '../components/platforms/AddPlatform';
 import PlatformsTable from '../components/platforms/PlatformsTable';
 
-class PlatformsPage extends Component {
+class Platforms extends Component {
 	constructor(props) {
 		super(props)
 	}
@@ -46,4 +46,4 @@ function mapDispatchToProps(dispatch, componentProps) {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlatformsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(Platforms);

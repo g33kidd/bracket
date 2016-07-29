@@ -6,7 +6,7 @@ import { fetchGames } from '../actions/games';
 import GamesCard from '../components/games/GamesCard';
 import PlatformsCard from '../components/platforms/PlatformsCard';
 
-class SettingsPage extends Component {
+class Overview extends Component {
 	constructor(props) {
 		super(props)
 	}
@@ -49,4 +49,4 @@ function mapDispatchToProps(dispatch, componentProps) {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(Overview);
