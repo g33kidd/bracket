@@ -12,6 +12,7 @@ class Dashboard extends Component {
 	}
 
 	componentDidMount() {
+		this.props.updateNav([]);
 		this.props.dispatchGames();
 		this.props.dispatchPlatforms();
 	}

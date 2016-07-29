@@ -11,21 +11,19 @@ class Settings extends Component {
 		super(props)
 	}
 
-	componentDidMount() {
+	componentWillMount() {
+		this.props.updateNav([
+			{ title: 'Games', location: 'settings/games' },
+			{ title: 'Platforms', location: 'settings/platforms' }
+		]);
 		this.props.dispatchGames();
 		this.props.dispatchPlatforms();
 	}
 
 	render() {
 		return (
-			<div className="row">
-				<div className="col-md-3">
-					<GamesCard games={this.props.games} />
-					<PlatformsCard platforms={this.props.platforms} />
-				</div>
-				<div className="col-md-9">
-					<h1>Wat?</h1>
-				</div>
+			<div className="settings">
+				{this.props.children}
 			</div>
 		);
 	}

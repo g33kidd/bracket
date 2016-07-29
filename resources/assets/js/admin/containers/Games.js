@@ -31,7 +31,7 @@ function mapStateToProps(state) {
 	return {
 		games: state.games
 	};
-}
+};
 
 function mapDispatchToProps(dispatch, componentProps) {
 	return {
@@ -42,6 +42,6 @@ function mapDispatchToProps(dispatch, componentProps) {
 			dispatch(fetchGames());
 		}
 	};
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Games);

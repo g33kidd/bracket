@@ -4,13 +4,11 @@ import _ from 'underscore';
 
 const MainHeader = (props) => {
 	const links = _.map(props.nav.primary, function(link) {
-		if(typeof link.title !== 'undefined') {
-			return (
-				<li className="nav-item" key={link.id}>
-					<Link to={link.location} onClick={props.updateNav} className="nav-link">{link.title}</Link>
-				</li>
-			)
-		}
+		return (
+			<li className="nav-item" key={link.location}>
+				<Link to={`/admin/` + link.location} onClick={props.updateNav} className="nav-link">{link.title}</Link>
+			</li>
+		);
 	});
 
 	return (

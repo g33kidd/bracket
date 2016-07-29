@@ -8,6 +8,9 @@ class Posts extends Component {
 	}
 
 	componentWillMount() {
+		this.props.updateNav([
+			{ title: 'New Post', location: 'posts/new' }
+		]);
 		this.props.dispatchGetPosts();
 	}
 

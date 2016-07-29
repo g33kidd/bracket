@@ -1,76 +1,21 @@
 import { combineReducers } from 'redux';
-import { PRIMARY_NAV_CHANGED } from '../actions/navigation';
-import _ from 'lodash';
+import { NAV_INIT, NAV_CHANGE } from '../actions/nav';
 
 const INIT_NAV_STATE = {
-	primary: {
-		dashboard: {
-			id: 'dashboard',
-			location: '/admin'
-		},
-		overview: {
-			id: 'overview',
-			location: '/admin/overview',
-			title: 'Overview',
-			subLinks: {
-				stats: {
-					location: '/admin/overview/games',
-					title: 'Stats'
-				}
-			}
-		},
-		posts: {
-			id: 'posts',
-			location: '/admin/posts',
-			title: 'Posts',
-			subLinks: {
-				addPost: {
-					location: '/admin/posts/add',
-					title: 'New'
-				}
-			}
-		},
-		settings: {
-			id: 'settings',
-			location: '/admin/settings',
-			title: 'Settings',
-			subLinks: {
-				games: {
-					id: 'games',
-					location: '/admin/settings/games',
-					title: "Games"
-				},
-				platforms: {
-					id: 'platforms',
-					location: '/admin/settings/platforms',
-					title: "Platforms"
-				},
-				tournaments: {
-					id: 'tournaments',
-					location: '/admin/settings/platforms',
-					title: "Tournaments"
-				}
-			}
-		}
-	},
+	primary: [
+		{ title: 'Overview', location: 'overview' },
+		{ title: 'Posts', location: 'posts' },
+		{ title: 'Settings', location: 'settings' },
+	],
 	secondary: null
 };
 
-export function nav(state=INIT_NAV_STATE, action) {
+export default function nav(state=INIT_NAV_STATE, action) {
 	switch(action.type) {
-		case "@@router/LOCATION_CHANGE":
-			let path = action.payload.pathname;
-			let parentId = path.split('/')[2];
-			let parent = _.find(state.primary, (link) => { return link.location === path; });
-			let secondary = _.find(state.primary, (link) => {
-				return link.location.split('/')[2] === parentId;
-			});
-			
-			if(secondary) {
-				return { ...state, secondary: secondary.subLinks };
-			}else{
-				return state;
-			}
+		case NAV_INIT:
+			return state;
+		case NAV_CHANGE:
+			return { ...state, secondary: action.payload };
 		default:
 			return state;
 	}

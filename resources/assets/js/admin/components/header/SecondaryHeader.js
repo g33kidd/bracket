@@ -5,8 +5,8 @@ import _ from 'underscore';
 const SecondaryHeader = (props) => {
 	const links = _.map(props.nav.secondary, function(link) {
 		return (
-			<li className="nav-item" key={link.id}>
-				<Link to={link.location} className="nav-link">{link.title}</Link>
+			<li className="nav-item" key={link.location}>
+				<Link to={`/admin/` + link.location} className="nav-link">{link.title}</Link>
 			</li>
 		)
 	});

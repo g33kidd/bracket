@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory, Link } from 'react-router'
-import { changeNav } from '../actions/navigation';
+import { initNav, updateNav } from '../actions/nav';
 import MainHeader from '../components/header/MainHeader'
 import SecondaryHeader from '../components/header/SecondaryHeader';
 
@@ -11,12 +11,15 @@ class App extends Component {
 		super(props)
 	}
 
-	componentDidMount() {
-		this.props.dispatchNav();
+	componentWillMount() {
+		this.props.dispatchInitNav();
 	}
 
 	render() {
-		const { children } = this.props
+		const children = React.Children.map(this.props.children, (child) => React.cloneElement(child, {
+			updateNav: this.props.dispatchUpdateNav
+		}));
+
 		return (
 			<div>
 				<header>
@@ -40,8 +43,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch, componentProps) {
 	return {
-		dispatchNav: () => {
-			dispatch(changeNav());
+		dispatchInitNav: () => {
+			dispatch(initNav());
+		},
+		dispatchUpdateNav: (data) => {
+			dispatch(updateNav(data));
 		}
 	}
 }

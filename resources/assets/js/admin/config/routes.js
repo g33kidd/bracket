@@ -11,6 +11,13 @@ import Dashboard from '../containers/Dashboard';
 import Posts from '../containers/Posts';
 
 // Components that go inside the containers
+
+/// GAMES
+
+/// PLATFORMS
+
+/// POSTS
+import IndexPosts from '../components/posts/IndexPosts';
 import AddPost from '../components/posts/AddPost';
 
 export default (
@@ -20,12 +27,14 @@ export default (
 		<Route path="overview" component={Overview} />
 
 		<Route path="settings" component={Settings}>
+			<IndexRoute component={IndexSettings} />
 			<Route path="games" component={Games} />
 			<Route path="platforms" component={Platforms} />
 		</Route>
 
 		<Route path="posts" component={Posts}>
-			<Route path="add" component={AddPost} />
+			<IndexRoute component={IndexPosts} />
+			<Route path="new" component={AddPost} />
 		</Route>
 
 	</Route>
