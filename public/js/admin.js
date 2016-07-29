@@ -29965,7 +29965,7 @@ var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHi
 
 (0, _reactDom.render)(_react2.default.createElement(_Root2.default, { history: history, store: store, routes: _routes2.default }), document.getElementById('root'));
 
-},{"./config/routes":296,"./config/store":297,"./containers/Root":304,"./reducers/index":307,"react":262,"react-dom":69,"react-router":115,"react-router-redux":82}],286:[function(require,module,exports){
+},{"./config/routes":297,"./config/store":298,"./containers/Root":305,"./reducers/index":308,"react":262,"react-dom":69,"react-router":115,"react-router-redux":82}],286:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30537,13 +30537,13 @@ var AddPost = function AddPost(props) {
 exports.default = AddPost;
 
 },{"react":262}],295:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -30551,12 +30551,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var IndexPosts = function IndexPosts(props) {
 	return _react2.default.createElement(
-		"div",
-		{ className: "posts" },
+		'div',
+		null,
 		_react2.default.createElement(
-			"h1",
+			'h1',
 			null,
-			"Posts"
+			'Posts'
 		)
 	);
 };
@@ -30564,6 +30564,33 @@ var IndexPosts = function IndexPosts(props) {
 exports.default = IndexPosts;
 
 },{"react":262}],296:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var IndexSettings = function IndexSettings(props) {
+	return _react2.default.createElement(
+		'div',
+		null,
+		_react2.default.createElement(
+			'h1',
+			null,
+			'Index Settings'
+		)
+	);
+};
+
+exports.default = IndexSettings;
+
+},{"react":262}],297:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30612,15 +30639,13 @@ var _AddPost = require('../components/posts/AddPost');
 
 var _AddPost2 = _interopRequireDefault(_AddPost);
 
+var _IndexSettings = require('../components/settings/IndexSettings');
+
+var _IndexSettings2 = _interopRequireDefault(_IndexSettings);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Components that go inside the containers
-
-/// GAMES
-
-/// PLATFORMS
-
-/// POSTS
+// Containers
 exports.default = _react2.default.createElement(
 	_reactRouter.Route,
 	{ path: 'admin', component: _App2.default },
@@ -30629,7 +30654,7 @@ exports.default = _react2.default.createElement(
 	_react2.default.createElement(
 		_reactRouter.Route,
 		{ path: 'settings', component: _Settings2.default },
-		_react2.default.createElement(_reactRouter.IndexRoute, { component: IndexSettings }),
+		_react2.default.createElement(_reactRouter.IndexRoute, { component: _IndexSettings2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: 'games', component: _Games2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: 'platforms', component: _Platforms2.default })
 	),
@@ -30641,9 +30666,18 @@ exports.default = _react2.default.createElement(
 	)
 );
 
-// Containers
+/// SETTINGS
 
-},{"../components/posts/AddPost":294,"../components/posts/IndexPosts":295,"../containers/App":298,"../containers/Dashboard":299,"../containers/Games":300,"../containers/Overview":301,"../containers/Platforms":302,"../containers/Posts":303,"../containers/Settings":305,"react":262,"react-router":115}],297:[function(require,module,exports){
+
+// Components that go inside the containers
+
+/// GAMES
+
+/// PLATFORMS
+
+/// POSTS
+
+},{"../components/posts/AddPost":294,"../components/posts/IndexPosts":295,"../components/settings/IndexSettings":296,"../containers/App":299,"../containers/Dashboard":300,"../containers/Games":301,"../containers/Overview":302,"../containers/Platforms":303,"../containers/Posts":304,"../containers/Settings":306,"react":262,"react-router":115}],298:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30675,7 +30709,7 @@ function initStore(reducer) {
 	return (0, _redux.createStore)(reducer, initState, middleware);
 };
 
-},{"react":262,"redux":270,"redux-logger":263,"redux-thunk":264}],298:[function(require,module,exports){
+},{"react":262,"redux":270,"redux-logger":263,"redux-thunk":264}],299:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30756,11 +30790,13 @@ var App = function (_Component) {
 	return App;
 }(_react.Component);
 
+;
+
 function mapStateToProps(state) {
 	return {
 		nav: state.nav
 	};
-}
+};
 
 function mapDispatchToProps(dispatch, componentProps) {
 	return {
@@ -30771,11 +30807,11 @@ function mapDispatchToProps(dispatch, componentProps) {
 			dispatch((0, _nav.updateNav)(data));
 		}
 	};
-}
+};
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
-},{"../actions/nav":282,"../components/header/MainHeader":289,"../components/header/SecondaryHeader":290,"react":262,"react-redux":72,"react-router":115}],299:[function(require,module,exports){
+},{"../actions/nav":282,"../components/header/MainHeader":289,"../components/header/SecondaryHeader":290,"react":262,"react-redux":72,"react-router":115}],300:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30854,12 +30890,14 @@ var Dashboard = function (_Component) {
 	return Dashboard;
 }(_react.Component);
 
+;
+
 function mapStateToProps(state) {
 	return {
 		platforms: state.platforms,
 		games: state.games
 	};
-}
+};
 
 function mapDispatchToProps(dispatch, componentProps) {
 	return {
@@ -30870,11 +30908,11 @@ function mapDispatchToProps(dispatch, componentProps) {
 			dispatch((0, _games.fetchGames)());
 		}
 	};
-}
+};
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Dashboard);
 
-},{"../actions/games":281,"../actions/platforms":283,"../components/games/GamesCard":287,"../components/platforms/PlatformsCard":292,"react":262,"react-redux":72}],300:[function(require,module,exports){
+},{"../actions/games":281,"../actions/platforms":283,"../components/games/GamesCard":287,"../components/platforms/PlatformsCard":292,"react":262,"react-redux":72}],301:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30944,6 +30982,8 @@ var Games = function (_Component) {
 	return Games;
 }(_react.Component);
 
+;
+
 function mapStateToProps(state) {
 	return {
 		games: state.games
@@ -30963,7 +31003,7 @@ function mapDispatchToProps(dispatch, componentProps) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Games);
 
-},{"../actions/games":281,"../components/games/AddGame":286,"../components/games/GamesTable":288,"react":262,"react-redux":72}],301:[function(require,module,exports){
+},{"../actions/games":281,"../components/games/AddGame":286,"../components/games/GamesTable":288,"react":262,"react-redux":72}],302:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31042,12 +31082,14 @@ var Overview = function (_Component) {
 	return Overview;
 }(_react.Component);
 
+;
+
 function mapStateToProps(state) {
 	return {
 		platforms: state.platforms,
 		games: state.games
 	};
-}
+};
 
 function mapDispatchToProps(dispatch, componentProps) {
 	return {
@@ -31058,11 +31100,11 @@ function mapDispatchToProps(dispatch, componentProps) {
 			dispatch((0, _games.fetchGames)());
 		}
 	};
-}
+};
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Overview);
 
-},{"../actions/games":281,"../actions/platforms":283,"../components/games/GamesCard":287,"../components/platforms/PlatformsCard":292,"react":262,"react-redux":72}],302:[function(require,module,exports){
+},{"../actions/games":281,"../actions/platforms":283,"../components/games/GamesCard":287,"../components/platforms/PlatformsCard":292,"react":262,"react-redux":72}],303:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31135,6 +31177,8 @@ var Platforms = function (_Component) {
 	return Platforms;
 }(_react.Component);
 
+;
+
 function mapStateToProps(state) {
 	return {
 		platforms: state.platforms
@@ -31154,7 +31198,7 @@ function mapDispatchToProps(dispatch, componentProps) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Platforms);
 
-},{"../actions/platforms":283,"../components/platforms/AddPlatform":291,"../components/platforms/PlatformsTable":293,"react":262,"react-redux":72}],303:[function(require,module,exports){
+},{"../actions/platforms":283,"../components/platforms/AddPlatform":291,"../components/platforms/PlatformsTable":293,"react":262,"react-redux":72}],304:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31207,7 +31251,7 @@ var Posts = function (_Component) {
 
 			return _react2.default.createElement(
 				'div',
-				{ className: 'row' },
+				{ className: 'posts' },
 				children
 			);
 		}
@@ -31237,7 +31281,7 @@ function mapDispatchToProps(dispatch, componentProps) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Posts);
 
-},{"../actions/posts":284,"react":262,"react-redux":72}],304:[function(require,module,exports){
+},{"../actions/posts":284,"react":262,"react-redux":72}],305:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31268,7 +31312,7 @@ var Root = function Root(props) {
 
 exports.default = Root;
 
-},{"react":262,"react-redux":72,"react-router":115}],305:[function(require,module,exports){
+},{"react":262,"react-redux":72,"react-router":115}],306:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31333,12 +31377,14 @@ var Settings = function (_Component) {
 	return Settings;
 }(_react.Component);
 
+;
+
 function mapStateToProps(state) {
 	return {
 		platforms: state.platforms,
 		games: state.games
 	};
-}
+};
 
 function mapDispatchToProps(dispatch, componentProps) {
 	return {
@@ -31349,11 +31395,11 @@ function mapDispatchToProps(dispatch, componentProps) {
 			dispatch((0, _games.fetchGames)());
 		}
 	};
-}
+};
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Settings);
 
-},{"../actions/games":281,"../actions/platforms":283,"../components/games/GamesCard":287,"../components/platforms/PlatformsCard":292,"react":262,"react-redux":72}],306:[function(require,module,exports){
+},{"../actions/games":281,"../actions/platforms":283,"../components/games/GamesCard":287,"../components/platforms/PlatformsCard":292,"react":262,"react-redux":72}],307:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31387,10 +31433,10 @@ function games() {
 			return _extends({}, state, { items: state.items.concat(action.payload) });
 		default:
 			return state;
-	}
-}
+	};
+};
 
-},{"../actions/games":281}],307:[function(require,module,exports){
+},{"../actions/games":281}],308:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31432,7 +31478,7 @@ var rootReducer = (0, _redux.combineReducers)({
 
 exports.default = rootReducer;
 
-},{"../reducers/games":306,"../reducers/nav":308,"../reducers/platforms":309,"../reducers/posts":310,"react-router-redux":82,"redux":270}],308:[function(require,module,exports){
+},{"../reducers/games":307,"../reducers/nav":309,"../reducers/platforms":310,"../reducers/posts":311,"react-router-redux":82,"redux":270}],309:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31463,10 +31509,10 @@ function nav() {
 			return _extends({}, state, { secondary: action.payload });
 		default:
 			return state;
-	}
-}
+	};
+};
 
-},{"../actions/nav":282,"redux":270}],309:[function(require,module,exports){
+},{"../actions/nav":282,"redux":270}],310:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31503,10 +31549,10 @@ function platforms() {
 			});
 		default:
 			return state;
-	}
-}
+	};
+};
 
-},{"../actions/platforms":283}],310:[function(require,module,exports){
+},{"../actions/platforms":283}],311:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31543,8 +31589,8 @@ function posts() {
 			});
 		default:
 			return state;
-	}
-}
+	};
+};
 
 },{"../actions/posts":284}]},{},[285]);
 

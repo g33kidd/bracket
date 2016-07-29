@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 
 const AddGame = (props) => { 
   const addGameSubmit = (event) => {
@@ -9,7 +9,7 @@ const AddGame = (props) => {
       slug: event.target.slug.value,
       platform_id: event.target.platformId.value
     });
-  }
+  };
 
   return (
     <div className="card">

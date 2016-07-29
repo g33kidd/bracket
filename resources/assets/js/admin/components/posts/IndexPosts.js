@@ -2,7 +2,7 @@ import React from 'react';
 
 const IndexPosts = (props) => {
 	return (
-		<div className="posts">
+		<div>
 			<h1>Posts</h1>
 		</div>
 	);

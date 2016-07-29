@@ -12,4 +12,4 @@ const Root = (props) => {
 	);
 };
 
-export default Root
+export default Root;

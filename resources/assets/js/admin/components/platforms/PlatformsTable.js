@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 
 const PlatformsTable = (props) => {
   const platformsList = props.platforms.items.map(function(platform) {

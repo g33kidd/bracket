@@ -8,7 +8,7 @@ import PlatformsCard from '../components/platforms/PlatformsCard';
 
 class Dashboard extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 	}
 
 	componentDidMount() {
@@ -30,14 +30,14 @@ class Dashboard extends Component {
 			</div>
 		);
 	}
-}
+};
 
 function mapStateToProps(state) {
 	return {
 		platforms: state.platforms,
 		games: state.games
 	};
-}
+};
 
 function mapDispatchToProps(dispatch, componentProps) {
 	return {
@@ -47,7 +47,7 @@ function mapDispatchToProps(dispatch, componentProps) {
 		dispatchGames: () => {
 			dispatch(fetchGames());
 		}
-	}
-}
+	};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 
 const GamesCard = (props) => {
   const gamesList = props.games.items.map(function(game) {

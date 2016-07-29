@@ -8,7 +8,7 @@ import SecondaryHeader from '../components/header/SecondaryHeader';
 class App extends Component {
 
 	constructor(props) {
-		super(props)
+		super(props);
 	}
 
 	componentWillMount() {
@@ -30,16 +30,15 @@ class App extends Component {
 					{children}
 				</div>
 			</div>
-		)
+		);
 	}
-
-}
+};
 
 function mapStateToProps(state) {
 	return {
 		nav: state.nav
 	};
-}
+};
 
 function mapDispatchToProps(dispatch, componentProps) {
 	return {
@@ -49,7 +48,7 @@ function mapDispatchToProps(dispatch, componentProps) {
 		dispatchUpdateNav: (data) => {
 			dispatch(updateNav(data));
 		}
-	}
-}
+	};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import { Link } from 'react-router'
 import _ from 'underscore';
 
@@ -8,7 +8,7 @@ const SecondaryHeader = (props) => {
 			<li className="nav-item" key={link.location}>
 				<Link to={`/admin/` + link.location} className="nav-link">{link.title}</Link>
 			</li>
-		)
+		);
 	});
 
 	return (

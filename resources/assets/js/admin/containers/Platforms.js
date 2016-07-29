@@ -8,7 +8,7 @@ import PlatformsTable from '../components/platforms/PlatformsTable';
 
 class Platforms extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 	}
 
 	componentWillMount() {
@@ -27,7 +27,7 @@ class Platforms extends Component {
 			</div>
 		)
 	}
-}
+};
 
 function mapStateToProps(state) {
 	return {

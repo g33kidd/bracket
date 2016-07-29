@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 
 const PlatformsCard = (props) => {
   // console.log(props.games);

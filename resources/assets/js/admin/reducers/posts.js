@@ -27,5 +27,5 @@ export default function posts(state=POSTS_INIT_STATE, action) {
 			};
 		default:
 			return state;
-	}
-}
+	};
+};

@@ -20,7 +20,7 @@ class Posts extends Component {
 		}));
 
 		return (
-			<div className="row">
+			<div className="posts">
 				{children}
 			</div>
 		);

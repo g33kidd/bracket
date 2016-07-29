@@ -23,5 +23,5 @@ export default function games(state=GAMES_INIT_STATE, action) {
 			return { ...state, items: state.items.concat(action.payload) };
 		default:
 			return state;
-	}
-}
+	};
+};

@@ -18,5 +18,5 @@ export default function nav(state=INIT_NAV_STATE, action) {
 			return { ...state, secondary: action.payload };
 		default:
 			return state;
-	}
-}
+	};
+};

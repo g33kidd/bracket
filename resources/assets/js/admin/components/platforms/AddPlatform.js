@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 
 const AddGame = (props) => { 
   const addPlatformSubmit = (event) => {
@@ -8,7 +8,7 @@ const AddGame = (props) => {
       short_name: event.target.shortName.value,
       slug: event.target.slug.value
     });
-  }
+  };
 
   return (
     <div className="card">

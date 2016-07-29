@@ -6,7 +6,7 @@ import GamesTable from '../components/games/GamesTable';
 
 class Games extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 	}
 
 	componentWillMount() {
@@ -25,7 +25,7 @@ class Games extends Component {
 			</div>
 		)
 	}
-}
+};
 
 function mapStateToProps(state) {
 	return {

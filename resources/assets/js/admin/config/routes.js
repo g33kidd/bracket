@@ -20,6 +20,9 @@ import Posts from '../containers/Posts';
 import IndexPosts from '../components/posts/IndexPosts';
 import AddPost from '../components/posts/AddPost';
 
+/// SETTINGS
+import IndexSettings from '../components/settings/IndexSettings';
+
 export default (
 	<Route path="admin" component={App}>
 
@@ -38,4 +41,4 @@ export default (
 		</Route>
 
 	</Route>
-)
+);

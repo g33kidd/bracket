@@ -27,6 +27,6 @@ export default function platforms(state=PLATFORMS_INIT_STATE, action) {
 			};
 		default:
 			return state;
-	}
-}
+	};
+};
 
