@@ -3,7 +3,7 @@ import {
 	RECEIVE_PLATFORMS,
 	ADDING_PLATFORM,
 	ADDED_PLATFORM
-} from '../actions/platforms.jsx';
+} from '../actions/platforms';
 
 const PLATFORMS_INIT_STATE = {
 	isFetching: false,

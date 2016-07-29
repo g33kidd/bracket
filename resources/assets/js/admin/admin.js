@@ -1,20 +1,14 @@
-import React from 'react'
+import React from 'react';
 import { render } from 'react-dom';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory } from 'react-router';
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import createLogger from 'redux-logger';
+
+import initStore from './config/store';
 import rootReducer from './reducers/index.jsx';
 import Root from './containers/Root.jsx';
 
-const logger = createLogger();
-const store = createStore(
-	rootReducer,
-	{},
-	applyMiddleware(thunk, logger)
-);
-
+// Creates the store for the application.
+const store = initStore(rootReducer, {});
 const history = syncHistoryWithStore(browserHistory, store);
 
 render(

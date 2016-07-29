@@ -1,0 +1,15 @@
+// Button Stuffs
+.btn {
+	&.btn-login {
+		background: $prl-yellow;
+		color: $prl-black;
+		border-radius: 0;
+		&:hover {
+			background: $prl-black;
+			color: #FFF;
+		}
+	}
+}
+
+
+/// Soon to be... form stuffs...

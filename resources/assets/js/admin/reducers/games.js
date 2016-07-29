@@ -3,7 +3,7 @@ import {
 	RECEIVE_GAMES,
 	ADDING_GAME,
 	ADDED_GAME
-} from '../actions/games.jsx';
+} from '../actions/games';
 
 const GAMES_INIT_STATE = {
 	isFetching: false,

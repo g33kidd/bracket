@@ -33001,6 +33001,81 @@ function addPlatform(data) {
 },{"axios":1}],391:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.PUBLISHING_POST = exports.PUBLISH_POST = exports.ADDED_POST = exports.ADDING_POST = exports.RECEIVE_POSTS = exports.REQUEST_POSTS = undefined;
+exports.requestPosts = requestPosts;
+exports.receivePosts = receivePosts;
+exports.addingPost = addingPost;
+exports.addedPost = addedPost;
+exports.fetchPosts = fetchPosts;
+exports.addPost = addPost;
+
+var _axios = require('axios');
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var REQUEST_POSTS = exports.REQUEST_POSTS = 'REQUEST_POSTS';
+var RECEIVE_POSTS = exports.RECEIVE_POSTS = 'RECEIVE_POSTS';
+var ADDING_POST = exports.ADDING_POST = 'ADDING_POST';
+var ADDED_POST = exports.ADDED_POST = 'ADDED_POST';
+var PUBLISH_POST = exports.PUBLISH_POST = 'PUBLISH_POST';
+var PUBLISHING_POST = exports.PUBLISHING_POST = 'PUBLISHING_POST';
+
+function requestPosts() {
+	return {
+		type: REQUEST_POSTS
+	};
+};
+
+function receivePosts(data) {
+	return {
+		type: RECEIVE_POSTS,
+		payload: data
+	};
+};
+
+function addingPost() {
+	return {
+		type: ADDING_POST
+	};
+};
+
+function addedPost(data) {
+	return {
+		type: ADDED_POST,
+		payload: data
+	};
+};
+
+function fetchPosts() {
+	return function (dispatch) {
+		dispatch(requestPosts());
+		_axios2.default.get('/api/posts').then(function (response) {
+			return dispatch(receivePosts(response.data));
+		}).catch(function (err) {
+			return console.log("There was an error.", err);
+		});
+	};
+};
+
+function addPost(data) {
+	return function (dispatch) {
+		dispatch(addingPost());
+		_axios2.default.post('/api/posts', data).then(function (response) {
+			return dispatch(addedPost(response.data));
+		}).catch(function (err) {
+			return console.log("There was an error adding post.", err);
+		});
+	};
+};
+
+},{"axios":1}],392:[function(require,module,exports){
+'use strict';
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -33038,7 +33113,7 @@ var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHi
 
 (0, _reactDom.render)(_react2.default.createElement(_Root2.default, { history: history, store: store }), document.getElementById('root'));
 
-},{"./containers/Root.jsx":405,"./reducers/index.jsx":408,"react":369,"react-dom":176,"react-router":222,"react-router-redux":189,"redux":377,"redux-logger":370,"redux-thunk":371}],392:[function(require,module,exports){
+},{"./containers/Root.jsx":408,"./reducers/index.jsx":411,"react":369,"react-dom":176,"react-router":222,"react-router-redux":189,"redux":377,"redux-logger":370,"redux-thunk":371}],393:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33132,7 +33207,7 @@ var AddGame = function AddGame(props) {
 
 exports.default = AddGame;
 
-},{"react":369}],393:[function(require,module,exports){
+},{"react":369}],394:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33190,7 +33265,7 @@ var GamesCard = function GamesCard(props) {
 
 exports.default = GamesCard;
 
-},{"react":369}],394:[function(require,module,exports){
+},{"react":369}],395:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33262,7 +33337,7 @@ var GamesTable = function GamesTable(props) {
 
 exports.default = GamesTable;
 
-},{"react":369}],395:[function(require,module,exports){
+},{"react":369}],396:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -33318,7 +33393,7 @@ var MainHeader = function MainHeader(props) {
 
 exports.default = MainHeader;
 
-},{"react":369,"react-router":222,"underscore":386}],396:[function(require,module,exports){
+},{"react":369,"react-router":222,"underscore":386}],397:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -33367,7 +33442,7 @@ var SecondaryHeader = function SecondaryHeader(props) {
 
 exports.default = SecondaryHeader;
 
-},{"react":369,"react-router":222,"underscore":386}],397:[function(require,module,exports){
+},{"react":369,"react-router":222,"underscore":386}],398:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33396,7 +33471,7 @@ var AddGame = function AddGame(props) {
     _react2.default.createElement(
       "div",
       { className: "card-header" },
-      "Add New Game"
+      "Add New Platform"
     ),
     _react2.default.createElement(
       "div",
@@ -33440,7 +33515,7 @@ var AddGame = function AddGame(props) {
           _react2.default.createElement(
             "button",
             { type: "submit", className: "btn btn-secondary" },
-            "Add Game"
+            "Add Platform"
           )
         )
       )
@@ -33450,7 +33525,7 @@ var AddGame = function AddGame(props) {
 
 exports.default = AddGame;
 
-},{"react":369}],398:[function(require,module,exports){
+},{"react":369}],399:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33509,7 +33584,7 @@ var PlatformsCard = function PlatformsCard(props) {
 
 exports.default = PlatformsCard;
 
-},{"react":369}],399:[function(require,module,exports){
+},{"react":369}],400:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33581,7 +33656,37 @@ var PlatformsTable = function PlatformsTable(props) {
 
 exports.default = PlatformsTable;
 
-},{"react":369}],400:[function(require,module,exports){
+},{"react":369}],401:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var AddPost = function AddPost(props) {
+  console.log("ADD POST COMPONENT");
+  console.log(props);
+
+  return _react2.default.createElement(
+    "div",
+    { className: "test" },
+    _react2.default.createElement(
+      "h1",
+      null,
+      "Add Post Here"
+    )
+  );
+};
+
+exports.default = AddPost;
+
+},{"react":369}],402:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -33672,7 +33777,7 @@ function mapDispatchToProps(dispatch, componentProps) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
-},{"../actions/navigation.jsx":389,"../components/header/MainHeader.jsx":395,"../components/header/SecondaryHeader.jsx":396,"react":369,"react-redux":179,"react-router":222}],401:[function(require,module,exports){
+},{"../actions/navigation.jsx":389,"../components/header/MainHeader.jsx":396,"../components/header/SecondaryHeader.jsx":397,"react":369,"react-redux":179,"react-router":222}],403:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -33770,7 +33875,7 @@ function mapDispatchToProps(dispatch, componentProps) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(DashboardPage);
 
-},{"../actions/games.jsx":388,"../actions/platforms.jsx":390,"../components/games/GamesCard.jsx":393,"../components/platforms/PlatformsCard.jsx":398,"react":369,"react-redux":179}],402:[function(require,module,exports){
+},{"../actions/games.jsx":388,"../actions/platforms.jsx":390,"../components/games/GamesCard.jsx":394,"../components/platforms/PlatformsCard.jsx":399,"react":369,"react-redux":179}],404:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -33813,8 +33918,8 @@ var GamesPage = function (_Component) {
 	}
 
 	_createClass(GamesPage, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
+		key: 'componentWillMount',
+		value: function componentWillMount() {
 			this.props.dispatchGetGames();
 		}
 	}, {
@@ -33859,7 +33964,7 @@ function mapDispatchToProps(dispatch, componentProps) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(GamesPage);
 
-},{"../actions/games.jsx":388,"../components/games/AddGame.jsx":392,"../components/games/GamesTable.jsx":394,"react":369,"react-redux":179}],403:[function(require,module,exports){
+},{"../actions/games.jsx":388,"../components/games/AddGame.jsx":393,"../components/games/GamesTable.jsx":395,"react":369,"react-redux":179}],405:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -33957,7 +34062,7 @@ function mapDispatchToProps(dispatch, componentProps) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(OverviewPage);
 
-},{"../actions/games.jsx":388,"../actions/platforms.jsx":390,"../components/games/GamesCard.jsx":393,"../components/platforms/PlatformsCard.jsx":398,"react":369,"react-redux":179}],404:[function(require,module,exports){
+},{"../actions/games.jsx":388,"../actions/platforms.jsx":390,"../components/games/GamesCard.jsx":394,"../components/platforms/PlatformsCard.jsx":399,"react":369,"react-redux":179}],406:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34003,8 +34108,8 @@ var PlatformsPage = function (_Component) {
 	}
 
 	_createClass(PlatformsPage, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
+		key: 'componentWillMount',
+		value: function componentWillMount() {
 			this.props.dispatchGetPlatforms();
 		}
 	}, {
@@ -34049,7 +34154,89 @@ function mapDispatchToProps(dispatch, componentProps) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PlatformsPage);
 
-},{"../actions/platforms.jsx":390,"../components/platforms/AddPlatform.jsx":397,"../components/platforms/PlatformsTable.jsx":399,"react":369,"react-redux":179}],405:[function(require,module,exports){
+},{"../actions/platforms.jsx":390,"../components/platforms/AddPlatform.jsx":398,"../components/platforms/PlatformsTable.jsx":400,"react":369,"react-redux":179}],407:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _posts = require('../actions/posts');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var PostsPage = function (_Component) {
+	_inherits(PostsPage, _Component);
+
+	function PostsPage(props) {
+		_classCallCheck(this, PostsPage);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(PostsPage).call(this, props));
+	}
+
+	_createClass(PostsPage, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.props.dispatchGetPosts();
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
+
+			var children = _react2.default.Children.map(this.props.children, function (child) {
+				return _react2.default.cloneElement(child, {
+					addPost: _this2.props.dispatchAddPost
+				});
+			});
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'row' },
+				children
+			);
+		}
+	}]);
+
+	return PostsPage;
+}(_react.Component);
+
+;
+
+function mapStateToProps(state) {
+	return {
+		posts: state.posts
+	};
+};
+
+function mapDispatchToProps(dispatch, componentProps) {
+	return {
+		dispatchGetPosts: function dispatchGetPosts() {
+			dispatch((0, _posts.fetchPosts)());
+		},
+		dispatchAddPost: function dispatchAddPost(data) {
+			dispatch((0, _posts.addPost)(data));
+		}
+	};
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PostsPage);
+
+},{"../actions/posts":391,"react":369,"react-redux":179}],408:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34084,7 +34271,7 @@ var Root = function Root(props) {
 
 exports.default = Root;
 
-},{"../routes.jsx":411,"react":369,"react-redux":179,"react-router":222}],406:[function(require,module,exports){
+},{"../routes.jsx":414,"react":369,"react-redux":179,"react-router":222}],409:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34182,7 +34369,7 @@ function mapDispatchToProps(dispatch, componentProps) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SettingsPage);
 
-},{"../actions/games.jsx":388,"../actions/platforms.jsx":390,"../components/games/GamesCard.jsx":393,"../components/platforms/PlatformsCard.jsx":398,"react":369,"react-redux":179}],407:[function(require,module,exports){
+},{"../actions/games.jsx":388,"../actions/platforms.jsx":390,"../components/games/GamesCard.jsx":394,"../components/platforms/PlatformsCard.jsx":399,"react":369,"react-redux":179}],410:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34219,7 +34406,7 @@ function games() {
 	}
 }
 
-},{"../actions/games.jsx":388}],408:[function(require,module,exports){
+},{"../actions/games.jsx":388}],411:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34251,7 +34438,7 @@ var rootReducer = (0, _redux.combineReducers)({
 
 exports.default = rootReducer;
 
-},{"../reducers/games.jsx":407,"../reducers/nav.jsx":409,"../reducers/platforms.jsx":410,"react-router-redux":189,"redux":377}],409:[function(require,module,exports){
+},{"../reducers/games.jsx":410,"../reducers/nav.jsx":412,"../reducers/platforms.jsx":413,"react-router-redux":189,"redux":377}],412:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34286,6 +34473,17 @@ var INIT_NAV_STATE = {
 				stats: {
 					location: '/admin/overview/games',
 					title: 'Stats'
+				}
+			}
+		},
+		posts: {
+			id: 'posts',
+			location: '/admin/posts',
+			title: 'Posts',
+			subLinks: {
+				addPost: {
+					location: '/admin/posts/add',
+					title: 'New'
 				}
 			}
 		},
@@ -34340,7 +34538,7 @@ function nav() {
 	}
 }
 
-},{"../actions/navigation.jsx":389,"lodash/find":152,"redux":377}],410:[function(require,module,exports){
+},{"../actions/navigation.jsx":389,"lodash/find":152,"redux":377}],413:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34380,7 +34578,7 @@ function platforms() {
 	}
 }
 
-},{"../actions/platforms.jsx":390}],411:[function(require,module,exports){
+},{"../actions/platforms.jsx":390}],414:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34417,18 +34615,31 @@ var _DashboardPage = require('./containers/DashboardPage.jsx');
 
 var _DashboardPage2 = _interopRequireDefault(_DashboardPage);
 
+var _PostsPage = require('./containers/PostsPage');
+
+var _PostsPage2 = _interopRequireDefault(_PostsPage);
+
+var _AddPost = require('./components/posts/AddPost');
+
+var _AddPost2 = _interopRequireDefault(_AddPost);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _react2.default.createElement(
 	_reactRouter.Route,
-	{ path: '/admin', component: _App2.default },
+	{ path: 'admin', component: _App2.default },
 	_react2.default.createElement(_reactRouter.IndexRoute, { component: _DashboardPage2.default }),
 	_react2.default.createElement(_reactRouter.Route, { path: 'settings', component: _SettingsPage2.default }),
 	_react2.default.createElement(_reactRouter.Route, { path: 'settings/games', component: _GamesPage2.default }),
 	_react2.default.createElement(_reactRouter.Route, { path: 'settings/platforms', component: _PlatformsPage2.default }),
-	_react2.default.createElement(_reactRouter.Route, { path: 'overview', component: _OverviewPage2.default })
+	_react2.default.createElement(_reactRouter.Route, { path: 'overview', component: _OverviewPage2.default }),
+	_react2.default.createElement(
+		_reactRouter.Route,
+		{ path: 'posts', component: _PostsPage2.default },
+		_react2.default.createElement(_reactRouter.Route, { path: 'add', component: _AddPost2.default })
+	)
 );
 
-},{"./containers/App.jsx":400,"./containers/DashboardPage.jsx":401,"./containers/GamesPage.jsx":402,"./containers/OverviewPage.jsx":403,"./containers/PlatformsPage.jsx":404,"./containers/SettingsPage.jsx":406,"react":369,"react-router":222}]},{},[391]);
+},{"./components/posts/AddPost":401,"./containers/App.jsx":402,"./containers/DashboardPage.jsx":403,"./containers/GamesPage.jsx":404,"./containers/OverviewPage.jsx":405,"./containers/PlatformsPage.jsx":406,"./containers/PostsPage":407,"./containers/SettingsPage.jsx":409,"react":369,"react-router":222}]},{},[392]);
 
 //# sourceMappingURL=admin.js.map

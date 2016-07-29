@@ -9,7 +9,7 @@ class GamesPage extends Component {
 		super(props)
 	}
 
-	componentDidMount() {
+	componentWillMount() {
 		this.props.dispatchGetGames();
 	}
 

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { PRIMARY_NAV_CHANGED } from '../actions/navigation.jsx';
+import { PRIMARY_NAV_CHANGED } from '../actions/navigation';
 import _ from 'lodash';
 
 const INIT_NAV_STATE = {
@@ -16,6 +16,17 @@ const INIT_NAV_STATE = {
 				stats: {
 					location: '/admin/overview/games',
 					title: 'Stats'
+				}
+			}
+		},
+		posts: {
+			id: 'posts',
+			location: '/admin/posts',
+			title: 'Posts',
+			subLinks: {
+				addPost: {
+					location: '/admin/posts/add',
+					title: 'New'
 				}
 			}
 		},

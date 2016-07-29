@@ -1,3 +1,11 @@
-@import "additional";
-@import "original";
-@import "slider";
+@import "_settings";
+
+@import "_forms";
+
+@import "footer";
+@import "navbar";
+@import "userbar";
+
+body {
+	font-family: 'Lato', sans-serif;
+}

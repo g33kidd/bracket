@@ -1,0 +1,74 @@
+.user-bar {
+	padding: 0.8rem 0;
+	background: $userbar-bg;
+
+	.team-info, .user-info {
+		background: $prl-yellow;
+		border-radius: 3px;
+		position: relative;
+		
+		// .team, .user { display: none; }
+		.actions {
+			display: none;
+		}
+
+		.info {
+			padding: 8px 10px;
+			span {
+				display: block;
+				line-height: 1;
+
+				&.phrase, &.current {
+					font-size: 12px;
+				}
+
+				&.name {
+					font-weight: 400;
+				}
+			}
+		}
+	}
+
+	.user-info {
+		img {
+			width: 45px;
+			height: 45px;
+			border-top-right-radius: 3px;
+			border-bottom-right-radius: 3px;
+		}
+
+		.user {
+			.info {
+				.phrase {
+				}
+				.name {
+					font-weight: 500;
+				}
+			}
+		}
+	}
+
+	.team-info {
+		img {
+			width: 45px;
+			height: 45px;
+			border-top-left-radius: 3px;
+			border-bottom-left-radius: 3px;
+		}
+
+		.team {
+			.info {
+				.current {
+					font-size: 12px;
+				}
+				.name {
+					font-weight: 500;
+				}
+			}
+		}
+	}
+
+	.guest-info {
+
+	}
+}

@@ -11,7 +11,7 @@ class PlatformsPage extends Component {
 		super(props)
 	}
 
-	componentDidMount() {
+	componentWillMount() {
 		this.props.dispatchGetPlatforms();
 	}
 

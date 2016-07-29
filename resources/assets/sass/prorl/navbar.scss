@@ -1,0 +1,36 @@
+.main-header {
+
+	background: $navbar-bg;
+
+	.nav-item {
+		padding: 5px 0;
+		.nav-link {
+			padding: 20px 10px;
+			font-size: 1.0rem;
+			font-weight: 400;
+			text-transform: uppercase;
+			color: #FFF;
+
+			&:hover {
+				color: $prl-yellow;
+			}
+		}
+
+		&.dropdown.open {
+			.dropdown-menu {
+				background: $prl-black;
+				top: 80%;
+				border-top: 3px solid $prl-yellow;
+				padding: 0px;
+				.dropdown-item {
+					color: #FFF;
+					padding: 8px 20px;
+					&:hover {
+						background: $prl-yellow;
+						color: $prl-black;
+					}
+				}
+			}
+		}
+	}
+}

@@ -27,7 +27,4 @@ class UsersController extends Controller
     	return response(null, 200);
     }
 
-    // Just send an email to the user so they can activate their account
-    // and setup their password/etc...
-
 }

@@ -4581,6 +4581,92 @@ a.bg-danger:focus, a.bg-danger:hover {
   .hidden-print {
     display: none !important; } }
 
+ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none; }
+
+.btn.btn-login {
+  background: #f9b200;
+  color: #0d0d0d;
+  border-radius: 0; }
+  .btn.btn-login:hover {
+    background: #0d0d0d;
+    color: #FFF; }
+
+.main-footer {
+  background: #0d0d0d;
+  padding: 30px 0; }
+  .main-footer .header {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #FFF; }
+  .main-footer a {
+    font-size: 14px;
+    color: gray; }
+
+.main-header {
+  background: #0d0d0d; }
+  .main-header .nav-item {
+    padding: 5px 0; }
+    .main-header .nav-item .nav-link {
+      padding: 20px 10px;
+      font-size: 1.0rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #FFF; }
+      .main-header .nav-item .nav-link:hover {
+        color: #f9b200; }
+    .main-header .nav-item.dropdown.open .dropdown-menu {
+      background: #0d0d0d;
+      top: 80%;
+      border-top: 3px solid #f9b200;
+      padding: 0px; }
+      .main-header .nav-item.dropdown.open .dropdown-menu .dropdown-item {
+        color: #FFF;
+        padding: 8px 20px; }
+        .main-header .nav-item.dropdown.open .dropdown-menu .dropdown-item:hover {
+          background: #f9b200;
+          color: #0d0d0d; }
+
+.user-bar {
+  padding: 0.8rem 0;
+  background: #333; }
+  .user-bar .team-info, .user-bar .user-info {
+    background: #f9b200;
+    border-radius: 3px;
+    position: relative; }
+    .user-bar .team-info .actions, .user-bar .user-info .actions {
+      display: none; }
+    .user-bar .team-info .info, .user-bar .user-info .info {
+      padding: 8px 10px; }
+      .user-bar .team-info .info span, .user-bar .user-info .info span {
+        display: block;
+        line-height: 1; }
+        .user-bar .team-info .info span.phrase, .user-bar .team-info .info span.current, .user-bar .user-info .info span.phrase, .user-bar .user-info .info span.current {
+          font-size: 12px; }
+        .user-bar .team-info .info span.name, .user-bar .user-info .info span.name {
+          font-weight: 400; }
+  .user-bar .user-info img {
+    width: 45px;
+    height: 45px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px; }
+  .user-bar .user-info .user .info .name {
+    font-weight: 500; }
+  .user-bar .team-info img {
+    width: 45px;
+    height: 45px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; }
+  .user-bar .team-info .team .info .current {
+    font-size: 12px; }
+  .user-bar .team-info .team .info .name {
+    font-weight: 500; }
+
+body {
+  font-family: 'Lato', sans-serif; }
+
 .navbar.secondary {
   padding: 0.1rem 1rem; }
 

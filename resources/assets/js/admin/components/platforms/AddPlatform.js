@@ -12,7 +12,7 @@ const AddGame = (props) => {
 
   return (
     <div className="card">
-      <div className="card-header">Add New Game</div>
+      <div className="card-header">Add New Platform</div>
       <div className="card-block">
         <form onSubmit={addPlatformSubmit}>
 
@@ -32,7 +32,7 @@ const AddGame = (props) => {
           </div>
           
           <div className="form-group ">
-            <button type="submit" className="btn btn-secondary">Add Game</button>
+            <button type="submit" className="btn btn-secondary">Add Platform</button>
           </div>
         </form>
       </div>

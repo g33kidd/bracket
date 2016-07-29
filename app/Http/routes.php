@@ -24,6 +24,7 @@ Route::group(['namespace' => 'Api', 'prefix' => 'api'], function() {
 	Route::resource('platforms', 'PlatformsController');
 	Route::resource('users', 'UsersController');
 	Route::resource('tournaments', 'TournamentsController');
+    Route::resource('posts', 'PostsController');
 });
 
 // Main site routes, actions and controllers.
