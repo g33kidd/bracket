@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchPlatforms, addPlatform } from '../actions/platforms.jsx';
+import { fetchPlatforms, addPlatform } from '../actions/platforms';
 
 // import individual components here
-import AddPlatform from '../components/platforms/AddPlatform.jsx';
-import PlatformsTable from '../components/platforms/PlatformsTable.jsx';
+import AddPlatform from '../components/platforms/AddPlatform';
+import PlatformsTable from '../components/platforms/PlatformsTable';
 
 class PlatformsPage extends Component {
 	constructor(props) {

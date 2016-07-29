@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchPlatforms } from '../actions/platforms.jsx';
-import { fetchGames } from '../actions/games.jsx';
+import { fetchPlatforms } from '../actions/platforms';
+import { fetchGames } from '../actions/games';
 
-import GamesCard from '../components/games/GamesCard.jsx';
-import PlatformsCard from '../components/platforms/PlatformsCard.jsx';
+import GamesCard from '../components/games/GamesCard';
+import PlatformsCard from '../components/platforms/PlatformsCard';
 
 class OverviewPage extends Component {
 	constructor(props) {

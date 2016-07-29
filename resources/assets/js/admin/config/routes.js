@@ -1,12 +1,12 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 
-import App from './containers/App.jsx'
-import SettingsPage from './containers/SettingsPage.jsx';
-import OverviewPage from './containers/OverviewPage.jsx';
-import GamesPage from './containers/GamesPage.jsx'
-import PlatformsPage from './containers/PlatformsPage.jsx'
-import DashboardPage from './containers/DashboardPage.jsx'
+import App from './containers/App'
+import SettingsPage from './containers/SettingsPage';
+import OverviewPage from './containers/OverviewPage';
+import GamesPage from './containers/GamesPage'
+import PlatformsPage from './containers/PlatformsPage'
+import DashboardPage from './containers/DashboardPage'
 import PostsPage from './containers/PostsPage';
 
 import AddPost from './components/posts/AddPost';

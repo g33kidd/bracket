@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory, Link } from 'react-router'
-import { changeNav } from '../actions/navigation.jsx';
-import MainHeader from '../components/header/MainHeader.jsx'
-import SecondaryHeader from '../components/header/SecondaryHeader.jsx';
+import { changeNav } from '../actions/navigation';
+import MainHeader from '../components/header/MainHeader'
+import SecondaryHeader from '../components/header/SecondaryHeader';
 
 class App extends Component {
 

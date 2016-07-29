@@ -4,8 +4,8 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 
 import initStore from './config/store';
-import rootReducer from './reducers/index.jsx';
-import Root from './containers/Root.jsx';
+import rootReducer from './reducers/index';
+import Root from './containers/Root';
 
 // Creates the store for the application.
 const store = initStore(rootReducer, {});
