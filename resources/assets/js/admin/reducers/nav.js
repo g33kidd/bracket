@@ -5,6 +5,8 @@ const INIT_NAV_STATE = {
 	primary: [
 		{ title: 'Overview', location: 'overview' },
 		{ title: 'Posts', location: 'posts' },
+		{ title: 'Users', location: 'users' },
+		{ title: 'Teams', location: 'teams' },
 		{ title: 'Settings', location: 'settings' },
 	],
 	secondary: null

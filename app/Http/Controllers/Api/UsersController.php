@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\User;
 
 class UsersController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +10,7 @@ class Game extends Model
 
     public function platforms()
     {
-        return $this->belongsToMany('App\Platform', 'platform_game');
+        return $this->belongsToMany('App\Models\Platform', 'platform_game');
     }
 
     public function toArray()

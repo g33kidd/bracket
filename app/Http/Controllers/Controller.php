@@ -7,9 +7,9 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-use App\Game;
-use App\User;
-use App\Platform;
+use App\Models\Game;
+use App\Models\User;
+use App\Models\Platform;
 
 class Controller extends BaseController
 {

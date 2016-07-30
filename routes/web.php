@@ -9,6 +9,7 @@ Route::group([
 	'prefix' => 'admin', 
 	'middleware' => 'auth'], 
 function() {
+    Route::get('/', 'DashboardController@index');
 	Route::get('/{any}', 'DashboardController@index')->where('any', '.*');
 });
 
