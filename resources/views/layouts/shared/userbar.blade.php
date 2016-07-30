@@ -4,15 +4,15 @@
 			<div class="col-md-6">
 				
 				@if(Auth::user())
-				<div class="team-info pull-xs-left">
-					<div class="team">
-						<img class="pull-xs-left" src="http://prorl.com/logos/1467673224-Wot_the_Ballz.jpg" alt="">
-						<div class="info pull-xs-right">
-							<span class="current">Current Team</span>
-							<span class="name">Fearless Poo Flingers</span>
+					<div class="team-info pull-xs-left">
+						<div class="team">
+							<img class="pull-xs-left" src="http://placekitten.com/100/100" alt="">
+							<div class="info pull-xs-right">
+								<span class="current">Current Team</span>
+								<span class="name">Fearless Poo Flingers</span>
+							</div>
 						</div>
 					</div>
-				</div>
 				@endif
 
 			</div>
@@ -26,7 +26,7 @@
 				@else
 					<div class="user-info pull-xs-right">
 						<div class="user">
-							<img class="pull-xs-right" src="http://prorl.com/logos/1467673224-Wot_the_Ballz.jpg" alt="">
+							<img class="pull-xs-right" src="http://placekitten.com/100/100" alt="">
 							<div class="info pull-xs-right">
 								<span class="phrase">Holy cow!</span>
 								<span class="name">SomeLongAssName</span>
