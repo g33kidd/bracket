@@ -10078,7 +10078,6 @@ return jQuery;
 'use strict';
 
 window.$ = window.jQuery = require('jquery');
-// require('bootstrap');
 
 },{"jquery":1}]},{},[2]);
 
