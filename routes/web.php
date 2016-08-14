@@ -1,7 +1,7 @@
 <?php
 
-// Authentication Routes
-Auth::routes();
+// Authentication routes
+Route::auth();
 
 // Admin "ANY" routes for the React application.
 Route::group([
