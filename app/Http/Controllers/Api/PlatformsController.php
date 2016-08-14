@@ -23,6 +23,7 @@ class PlatformsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * TODO: Add the banners and logos here...
      * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
@@ -33,6 +34,8 @@ class PlatformsController extends Controller
         $platform->name = $request->input('name');
         $platform->short_name = $request->input('short_name');
         $platform->slug = $request->input('slug');
+        $platform->logo = "";
+        $platform->banner = "";
         $platform->save();
 
         return response()->json($platform->toArray());

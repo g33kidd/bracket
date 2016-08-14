@@ -38,6 +38,9 @@ class GamesController extends Controller
         $game->name = $request->input('name');
         $game->short_name = $request->input('short_name');
         $game->slug = $request->input('slug');
+        $game->logo = "";
+        $game->banner = "";
+        
         $game->save();
         $game->platforms()->attach($request->input('platforms'));
 
