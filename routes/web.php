@@ -1,7 +1,7 @@
 <?php
 
 // Authentication Routes
-Route::auth();
+Auth::routes();
 
 // Admin "ANY" routes for the React application.
 Route::group([
@@ -42,6 +42,3 @@ Route::group(['namespace' => 'Site'], function() {
         });
     });
 });
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
