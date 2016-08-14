@@ -14,6 +14,16 @@ return [
 
     'name' => env('APP_NAME', 'Bracket'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Challonge API Key
+    |--------------------------------------------------------------------------
+    |
+    | This is necessary for certain parts of the application to use Challonge's
+    | API and make requests to the service.
+    */
+
+    'challonge_api' => env('CHALLONGE_API', null),
 
     /*
     |--------------------------------------------------------------------------

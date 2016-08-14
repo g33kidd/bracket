@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Notifications\TournamentStarting;
 use Illuminate\Support\Facades\Auth;
+use Reflex\Challonge\Challonge;
 
 class HomeController extends Controller
 {
@@ -18,9 +19,11 @@ class HomeController extends Controller
         return $this->renderView('home');
     }
 
-    public function notify()
-    {
-    	Auth::user()->notify(new TournamentStarting());
-    	return response(null, 200);
-    }
+    // THIS IS HOW CHALLONGE WORKS
+    // public function test()
+    // {
+    // 	$key = config('app.challonge_api');
+    // 	$tournaments = (new Challonge($key))->getTournaments();
+    // 	dd($tournaments);
+    // }
 }

@@ -17,11 +17,24 @@ function() {
 Route::group(['namespace' => 'Site'], function() {
 	Route::get('/', 'HomeController@index');
 
-	// Route::get('/teams', 'TeamController@index');
-	// Route::get('/teams/{id}', 'TeamController@show');
+    // Tournaments
+    Route::group(['prefix' => 'tournaments'], function() {
+        Route::get('/{gameOrPlatformSlug}', 'TournamentController@index');
+        Route::get('/{slug}/view', 'TournamentController@show');
+    });
 
-	// Route::get('/players', 'PlayerController@index');
-	// Route::get('/players/{username}', 'PlayerController@show');
+    // Users/Players
+    Route::group(['prefix' => 'players'], function() {
+        Route::get('/', 'PlayerController@index');
+        Route::get('/{username}', 'PlayerController@show');
+    });
+
+    // Teams
+    Route::group(['prefix' => 'teams'], function() {
+        Route::get('/', 'TeamController@index');
+        Route::get('/{slug}', 'TeamController@show');
+        Route::get('/{slug}/settings', 'TeamSettingsController@index');
+    });
 
     // Route::group(['prefix' => 'settings'], function() {
     //     Route::group(['prefix' => 'teams'], function() {
