@@ -17,6 +17,6 @@ elixir(function(mix) {
   mix.webpack('admin/admin.js');
 
   mix.browserSync({
-  	proxy: 'bracket.dev'
+  	proxy: 'bracket'
   });
 });
