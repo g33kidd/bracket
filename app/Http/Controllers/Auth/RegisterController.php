@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -64,7 +64,7 @@ class RegisterController extends Controller
      * @return User
      */
     protected function create(array $data)
-    {   
+    {  
         $user = User::create([
             'username' => $data['username'],
             'name' => $data['name'],
@@ -72,6 +72,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
+        // Probably should be queued...
         Mail::to($data['email'])->send(new AccountCreated($user));
         return $user;
     }

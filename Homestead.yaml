@@ -1,6 +1,6 @@
 ---
 ip: "192.168.10.10"
-memory: 512
+memory: 1024
 cpus: 1
 hostname: bracket
 name: bracket
