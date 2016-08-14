@@ -9,8 +9,9 @@ Route::group([
 	'prefix' => 'admin', 
 	'middleware' => 'auth'], 
 function() {
-    Route::get('/', 'DashboardController@index');
-	Route::get('/{any}', 'DashboardController@index')->where('any', '.*');
+    Route::get(['/', '/{any}'],  function() {
+        return view('admin.index');
+    })->where('any', '.*');
 });
 
 // The main site routes
