@@ -1,15 +1,20 @@
-/vendor/
-node_modules/
+# Created by https://www.gitignore.io/api/laravel
 
-# Homestead specific
-.vagrant
+### Laravel ###
+vendor/
+node_modules/
 
 # Laravel 4 specific
 bootstrap/compiled.php
 app/storage/
 
 # Laravel 5 & Lumen specific
+bootstrap/cache/
 storage/
+.vagrant/
 .env.*.php
 .env.php
 .env
+
+# Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
+.rocketeer/

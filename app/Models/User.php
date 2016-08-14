@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    // Fetches posts from this user
+    // Post relationship
     public function posts()
     {
         return $this->hasMany('App\Models\Post');

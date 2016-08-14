@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Mail;
+use App\Mail\AccountCreated;
 use App\Models\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -62,12 +64,17 @@ class RegisterController extends Controller
      * @return User
      */
     protected function create(array $data)
-    {
-        return User::create([
+    {   
+        $user = User::create([
             'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        // Send the "confirmation" email, even though it doesn't really do anything yet.
+        // TODO: This should also be queued... don't need it now though.
+        Mail::to($data['email'])->send(new AccountCreated($user));
+        return $user;
     }
 }
