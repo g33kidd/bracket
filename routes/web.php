@@ -1,4 +1,7 @@
 <?php
+/**
+ * Web Routes
+ */
 
 // Authentication routes
 Route::auth();
@@ -9,7 +12,8 @@ Route::group([
 	'prefix' => 'admin', 
 	'middleware' => 'auth'], 
 function() {
-    Route::get(['/', '/{any}'],  function() {
+    Route::get('/', function() { return view('admin.index'); });
+    Route::get('/{any}',  function() {
         return view('admin.index');
     })->where('any', '.*');
 });
@@ -17,6 +21,7 @@ function() {
 // The main site routes
 Route::group(['namespace' => 'Site'], function() {
 	Route::get('/', 'HomeController@index');
+    Route::get('/challonge', 'HomeController@challonge');
 
     // Tournaments
     Route::group(['prefix' => 'tournaments'], function() {

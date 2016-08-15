@@ -20,10 +20,10 @@ class HomeController extends Controller
     }
 
     // THIS IS HOW CHALLONGE WORKS
-    // public function test()
-    // {
-    // 	$key = config('app.challonge_api');
-    // 	$tournaments = (new Challonge($key))->getTournaments();
-    // 	dd($tournaments);
-    // }
+    public function challonge()
+    {
+    	$key = config('app.challonge_api');
+    	$tournaments = (new Challonge($key))->getTournaments();
+    	dd($tournaments);
+    }
 }
