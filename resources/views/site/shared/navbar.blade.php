@@ -1,8 +1,6 @@
 <header class="navbar navbar-full main-header">
 	<div class="container">
-		<a class="navbar-brand pull-xs-left" href="/">
-			<img src="/images/prl-logo.png" alt="">
-		</a>
+		<a class="navbar-brand pull-xs-left" href="/">Bracket</a>
 
 		<ul class="nav navbar-nav pull-xs-right">
 			<li class="nav-item">

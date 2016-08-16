@@ -1,0 +1,21 @@
+.user-bar {
+	padding: 10px 0;
+	background: #F2F2F2;
+
+	.guest-info {
+		a {
+			display: inline-block;
+			padding: 5px 10px;
+			background: #333;
+			margin-right: 5px;
+			color: #FFF;
+			&:last-of-type {
+				margin-right: 0px;
+			}
+		}
+	}
+}
+
+.main-header {
+	background: #FEFEFE;
+}
