@@ -21,6 +21,7 @@ return [
     |
     | This is necessary for certain parts of the application to use Challonge's
     | API and make requests to the service.
+    | TODO: MOVE THIS TO DB SETTINGS
     */
 
     'challonge_api' => env('CHALLONGE_API', null),
@@ -148,9 +149,7 @@ return [
 
     'providers' => [
 
-        /*
-         * Laravel Framework Service Providers...
-         */
+        // Laravel Framework Service Providers...
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -174,9 +173,10 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        /*
-         * Application Service Providers...
-         */
+        // Laravel Things
+        Laravel\Passport\PassportServiceProvider::class,
+
+        // Application Service Providers
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
