@@ -1,5 +1,7 @@
 [![bracket on discord](https://img.shields.io/badge/discord-bracket--on--discord-738bd7.svg?style=flat-square)](https://discord.gg/qQnBPDm)
 
+NOPE
+
 # Bracket
 Bracket is an all-purpose tournament organization platform. It allows gaming/tournament communities to come together with their own custom platform for communication, organization, ladders and much more. The platform is built with the Laravel framework so it's easy to extend, customize and make your own!
 
