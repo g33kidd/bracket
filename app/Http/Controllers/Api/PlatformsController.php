@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Platform;
 use Illuminate\Http\Request;
 
-class PlatformsController extends Controller
+class PlatformsController
 {
     /**
      * Display a listing of the resource.

@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Team;
 
-class TeamController extends Controller
+class TeamController
 {
 
 	public function __construct()
@@ -17,12 +16,12 @@ class TeamController extends Controller
     
 	public function index()
 	{
-		return $this->renderView('teams');
+		return renderView('teams');
 	}
 
 	public function show($id)
 	{
-		return $this->renderView('team-view', ['team' => Team::find($id)]);
+		return renderView('team-view', ['team' => Team::find($id)]);
 	}
 
 }

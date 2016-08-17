@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Http\Controllers\Controller;
 use App\Notifications\TournamentStarting;
 use Illuminate\Support\Facades\Auth;
 use Reflex\Challonge\Challonge;
 
-class HomeController extends Controller
+class HomeController
 {
     /**
      * Show the application dashboard.
@@ -16,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return $this->renderView('home');
+        return renderView('home');
     }
 
     // THIS IS HOW CHALLONGE WORKS

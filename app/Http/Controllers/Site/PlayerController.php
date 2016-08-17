@@ -3,24 +3,21 @@
 namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Models\User;
 
-class PlayerController extends Controller
+class PlayerController
 {
     
 	public function index()
 	{
-		return $this->renderView('players');
+		return renderView('players');
 	}
 
 	public function show($username)
 	{
 		$user = User::where('username', '=', $username)->first();
-		return $this->renderView('player-view', ['user' => $user]);
+		return renderView('player-view', ['user' => $user]);
 	}
 
 }

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Game;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class GamesController extends Controller
+class GamesController
 {
     /**
      * Display a listing of the resource.
