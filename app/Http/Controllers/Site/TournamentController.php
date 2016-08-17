@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Site;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use App\Models\Tournament;
+use Illuminate\Http\Request;
 
 class TournamentController extends Controller
 {
 
-	public function index() {
-
+	public function index($game) {
+		$tournaments = Tournament::all();
+		return makeView();
 	}
 
 	public function show() {
