@@ -70,8 +70,11 @@ class GamesController
      */
     public function update(Request $request, $id)
     {
-        // can there be a helper class to just do the same thing in store/update
-        // it would make a ton of sense and save a ton of time...
+        $game = Game::findOrFail($id);
+        $game->name = $request->name;
+        $game->save();
+        
+        return response()->json($game->toArray());
     }
 
     /**

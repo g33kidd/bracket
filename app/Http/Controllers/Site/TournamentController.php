@@ -12,7 +12,7 @@ class TournamentController extends Controller
 
 	public function index($game) {
 		$tournaments = Tournament::all();
-		return makeView();
+		return renderView('tournaments');
 	}
 
 	public function show() {

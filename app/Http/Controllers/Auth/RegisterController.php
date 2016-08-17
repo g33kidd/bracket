@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Mail;
+use App\Http\Controllers\Controller;
 use App\Mail\AccountCreated;
 use App\Models\User;
-use Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Mail;
+use Validator;
 
-class RegisterController
+class RegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
