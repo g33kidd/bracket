@@ -26,6 +26,14 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Passport::tokensCan([
+            'admin' => 'Access Everything',
+            'users' => 'Access Users',
+            'posts' => 'Access Posts',
+            'tournaments' => 'Access Tournaments',
+            'teams' => 'Access Tournaments'
+        ]);
+
         Passport::routes();
     }
 }

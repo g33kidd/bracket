@@ -13,6 +13,10 @@ class SetupTeamTables extends Migration
      */
     public function up()
     {
+        Schema::table('users', function(Blueprint $table) {
+            $table->integer('current_team_id')->unsigned()->nullable();
+        });
+
         Schema::create('teams', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('owner_id')->unsigned();
@@ -54,6 +58,10 @@ class SetupTeamTables extends Migration
      */
     public function down()
     {
+        Schema::table('users', function(Blueprint $table) {
+            $table->dropColumn('current_team_id');
+        });
+
         Schema::table('team_user', function(Blueprint $table) {
             $table->dropForeign('team_user_user_id_foreign');
             $table->dropForeign('team_user_team_id_foreign');
