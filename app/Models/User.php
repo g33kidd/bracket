@@ -20,21 +20,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    // Post relationship
-    public function posts()
-    {
-        return $this->hasMany('App\Models\Post');
-    }
-
     public function teams()
     {
         return $this->belongsToMany('App\Models\Team', 'team_user');
     }
 
     // This should join a team, if they have been invited.
-    public function join(Team $team)
+    // Currently it just toggles between joined and not-joined.
+    // Teams also need roles for users...
+    public function toggleTeam(Team $team)
     {
-        
+        return $this->teams()->attach($team);
     }
 
 }

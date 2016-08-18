@@ -8,7 +8,7 @@
 			</div>
 			@else
 			<div class="user-info">
-				<span class="name">SomeLongAssName</span>
+				<span class="name">Hello, {{ Auth::user()->username }}!</span>
 				<div class="actions">
 					<a href="#">Settings</a>
 					<a href="#">Logout</a>
