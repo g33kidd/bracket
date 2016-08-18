@@ -1,10 +1,12 @@
 <?php
 namespace App\Traits\Teams;
 
+use App\Models\User;
+
 trait HasMembers {
 
 	// Invites a user to a team.
-	public function invite($user)
+	public function invite(User $user)
 	{
 		$token = md5(uniqid(microtime()));
 		// $invite = TeamInvitation::create([]);

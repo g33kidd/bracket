@@ -1,6 +1,8 @@
 <?php
 namespace App\Traits\Teams;
 
+use App\Models\Team;
+
 trait HasTeams {
 
 	// toggle the membership.
