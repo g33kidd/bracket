@@ -12,4 +12,9 @@ class Team extends Model
         return $this->belongsToMany('App\Models\User', 'team_user');
 	}
 
+	public function tournaments()
+	{
+		return $this->belongsToMany('App\Models\Tournament', 'team_tournament');
+	}
+
 }
