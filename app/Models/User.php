@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use App\Models\Team;
+use App\Traits\Teams\HasTeams;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasTeams, HasApiTokens, Notifiable;
 
     /**
      * The attributes that should be hidden for arrays.

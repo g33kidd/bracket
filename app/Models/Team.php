@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Notifications\ReceivedTeamInvitation;
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\Teams\HasMembers;
 
 class Team extends Model
 {
+	use HasMembers;
     
     // A team can have many members.
 	public function members()
