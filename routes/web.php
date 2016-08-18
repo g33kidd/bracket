@@ -44,6 +44,7 @@ Route::group(['namespace' => 'Site'], function() {
         Route::get('/', 'TeamController@index');
         Route::get('/{slug}', 'TeamController@show');
 
+        Route::post('/invite', 'TeamInvitesController@store');
         Route::get('/accept/{token}', 'TeamInvitesController@index');
     });
 

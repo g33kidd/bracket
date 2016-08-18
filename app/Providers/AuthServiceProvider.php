@@ -31,7 +31,8 @@ class AuthServiceProvider extends ServiceProvider
             'users' => 'Access Users',
             'posts' => 'Access Posts',
             'tournaments' => 'Access Tournaments',
-            'teams' => 'Access Tournaments'
+            'teams' => 'Access Tournaments',
+            'regular' => 'Regular User Access'
         ]);
 
         Passport::routes();

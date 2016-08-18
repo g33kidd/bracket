@@ -26,4 +26,11 @@ class PostsController
 		return response()->json($post->toArray());
 	}
 
+	public function destroy($id)
+	{
+		$post = Post::find($id);
+		$post->delete();
+		return response(null, 200);
+	}
+
 }
