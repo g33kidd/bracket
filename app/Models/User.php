@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Team;
-use App\Traits\Teams\HasTeams;
+use App\Traits\Users\HasTeams;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;

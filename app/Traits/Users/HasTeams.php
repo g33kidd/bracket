@@ -1,5 +1,5 @@
 <?php
-namespace App\Traits\Teams;
+namespace App\Traits\Users;
 
 use App\Models\Team;
 
@@ -11,8 +11,6 @@ trait HasTeams {
 	{
 		return $this->teams()->toggle($team);
 	}
-
-	
 
 	// define the relationship
 	public function teams()

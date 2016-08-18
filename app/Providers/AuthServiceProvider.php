@@ -26,6 +26,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        // Permissions for API routes
         Passport::tokensCan([
             'admin' => 'Access Everything',
             'users' => 'Access Users',
