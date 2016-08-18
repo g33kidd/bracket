@@ -43,7 +43,8 @@ Route::group(['namespace' => 'Site'], function() {
     Route::group(['prefix' => 'teams'], function() {
         Route::get('/', 'TeamController@index');
         Route::get('/{slug}', 'TeamController@show');
-        Route::get('/{slug}/settings', 'TeamSettingsController@index');
+
+        Route::get('/accept/{token}', 'TeamInvitesController@index');
     });
 
 });

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TeamInvitation extends Model
+class TeamInvite extends Model
 {
     //
 }
