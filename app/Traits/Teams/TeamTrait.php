@@ -15,7 +15,7 @@ trait TeamTrait {
 	}
 
 	// Should re-send the invitation based on the invitation $id.
-	public function resentInvite() { return false; }
+	public function resendInvite() { return false; }
 
 	// Removes a user from a team.
 	public function removeUser(User $user)
