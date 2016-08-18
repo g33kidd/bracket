@@ -3,7 +3,7 @@ namespace App\Traits\Teams;
 
 use App\Models\User;
 
-trait HasMembers {
+trait Team {
 
 	// Invites a user to a team.
 	public function invite(User $user)
@@ -21,6 +21,16 @@ trait HasMembers {
 	public function removeUser(User $user)
 	{
 		return $this->members()->toggle($user);
+	}
+
+	public function hasMember(User $user)
+	{
+		return $this->members()->where('id', "=", $user->id)->first() ? true : false;
+	}
+
+	public function owner()
+	{
+		return $this->hasOne('App\Models\User', 'id', 'owner_id');
 	}
 
 	public function members()
