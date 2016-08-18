@@ -12,6 +12,8 @@ trait HasTeams {
 		return $this->teams()->toggle($team);
 	}
 
+	
+
 	// define the relationship
 	public function teams()
 	{

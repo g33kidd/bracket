@@ -26,12 +26,4 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Team', 'team_user');
     }
 
-    // This should join a team, if they have been invited.
-    // Currently it just toggles between joined and not-joined.
-    // Teams also need roles for users...
-    public function toggleTeam(Team $team)
-    {
-        return $this->teams()->attach($team);
-    }
-
 }
