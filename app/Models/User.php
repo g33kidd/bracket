@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Team;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -29,4 +30,11 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Team', 'team_user');
     }
+
+    // This should join a team, if they have been invited.
+    public function join(Team $team)
+    {
+        
+    }
+
 }
