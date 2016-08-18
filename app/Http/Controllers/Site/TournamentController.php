@@ -15,8 +15,9 @@ class TournamentController extends Controller
 		return renderView('tournaments');
 	}
 
-	public function show() {
-		
+	public function show($id) {
+		$tournament = Tournament::findOrFail($id);
+		return renderView('tournament', ['tournament' => $tournament]);
 	}
 
 }
