@@ -23,7 +23,7 @@ class Team extends Model
 	// This should invite a user to the team and send them an email.
 	public function invite(User $user)
 	{
-
+		
 	}
 
 }

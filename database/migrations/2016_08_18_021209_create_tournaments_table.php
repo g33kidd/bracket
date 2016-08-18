@@ -22,6 +22,7 @@ class CreateTournamentsTable extends Migration
             $table->text('prizes')->nullable();
             $table->enum('type', ['single_elimination', 'double_elimination', 'round_robin', 'swiss'])->default('single_elimination');
             $table->integer('challonge_id')->nullable();
+            $table->integer('checkin_time');
             $table->dateTime('start_at');
             $table->timestamps();
         });

@@ -17,6 +17,7 @@ class CreateTeamsUsersTable extends Migration
             $table->increments('id');
             $table->integer('team_id');
             $table->integer('user_id');
+            $table->boolean('is_admin')->default(false);
             $table->timestamps();
         });
     }

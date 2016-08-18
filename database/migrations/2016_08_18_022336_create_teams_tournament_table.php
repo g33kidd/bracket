@@ -17,6 +17,8 @@ class CreateTeamsTournamentTable extends Migration
             $table->increments('id');
             $table->integer('team_id');
             $table->integer('tournament_id');
+            $table->boolean('checked_in')->default(false);
+            $table->boolean('disqualified')->default(false);
             $table->timestamps();
         });
     }
