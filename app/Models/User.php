@@ -24,4 +24,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Post');
     }
+
+    public function teams()
+    {
+        return $this->belongsToMany('App\Models\Team', 'team_user');
+    }
 }
