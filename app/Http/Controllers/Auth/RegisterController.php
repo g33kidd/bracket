@@ -72,6 +72,10 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
+        // Create an access token for the user...
+        // when there are JSON components in the front-end..
+        // $token = $user->createToken('Personal Token', ['regular'])->accessToken;
+
         // Probably should be queued...
         Mail::to($data['email'])->send(new AccountCreated($user));
         return $user;
