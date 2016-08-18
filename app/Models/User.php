@@ -21,9 +21,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function teams()
+    public function acceptInvite($invite)
     {
-        return $this->belongsToMany('App\Models\Team', 'team_user');
+        $this->teams()->toggle($invite->team);
+        $invite->delete();
     }
 
 }

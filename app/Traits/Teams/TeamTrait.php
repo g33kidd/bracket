@@ -1,6 +1,7 @@
 <?php
 namespace App\Traits\Teams;
 
+use App\Models\TeamInvite;
 use App\Models\User;
 
 trait TeamTrait {
@@ -9,7 +10,15 @@ trait TeamTrait {
 	public function invite(User $user)
 	{
 		$token = md5(uniqid(microtime()));
-		// $invite = TeamInvitation::create([]);
+		
+		$invite = new TeamInvite;
+		$invite->user_id = $user;
+		$invite->team_id = $this->id;
+		$invite->email = $user->email;
+		$invite->accept_token = $token;
+		$invite->deny_token = $token;
+		$invite->save();
+
 		$notification = new ReceivedTeamInvitation($this, $token);
 		return $user->notify($notification);
 	}

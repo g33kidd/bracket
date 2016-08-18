@@ -10,13 +10,20 @@ use Illuminate\Http\Request;
 
 class TeamInvitesController extends Controller
 {
-    	
-    // Accepts invition for a team..
+
+	// Accepts invition for a team..
 	public function accept($token) {
 		$invite = TeamInvite::getFromToken($token);
-		if(auth()->check()) {
+		if (!$invite) {
+			abort(404);
+		}
+
+		if (auth()->check()) {
 			User::acceptInvite($invite);
-			return redirect('/');
+			return redirect('/teams');
+		} else {
+			session(['invite_token' => $token]);
+			return redirect()->to('login');
 		}
 	}
 
