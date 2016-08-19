@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/laravel
 
+### Homestead ###
+Homestead.yaml
+
 ### Laravel ###
 vendor/
 node_modules/
