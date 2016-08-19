@@ -21,6 +21,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * The attributes that should be mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'username', 'email', 'name', 'password'
+    ];
+
     public function acceptInvite($invite)
     {
         $this->teams()->toggle($invite->team);
