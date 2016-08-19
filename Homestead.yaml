@@ -1,6 +1,6 @@
 ---
 ip: "192.168.10.10"
-memory: 512
+memory: 1024
 cpus: 1
 hostname: bracket
 name: bracket
@@ -12,7 +12,7 @@ keys:
     - ~/.ssh/id_rsa
 
 folders:
-    - map: "/Users/g33kidd/Developer/bracket"
+    - map: "c:/Users/david/Code/php/bracket"
       to: "/home/vagrant/bracket"
 
 sites:

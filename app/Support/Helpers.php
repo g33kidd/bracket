@@ -11,11 +11,11 @@ function renderView($view = 'home', $extras = ['extra' => 'No extra data.']) {
 
 	// Filter out data based on what the view accesses?
 	// or something similar...
-	
+
 	// TODO: figure out how to extract needed values? if this is wanted I suppose
     // renderView('members', ['members', 'teams', 'tournaments']);
     // renderView('members', 'view', ['members', 'teams', 'tournaments']);
-    
+
 	$page_data = array_merge($defaults, $extras);
 	return view('site.' . $view, $page_data);
 }
