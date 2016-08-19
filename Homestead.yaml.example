@@ -12,7 +12,7 @@ keys:
     - ~/.ssh/id_rsa
 
 folders:
-    - map: "c:/Users/david/Code/php/bracket"
+    - map: "/path/to/bracket"
       to: "/home/vagrant/bracket"
 
 sites:
