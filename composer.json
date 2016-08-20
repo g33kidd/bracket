@@ -8,7 +8,9 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
         "team-reflex/challonge-php": "^1.0",
-        "laravel/passport": "^1.0@dev"
+        "laravel/passport": "^1.0@dev",
+        "laravel-notification-channels/discord": "^0.0.1",
+        "team-reflex/discord-php": "^4.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
