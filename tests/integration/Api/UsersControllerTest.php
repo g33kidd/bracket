@@ -65,10 +65,10 @@ class UsersControllerTest extends TestCase
     {
         $user = User::find('1');
 
-        // Assert that game exists before api call
+        // Assert that user exists before api call
         $this->assertTrue($user instanceof User);
 
-        // Call delete on the existing Game
+        // Call delete on the existing User
         $this->delete('/api/users/1');
 
         $user = User::find('1');
