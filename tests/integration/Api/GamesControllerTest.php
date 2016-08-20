@@ -50,7 +50,7 @@ class GamesControllerTest extends TestCase
 		]);
 	}
 
-    public function testGamesShowReturns404IfResourceDoesntExist()
+    public function testGamesShowReturns404IfRecordDoesntExist()
     {
         $this->get('/api/games/99999');
 
@@ -76,7 +76,7 @@ class GamesControllerTest extends TestCase
         $this->assertEquals($game, null);
     }
 
-    public function testGamesDestroyReturns404IfResourceDoesntExist()
+    public function testGamesDestroyReturns404IfRecordDoesntExist()
     {
         $this->delete('/api/games/99999');
 

@@ -1,26 +1,43 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\User;
 
-class UsersController
+use \App\Models\User;
+
+class UsersController extends \App\Http\Controllers\Controller
 {
+
+    public function __construct(User $userModel)
+    {
+        $this->userModel = $userModel;
+    }
 
     public function index()
     {
-    	$users = User::all();
+    	$users = $this->userModel->all();
+
     	return response()->json($users->toArray());
     }
 
     public function show($id)
     {
-    	$user = User::find($id);
-    	return response()->json($user->toArray());
+    	$user = $this->userModel->find($id);
+
+        if (!$user) {
+            return $this->recordNotFound();
+        }
+
+    	return response()->json($user);
     }
 
     public function destroy($id)
     {
-    	$user = User::find($id);
+    	$user = $this->userModel->find($id);
+
+        if (!$user) {
+            return $this->recordNotFound();
+        }
+
     	$user->delete();
     	return response(null, 200);
     }
