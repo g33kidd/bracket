@@ -3,7 +3,7 @@ import {
 	RECEIVE_POSTS,
 	ADDING_POST,
 	ADDED_POST
-} from '../actions/posts';
+} from 'actions/posts';
 
 const POSTS_INIT_STATE = {
 	isFetching: false,

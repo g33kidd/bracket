@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchGames, addGame } from '../actions/games';
-import AddGame from '../components/games/AddGame';
-import GamesTable from '../components/games/GamesTable';
+import { fetchGames, addGame } from 'actions/games';
+import AddGame from 'components/games/AddGame';
+import GamesTable from 'components/games/GamesTable';
 
 class Games extends Component {
 	constructor(props) {

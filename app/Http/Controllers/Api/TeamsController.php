@@ -28,6 +28,7 @@ class TeamsController extends Controller
 		$team->name = $request->name;
 		$team->slug = str_slug($request->name);
 		$team->description = $request->description;
+		$team->team_information = "Some default value... rip";
 		$team->owner_id = $request->owner_id;
 		$team->save();
 		return response()->json($team->toArray());

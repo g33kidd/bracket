@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchPlatforms } from '../actions/platforms';
-import { fetchGames } from '../actions/games';
+import { fetchPlatforms } from 'actions/platforms';
+import { fetchGames } from 'actions/games';
 
-import GamesCard from '../components/games/GamesCard';
-import PlatformsCard from '../components/platforms/PlatformsCard';
+import GamesCard from 'components/games/GamesCard';
+import PlatformsCard from 'components/platforms/PlatformsCard';
 
 class Dashboard extends Component {
 	constructor(props) {

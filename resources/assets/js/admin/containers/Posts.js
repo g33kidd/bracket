@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, addPost } from '../actions/posts';
+import { fetchPosts, addPost } from 'actions/posts';
 
 class Posts extends Component {
 	constructor(props) {

@@ -1,9 +1,9 @@
 import { 
 	REQUEST_GAMES, 
 	RECEIVE_GAMES,
-	ADDING_GAME,
+	ADDING_GAME, 
 	ADDED_GAME
-} from '../actions/games';
+} from 'actions/games';
 
 const GAMES_INIT_STATE = {
 	isFetching: false,
