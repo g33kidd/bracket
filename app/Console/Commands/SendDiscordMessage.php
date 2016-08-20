@@ -13,7 +13,7 @@ class SendDiscordMessage extends Command
      *
      * @var string
      */
-    protected $signature = 'discord:send';
+    protected $signature = 'discord:send {message : Message to send}';
 
     /**
      * The console command description.
@@ -39,11 +39,13 @@ class SendDiscordMessage extends Command
      */
     public function handle()
     {
-        if(!config('services.discord.token'))
-        {
+        $message = $this->argument('message');
+
+        if(!config('services.discord.token')) {
             $this->error("You need to set the DISCORD_TOKEN in the .env file!");
             return false;
         }
+
         $discord = new Discord([
             'token' => config('services.discord.token')
         ]);
@@ -55,7 +57,7 @@ class SendDiscordMessage extends Command
             foreach($guild->channels->getAll('type', 'text') as $channel) {
                 if($channel->name == "discord-tests") {
                     $this->line($channel->name);
-                    $channel->sendMessage("Hah! This is fun!");
+                    $channel->sendMessage($this->argument('message'));
                 }
             }
 

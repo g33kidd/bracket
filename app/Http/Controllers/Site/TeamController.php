@@ -9,11 +9,6 @@ use App\Team;
 class TeamController
 {
 
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
-    
 	public function index()
 	{
 		return renderView('teams');

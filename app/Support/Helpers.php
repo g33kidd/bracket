@@ -6,7 +6,7 @@ function renderView($view = 'home', $extras = ['extra' => 'No extra data.']) {
 		'games'	=> App\Models\Game::all(),
 		'platforms' => App\Models\Platform::all(),
 		'users' => App\Models\User::all(),
-		'user_count' => App\Models\User::all()->count(),
+		'teams' => App\Models\Team::all(),
 	];
 
 	// Filter out data based on what the view accesses?

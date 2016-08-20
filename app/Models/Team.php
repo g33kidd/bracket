@@ -10,6 +10,8 @@ use App\Traits\Teams\TeamTrait;
 class Team extends Model
 {
 	use TeamTrait;
+
+	protected $fillable = ['name', 'slug', 'description', 'owner_id'];
     
     // A team can have many members.
 	public function members()

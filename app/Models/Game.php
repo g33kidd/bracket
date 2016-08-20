@@ -8,6 +8,8 @@ class Game extends Model
 {
     public $timestamps = false;
 
+    protected $fillable = ['name', 'short_name', 'logo', 'banner'];
+
     public function platforms()
     {
         return $this->belongsToMany('App\Models\Platform', 'platform_game');

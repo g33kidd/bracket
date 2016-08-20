@@ -21,7 +21,7 @@ class TeamsController extends Controller
 		$team = Team::findOrFail($id);
 		return response()->json($team->toArray());
 	}
-
+	
 	public function store(Request $request)
 	{
 		$team = new Team;
