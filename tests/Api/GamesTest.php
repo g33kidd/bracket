@@ -19,8 +19,8 @@ class GamesTest extends TestCase
                                GamesTest::FACTORY_GAMES_TO_CREATE)->create();
     }
 
-	public function testGamesIndexReturnsAListOfGames()
-	{
+    public function testGamesIndexReturnsAListOfGames()
+    {
         $this->get('/api/games');
 
         $this->assertResponseOk();
@@ -32,8 +32,8 @@ class GamesTest extends TestCase
         ]);
 	}
 
-	public function testGamesShowReturnsASingleGame()
-	{
+    public function testGamesShowReturnsASingleGame()
+    {
         $this->get('/api/games/1');
 
         $this->assertResponseOk();
