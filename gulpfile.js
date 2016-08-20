@@ -15,6 +15,7 @@ elixir(function(mix) {
   mix.sass('app.scss');
   mix.browserify('app.js');
   mix.webpack('admin/admin.js');
+  mix.phpUnit();
 
   mix.browserSync({
   	proxy: 'bracket'

@@ -9,5 +9,20 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
+
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    /**
+     * Helper method that returns a 404 JsonResponse with a message
+     * stating that a record could not be found.
+     *
+     * @returns JsonResponse
+     */
+    public function recordNotFound($recordObj=null)
+    {
+        return response()->json([
+            'message' => 'Record not found'
+        ], 404);
+    }
+
 }

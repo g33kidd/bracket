@@ -1,11 +1,13 @@
 <?php
 
 use \App\Models\Game;
+use \App\Http\Controllers\Api\GamesController;
+use \App\Http\Controllers\Controller;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class GamesTest extends TestCase
+class GamesControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -15,8 +17,13 @@ class GamesTest extends TestCase
     {
         parent::setUp();
 
-        $this->games = factory(App\Models\Game::class,
-                               GamesTest::FACTORY_GAMES_TO_CREATE)->create();
+        $this->games = factory(
+            Game::class, GamesControllerTest::FACTORY_GAMES_TO_CREATE)->create();
+    }
+
+    public function testGamesControllerExtendsController()
+    {
+        $this->assertTrue(is_subclass_of(GamesController::class, Controller::class));
     }
 
     public function testGamesIndexReturnsAListOfGames()
@@ -49,7 +56,7 @@ class GamesTest extends TestCase
 
         $this->assertResponseStatus(404);
         $this->seeJson([
-            'message' => 'Game record not found'
+            'message' => 'Record not found'
         ]);
     }
 
@@ -66,7 +73,7 @@ class GamesTest extends TestCase
         $game = Game::find('1');
 
         $this->assertResponseOk();
-        $this->assertTrue(!$game);
+        $this->assertEquals($game, null);
     }
 
     public function testGamesDestroyReturns404IfResourceDoesntExist()
@@ -75,7 +82,7 @@ class GamesTest extends TestCase
 
         $this->assertResponseStatus(404);
         $this->seeJson([
-            'message' => 'Game record not found'
+            'message' => 'Record not found'
         ]);
     }
 
@@ -85,7 +92,7 @@ class GamesTest extends TestCase
             'name' => ''
         ]);
 
-        $this->assertSessionHasErrors();
+        $this->assertSessionHasErrors(['name', 'short_name', 'slug']);
     }
 
     public function testGamesStoreAddsNewGame()
@@ -99,7 +106,7 @@ class GamesTest extends TestCase
         $this->assertResponseOk();
         $this->seeJsonStructure(['id']);
 
-        $nextId = GamesTest::FACTORY_GAMES_TO_CREATE + 1;
+        $nextId = GamesControllerTest::FACTORY_GAMES_TO_CREATE + 1;
         $game = Game::find($nextId);
 
         $this->assertTrue($game instanceof Game);
@@ -111,7 +118,7 @@ class GamesTest extends TestCase
 
         $this->assertResponseStatus(404);
         $this->seeJson([
-            'message' => 'Game record not found'
+            'message' => 'Record not found'
         ]);
     }
 
@@ -139,7 +146,5 @@ class GamesTest extends TestCase
         $this->assertTrue($game->logo === $newLogoPath);
         $this->assertTrue($game->banner == $newBannerPath);
     }
-
-
 
 }

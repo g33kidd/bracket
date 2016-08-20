@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 class GamesController extends Controller
 {
 
+    public function __construct(Game $gameModel)
+    {
+        $this->gameModel = $gameModel;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,7 @@ class GamesController extends Controller
      */
     public function index()
     {
-        $games = Game::all();
+        $games = $this->gameModel->all();
 
         return response()->json($games->toArray());
     }
@@ -36,7 +41,7 @@ class GamesController extends Controller
           'short_name' => 'required|max:100'
         ]);
 
-        $game = new Game([
+        $game = new $this->gameModel([
             'name' => $request->input('name'),
             'short_name' => $request->input('short_name'),
             'slug' => $request->input('slug'),
@@ -59,12 +64,10 @@ class GamesController extends Controller
      */
     public function show($id)
     {
-        $game = Game::find($id);
+        $game = $this->gameModel->find($id);
 
         if (!$game) {
-            return response()->json([
-                'message' => 'Game record not found'
-            ], 404);
+            return $this->recordNotFound();
         }
 
         return response()->json($game);
@@ -80,12 +83,10 @@ class GamesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $game = Game::find($id);
+        $game = $this->gameModel->find($id);
 
         if (!$game) {
-            return response()->json([
-                'message' => 'Game record not found'
-            ], 404);
+            return $this->recordNotFound();
         }
 
         // TODO: Add support for updating the platforms,
@@ -111,12 +112,10 @@ class GamesController extends Controller
      */
     public function destroy($id)
     {
-        $game = Game::find($id);
+        $game = $this->gameModel->find($id);
 
         if (!$game) {
-            return response()->json([
-                'message' => 'Game record not found'
-            ], 404);
+            return $this->recordNotFound();
         }
 
         $game->delete();
