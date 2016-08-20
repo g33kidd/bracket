@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Game;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class GamesController
+class GamesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +17,7 @@ class GamesController
     public function index()
     {
         $games = Game::all();
-        
+
         return response()->json($games->toArray());
     }
 
@@ -31,19 +33,21 @@ class GamesController
         $this->validate($request, [
           'name' => 'required|max:255',
           'slug' => 'required|max:100',
+          'short_name' => 'required|max:100'
         ]);
 
-        $game = new Game();
-        $game->name = $request->input('name');
-        $game->short_name = $request->input('short_name');
-        $game->slug = $request->input('slug');
-        $game->logo = "";
-        $game->banner = "";
-        
+        $game = new Game([
+            'name' => $request->input('name'),
+            'short_name' => $request->input('short_name'),
+            'slug' => $request->input('slug'),
+            'logo' => '',
+            'banner' => ''
+        ]);
+
         $game->save();
         $game->platforms()->attach($request->input('platforms'));
 
-        return response()->json($game->toArray());
+        return response()->json($game);
     }
 
     /**
@@ -57,7 +61,13 @@ class GamesController
     {
         $game = Game::find($id);
 
-        return response()->json($game->toArray());
+        if (!$game) {
+            return response()->json([
+                'message' => 'Game record not found'
+            ], 404);
+        }
+
+        return response()->json($game);
     }
 
     /**
@@ -70,11 +80,26 @@ class GamesController
      */
     public function update(Request $request, $id)
     {
-        $game = Game::findOrFail($id);
-        $game->name = $request->name;
+        $game = Game::find($id);
+
+        if (!$game) {
+            return response()->json([
+                'message' => 'Game record not found'
+            ], 404);
+        }
+
+        // TODO: Add support for updating the platforms,
+        // that is once testing has been added for
+        // platforms.
+        $game->name = $request->input('name');
+        $game->short_name = $request->input('short_name');
+        $game->slug = $request->input('slug');
+        $game->logo = $request->input('logo');
+        $game->banner = $request->input('banner');
+
         $game->save();
-        
-        return response()->json($game->toArray());
+
+        return response()->json($game);
     }
 
     /**
@@ -87,6 +112,13 @@ class GamesController
     public function destroy($id)
     {
         $game = Game::find($id);
+
+        if (!$game) {
+            return response()->json([
+                'message' => 'Game record not found'
+            ], 404);
+        }
+
         $game->delete();
 
         return response(null, 200);

@@ -8,6 +8,15 @@ class Game extends Model
 {
     public $timestamps = false;
 
+    /**
+     * The attributes that should be mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'short_name', 'slug', 'logo', 'banner'
+    ];
+
     public function platforms()
     {
         return $this->belongsToMany('App\Models\Platform', 'platform_game');

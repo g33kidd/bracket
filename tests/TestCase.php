@@ -9,6 +9,13 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
      */
     protected $baseUrl = 'http://bracket.dev';
 
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->user = factory(App\Models\User::class)->create();
+    }
+
     /**
      * Creates the application.
      *
