@@ -47,8 +47,11 @@
 								<input type="text" class="form-control" id="add-game-slug" v-model="addForm.slug" placeholder="rocket-league">
 							</div>
 							<div class="form-group">
-								<label for="add-game-slug" class="form-control-label">Slug:</label>
-								<input type="text" class="form-control" id="add-game-slug" v-model="addForm.slug" placeholder="rocket-league">
+								<label for="add-game-slug" class="form-control-label">Platform:</label>
+								<select class="form-control" v-model="addForm.platform_id">
+									<option v-for="platform in platforms" value="{{ platform.id }}">{{ platform.name }}</option>
+								</select>
+								<small id="emailHelp" class="form-text text-muted">This form does not support adding multiple games.</small>
 							</div>
 						</form>
 					</div>
