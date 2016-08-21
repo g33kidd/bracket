@@ -21,9 +21,8 @@
 </head>
 <body id="app-layout default">
 
-	@include('site.shared.header')
+	<admin-header></admin-header>
 	@yield('content')
-	@include('site.shared.footer')
 	
 	{{-- If you have scripts that you need, add them here: --}}
 	<script src="/js/admin.js"></script>
