@@ -3,10 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Platform;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PlatformsController
+class PlatformsController extends Controller
 {
+
+    public function __construct(Platform $platformModel)
+    {
+        $this->platformModel = $platformModel;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,7 @@ class PlatformsController
      */
     public function index()
     {
-        $platforms = Platform::all();
+        $platforms = $this->platformModel->all();
 
         return response()->json($platforms->toArray());
     }
@@ -29,15 +36,22 @@ class PlatformsController
      */
     public function store(Request $request)
     {
-        $platform = new Platform();
-        $platform->name = $request->input('name');
-        $platform->short_name = $request->input('short_name');
-        $platform->slug = $request->input('slug');
-        $platform->logo = "";
-        $platform->banner = "";
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'slug' => 'required|max:100',
+            'short_name' => 'required|max:100'
+        ]);
+
+        $platform = new $this->platformModel([
+            'name' => $request->input('name'),
+            'short_name' => $request->input('short_name'),
+            'slug' => $request->input('slug'),
+            'logo' => '',
+            'banner' => ''
+        ]);
         $platform->save();
 
-        return response()->json($platform->toArray());
+        return response()->json($platform);
     }
 
     /**
@@ -49,9 +63,13 @@ class PlatformsController
      */
     public function show($id)
     {
-        $platform = Platform::find($id);
+        $platform = $this->platformModel->find($id);
 
-        return response()->json($platform->toArray());
+        if (!$platform) {
+            return $this->recordNotFound();
+        }
+
+        return response()->json($platform);
     }
 
     /**
@@ -64,7 +82,27 @@ class PlatformsController
      */
     public function update(Request $request, $id)
     {
-        // same for GamesController..
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'slug' => 'required|max:100',
+            'short_name' => 'required|max:100'
+        ]);
+
+        $platform = $this->platformModel->find($id);
+
+        if (!$platform) {
+            return $this->recordNotFound();
+        }
+
+        $platform->name = $request->input('name');
+        $platform->short_name = $request->input('short_name');
+        $platform->slug = $request->input('slug');
+        $platform->logo = $request->input('logo');
+        $platform->banner = $request->input('banner');
+
+        $platform->save();
+
+        return response()->json($platform);
     }
 
     /**
@@ -76,7 +114,12 @@ class PlatformsController
      */
     public function destroy($id)
     {
-        $platform = Platform::find($id);
+        $platform = $this->platformModel->find($id);
+
+        if (!$platform) {
+            return $this->recordNotFound();
+        }
+
         $platform->delete();
 
         return response(null, 200);

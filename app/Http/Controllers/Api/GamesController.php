@@ -83,6 +83,12 @@ class GamesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'slug' => 'required|max:100',
+            'short_name' => 'required|max:100'
+        ]);
+
         $game = $this->gameModel->find($id);
 
         if (!$game) {

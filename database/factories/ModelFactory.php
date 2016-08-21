@@ -30,3 +30,13 @@ $factory->define(App\Models\Game::class, function (Faker\Generator $faker) {
         'banner' => ''
     ];
 });
+
+$factory->define(App\Models\Platform::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'short_name' => $faker->word,
+        'slug' => str_replace(' ', '-', $faker->name),
+        'logo' => '',
+        'banner' => ''
+    ];
+});

@@ -114,7 +114,11 @@ class GamesControllerTest extends TestCase
 
     public function testGamesUpdateReturns404IfResourceDoesntExist()
     {
-        $this->actingAs($this->user)->put('/api/games/99999', []);
+        $this->actingAs($this->user)->put('/api/games/99999', [
+            'name' => 'Rocket League',
+            'slug' => 'rocket-league',
+            'short_name' => 'RL'
+        ]);
 
         $this->assertResponseStatus(404);
         $this->seeJson([
@@ -130,7 +134,7 @@ class GamesControllerTest extends TestCase
         $newLogoPath = '/some/path/to/a/logo.jpg';
         $newBannerPath = '/some/path/to/a/banner.png';
 
-        $resp = $this->actingAs($this->user)->put('/api/games/1', [
+        $this->actingAs($this->user)->put('/api/games/1', [
             'name' => $newName,
             'short_name' => $newShortName,
             'slug' => $newSlug,
@@ -145,6 +149,15 @@ class GamesControllerTest extends TestCase
         $this->assertTrue($game->slug === $newSlug);
         $this->assertTrue($game->logo === $newLogoPath);
         $this->assertTrue($game->banner == $newBannerPath);
+    }
+
+    public function testGamesUpdateReturnsValidationErrorIfNameFieldsArentSupplied()
+    {
+        $this->actingAs($this->user)->put('/api/games/1', [
+            'logo' => ''
+        ]);
+
+        $this->assertSessionHasErrors(['name', 'short_name', 'slug']);
     }
 
 }
