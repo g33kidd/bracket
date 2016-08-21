@@ -1,5 +1,7 @@
 [![bracket on discord](https://img.shields.io/badge/discord-bracket--on--discord-738bd7.svg?style=flat-square)](https://discord.gg/qQnBPDm)
 [![bracket on trello](https://img.shields.io/badge/trello-bracket--on--trello-blue.svg?style=flat-square)](https://trello.com/b/hZrNNmTs/bracket)
+[![travis-ci master](https://img.shields.io/travis/g33kidd/bracket/master.svg?maxAge=2592000?style=flat-square)](https://travis-ci.org/g33kidd/bracket)
+[![travis-ci develop](https://img.shields.io/travis/g33kidd/bracket/develop.svg?maxAge=2592000?style=flat-square)](https://travis-ci.org/g33kidd/bracket)
 
 # Bracket
 Bracket is an all-purpose tournament organization platform. It allows gaming/tournament communities to come together with their own custom platform for communication, organization, ladders and much more. The platform is built with the Laravel framework so it's easy to extend, customize and make your own!

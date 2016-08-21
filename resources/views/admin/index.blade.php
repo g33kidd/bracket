@@ -12,8 +12,6 @@
 	<link rel="stylesheet" href="/css/app.css" title="no title" charset="utf-8">
 </head>
 <body id="app-layout default">
-	<div id="root"></div>
-
 	<script src="/js/admin.js"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 	
-	<title>{{ config('app.name') }}</title>
+	<title>{{ config('app.name') }} Admin</title>
 
 	{{-- stylesheets --}}
 	<link href="https://fonts.googleapis.com/css?family=Lato:700,900,400,100,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
@@ -26,6 +26,6 @@
 	@include('site.shared.footer')
 	
 	{{-- If you have scripts that you need, add them here: --}}
-	<script src="/js/app.js"></script>
+	<script src="/js/admin.js"></script>
 </body>
 </html>
