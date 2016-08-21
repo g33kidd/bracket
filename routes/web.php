@@ -11,8 +11,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('/', 'AdminController@index');
     Route::get('/teams', 'AdminController@teams');
     Route::get('/games', 'AdminController@games');
+    Route::get('/users', 'AdminController@users');
     Route::get('/platforms', 'AdminController@platforms');
     Route::get('/settings', 'AdminController@settings');
+    Route::get('/oauth', 'AdminController@passport');
 });
 
 // The main site routes

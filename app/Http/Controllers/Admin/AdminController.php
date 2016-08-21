@@ -25,4 +25,12 @@ class AdminController extends Controller {
 		return view('admin.settings');
 	}
 
+	public function users() {
+		return view('admin.users');
+	}
+
+	public function passport() {
+		return view('admin.passport');
+	}
+
 }
