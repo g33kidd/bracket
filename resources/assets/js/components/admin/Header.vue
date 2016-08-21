@@ -8,7 +8,7 @@
 						<a class="dropdown-item" href="/admin/games">Games</a>
 						<a class="dropdown-item" href="/admin/platforms">Platforms</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Separated link</a>
+						<a class="dropdown-item" href="/" target="_blank">Visit Site</a>
 					</div>
 				</li>
 			</div>
@@ -25,7 +25,7 @@
 <script>
 export default {
 	data() {
-		
+		return {};
 	}
 }
 </script>
