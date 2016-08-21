@@ -11,6 +11,7 @@
 					<th>Name</th>
 					<th>Short Name</th>
 					<th>Slug</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -19,6 +20,18 @@
 					<td>{{ game.name }}</td>
 					<td>{{ game.short_name }}</td>
 					<td>{{ game.slug }}</td>
+					<td>
+						<div class="btn-group">
+							<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Do Things
+							</button>
+							<div class="dropdown-menu">
+								<a class="dropdown-item">Edit</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item text-danger" @click="destroy(game)">Delete</a>
+							</div>
+						</div>
+					</td>
 				</tr>
 			</tbody>
 		</table>
@@ -115,6 +128,12 @@
 
 			showNewGameForm() {
 				$('#modal-add-game').modal('show');
+			},
+
+			destroy(game) {
+				this.$http.delete('/api/games/' + game.id).then(response => {
+                    this.getGamesAndPlatforms();
+                });
 			}
 		}
 	}
