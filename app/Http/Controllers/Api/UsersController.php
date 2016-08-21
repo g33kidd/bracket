@@ -18,6 +18,11 @@ class UsersController
     	return response()->json($user->toArray());
     }
 
+    public function verify()
+    {
+        
+    }
+
     public function destroy($id)
     {
     	$user = User::find($id);
