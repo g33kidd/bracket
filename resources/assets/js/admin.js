@@ -59,6 +59,9 @@ router.map({
 	},
 	'/platforms': {
 		component: require('./components/admin/PlatformsManager.vue')
+	},
+	'/users': {
+		component: require('./components/admin/UsersManager.vue')
 	}
 });
 router.start(App, 'body');
