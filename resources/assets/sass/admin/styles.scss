@@ -1,5 +1,18 @@
-.navbar {
-	&.secondary {
-		padding: 0.1rem 1rem;
-	}
+@import "node_modules/animate.css/animate.css";
+@import "node_modules/nprogress/nprogress";
+
+#nprogress {
+  $color: #48e79a;
+
+  .bar {
+    background: $color;
+  }
+  .peg {
+    box-shadow: 0 0 10px $color, 0 0 5px $color;
+  }
+
+  .spinner-icon {
+    border-top-color: $color;
+    border-left-color: $color;
+  }
 }

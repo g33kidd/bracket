@@ -1,29 +1,61 @@
+// 
+window.Tether 		= require('tether');
 require('bootstrap/dist/js/bootstrap.js');
 
-// VueJS Stuff
-window.Vue = require('vue');
-require('vue-resource');
+var Vue 	  = require('vue');
+var Router 	  = require('vue-router');
+var Resource  = require('vue-resource');
+var NProgress = require('nprogress');
 
-// Set the CSRF token on all Vue requests
-Vue.http.interceptors.push((request, next) => {
-    request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
-    next();
+Vue.use(Resource);
+Vue.use(Router);
+
+NProgress.start();
+NProgress.inc(0.2);
+
+Vue.transition('fade', {
+	enterClass: 'fadeIn',
+	leaveClass: 'fadeOut'
 });
-window.VueRouter = require('vue-router');
 
-Vue.use(VueRouter);
+const router = new Router({
+	saveScrollPosition: true,
+	transitionOnLoad: true,
+	root: '/admin',
+	history: true
+});
+
+Vue.http.interceptors.push((request, next) => {
+	NProgress.inc(0.2);
+	request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
+	next((response) => {
+		NProgress.done();
+		return response;
+	});
+});
+
+router.beforeEach(({next}) => {
+	NProgress.start();
+	next();
+});
+
+router.afterEach(() => {
+	NProgress.done();
+});
+
+const view = (path) => {
+	return (resolve) => {
+		require([`${path}.vue`], resolve);
+	};
+};
 
 var App = Vue.extend({});
-var router = new VueRouter({
-	history: true,
-	root: '/admin',
-	transitionOnLoad: true
-});
+
+Vue.component('admin-header', require('./components/admin/Header.vue'));
 
 router.map({
 	'/games': {
-		component: Games
+		component: require('./components/admin/GamesManager.vue')
 	}
 });
-
 router.start(App, 'body');

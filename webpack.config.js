@@ -12,11 +12,9 @@ module.exports = {
 
 	plugins: [
 		new webpack.ProvidePlugin({
-			jQuery: 'jquery',
-			$: 'jquery',
-			_: 'lodash',
-			Vue: 'vue',
-			VueRouter: 'vue-router'
+			'jQuery': 'jquery',
+			'$': 'jquery',
+			'_': 'lodash'
 		})
 	]
 

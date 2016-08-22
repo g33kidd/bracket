@@ -7,14 +7,15 @@
 Route::auth();
 Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
-    Route::get('/', 'AdminController@index');
-    Route::get('/teams', 'AdminController@teams');
-    Route::get('/games', 'AdminController@games');
-    Route::get('/users', 'AdminController@users');
-    Route::get('/platforms', 'AdminController@platforms');
-    Route::get('/settings', 'AdminController@settings');
-    Route::get('/oauth', 'AdminController@passport');
+Route::group([
+    'namespace' => 'Admin', 
+    'prefix' => 'admin', 
+    'middleware' => 'auth'], 
+function() {
+    Route::get('/', function() { return view('admin.index'); });
+    Route::get('/{any}',  function() {
+        return view('admin.index');
+    })->where('any', '.*');
 });
 
 // The main site routes

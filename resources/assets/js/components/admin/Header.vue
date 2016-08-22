@@ -5,8 +5,8 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Navigation</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="/admin/games">Games</a>
-						<a class="dropdown-item" href="/admin/platforms">Platforms</a>
+						<a class="dropdown-item" v-link="{ path: '/games' }">Games</a>
+						<a class="dropdown-item" v-link="{ path: '/platforms' }">Platforms</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="/" target="_blank">Visit Site</a>
 					</div>
