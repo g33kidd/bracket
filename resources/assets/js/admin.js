@@ -1,16 +1,23 @@
-require('./boot');
+require('bootstrap/dist/js/bootstrap.js');
+
+// VueJS Stuff
+window.Vue = require('vue');
+require('vue-resource');
+
+// Set the CSRF token on all Vue requests
+Vue.http.interceptors.push((request, next) => {
+    request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
+    next();
+});
 window.VueRouter = require('vue-router');
 
 Vue.use(VueRouter);
-
-var Games = Vue.component('game-manager', require('./components/admin/GamesManager.vue'));
-var Header = Vue.component('admin-header', require('./components/admin/Header.vue'));
 
 var App = Vue.extend({});
 var router = new VueRouter({
 	history: true,
 	root: '/admin',
-	
+	transitionOnLoad: true
 });
 
 router.map({
@@ -20,7 +27,3 @@ router.map({
 });
 
 router.start(App, 'body');
-
-// const app = new Vue({
-// 	el: 'body'
-// });
