@@ -36,4 +36,9 @@ class User extends Authenticatable
         $invite->delete();
     }
 
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post');
+    }
+
 }

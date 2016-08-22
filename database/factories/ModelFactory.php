@@ -40,3 +40,14 @@ $factory->define(App\Models\Platform::class, function (Faker\Generator $faker) {
         'banner' => ''
     ];
 });
+
+$factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->name,
+        'slug' => str_replace(' ', '-', $faker->name),
+        'content' => $faker->text($maxNbvChars=500),
+        'excerpt' => $faker->paragraph,
+        'status' => 'published',
+        'user_id' => 1
+    ];
+});

@@ -10,9 +10,9 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 // Admin "ANY" routes for the React application.
 Route::group([
-	'namespace' => 'Admin', 
-	'prefix' => 'admin', 
-	'middleware' => 'auth'], 
+	'namespace' => 'Admin',
+	'prefix' => 'admin',
+	'middleware' => 'auth'],
 function() {
     Route::get('/', function() { return view('admin.index'); });
     Route::get('/{any}',  function() {
@@ -24,7 +24,7 @@ function() {
 Route::group(['namespace' => 'Site'], function() {
 
 	Route::get('/', 'HomeController@index');
-    
+
     Route::get('/challonge', 'HomeController@challonge');
 
     // Tournaments

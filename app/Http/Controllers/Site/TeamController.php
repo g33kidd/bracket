@@ -13,7 +13,7 @@ class TeamController
 	{
 		$this->middleware('auth');
 	}
-    
+
 	public function index()
 	{
 		return renderView('teams');

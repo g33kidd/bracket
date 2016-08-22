@@ -18,7 +18,7 @@ class GamesControllerTest extends TestCase
         parent::setUp();
 
         $this->games = factory(
-            Game::class, GamesControllerTest::FACTORY_GAMES_TO_CREATE)->create();
+            Game::class, self::FACTORY_GAMES_TO_CREATE)->create();
     }
 
     public function testGamesControllerExtendsController()
