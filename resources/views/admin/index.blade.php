@@ -22,12 +22,14 @@
 <body id="app-layout default">
 	<div id="app">
 		<admin-header></admin-header>
-		<router-view
-			class="animated"
-			transition="fade"
-			transition-mode="out-in"
-			keep-alive>
-		</router-view>
+		<div class="container m-t-2">
+			<router-view
+				class="animated"
+				transition="fade"
+				transition-mode="out-in"
+				keep-alive>
+			</router-view>
+		</div>
 	</div>
 	{{-- If you have scripts that you need, add them here: --}}
 	<script src="/js/admin.js"></script>

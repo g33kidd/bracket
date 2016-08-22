@@ -56,6 +56,9 @@ Vue.component('admin-header', require('./components/admin/Header.vue'));
 router.map({
 	'/games': {
 		component: require('./components/admin/GamesManager.vue')
+	},
+	'/platforms': {
+		component: require('./components/admin/PlatformsManager.vue')
 	}
 });
 router.start(App, 'body');
