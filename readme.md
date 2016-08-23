@@ -22,6 +22,3 @@ For most of the site I've decided to use Bootstrap 4 to help find bugs, fix them
 I'll be setting up some standards for this soon! Just find me on twitter if you want to help or submit a PR. It's open source, after all.
 #### Where do I find Documentation?
 This is coming really soon!
-
-## Roadmap (Planned things)
-Currently I only have a Quip document, but I will be moving all of this to a public trello board very very soon!
