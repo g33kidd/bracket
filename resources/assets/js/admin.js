@@ -54,13 +54,24 @@ var App = Vue.extend({});
 Vue.component('admin-header', require('./components/admin/Header.vue'));
 
 router.map({
+	'/': {
+		name: 'dashboard',
+		navbar: "Dashboard",
+		component: require('./components/admin/Dashboard.vue')
+	},
 	'/games': {
+		name: 'games',
+		navbar: 'Games',
 		component: require('./components/admin/GamesManager.vue')
 	},
 	'/platforms': {
+		name: 'platforms',
+		navbar: 'Platforms',
 		component: require('./components/admin/PlatformsManager.vue')
 	},
 	'/users': {
+		name: 'users',
+		navbar: 'Manage Users',
 		component: require('./components/admin/UsersManager.vue')
 	}
 });

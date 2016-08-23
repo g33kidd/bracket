@@ -120,7 +120,7 @@
 				$('#modal-add-platform').modal('show');
 			},
 
-			destroy(game) {
+			destroy(platform) {
 				this.$http.delete('/api/platforms/' + platform.id).then(response => {
                     this.getPlatforms();
                 });
