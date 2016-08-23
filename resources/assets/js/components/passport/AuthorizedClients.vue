@@ -77,7 +77,7 @@
             getTokens() {
                 this.$http.get('/oauth/tokens')
                         .then(response => {
-                            this.tokens = response.data;
+                            this.tokens = response.json();
                         });
             },
 

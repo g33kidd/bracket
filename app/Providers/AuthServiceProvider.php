@@ -28,12 +28,12 @@ class AuthServiceProvider extends ServiceProvider
 
         // Permissions for API routes
         Passport::tokensCan([
-            'admin' => 'Access Everything',
-            'users' => 'Access Users',
-            'posts' => 'Access Posts',
-            'tournaments' => 'Access Tournaments',
-            'teams' => 'Access Tournaments',
-            'regular' => 'Regular User Access'
+            'admin' => 'Allows access to all API endpoints and actions.',
+            'users' => 'Allows read access to users and access to own user account.',
+            'posts' => 'Allows access to publish and read posts.',
+            'tournaments' => 'Allows read access to tournaments.',
+            'teams' => 'Allows read access to teams and write access to own account.',
+            'user' => 'Allows read/write access to own account and read access to most API endpoints.'
         ]);
 
         Passport::routes();

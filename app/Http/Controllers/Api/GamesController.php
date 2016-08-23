@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Game;
 use Illuminate\Http\Request;
 
-class GamesController
+class GamesController extends Controller
 {
     /**
      * Display a listing of the resource.

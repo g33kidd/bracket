@@ -5,14 +5,12 @@
 
 // Authentication routes
 Route::auth();
-// Temporary GET logout route...
 Route::get('/logout', 'Auth\LoginController@logout');
 
-// Admin "ANY" routes for the React application.
 Route::group([
-	'namespace' => 'Admin', 
-	'prefix' => 'admin', 
-	'middleware' => 'auth'], 
+    'namespace' => 'Admin', 
+    'prefix' => 'admin', 
+    'middleware' => 'auth'], 
 function() {
     Route::get('/', function() { return view('admin.index'); });
     Route::get('/{any}',  function() {
@@ -22,9 +20,7 @@ function() {
 
 // The main site routes
 Route::group(['namespace' => 'Site'], function() {
-
 	Route::get('/', 'HomeController@index');
-    
     Route::get('/challonge', 'HomeController@challonge');
 
     // Tournaments
@@ -43,9 +39,7 @@ Route::group(['namespace' => 'Site'], function() {
     Route::group(['prefix' => 'teams'], function() {
         Route::get('/', 'TeamController@index');
         Route::get('/{slug}', 'TeamController@show');
-
         Route::post('/invite', 'TeamInvitesController@store');
         Route::get('/accept/{token}', 'TeamInvitesController@index');
     });
-
 });

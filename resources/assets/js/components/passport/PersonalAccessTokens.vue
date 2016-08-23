@@ -195,7 +195,7 @@
             getTokens() {
                 this.$http.get('/oauth/personal-access-tokens')
                         .then(response => {
-                            this.tokens = response.data;
+                            this.tokens = response.json();
                         });
             },
 
@@ -205,7 +205,7 @@
             getScopes() {
                 this.$http.get('/oauth/scopes')
                         .then(response => {
-                            this.scopes = response.data;
+                            this.scopes = response.json();
                         });
             },
 
@@ -230,13 +230,13 @@
                             this.form.scopes = [];
                             this.form.errors = [];
 
-                            this.tokens.push(response.data.token);
+                            this.tokens.push(response.json().token);
 
-                            this.showAccessToken(response.data.accessToken);
+                            this.showAccessToken(response.json().accessToken);
                         })
                         .catch(response => {
                             if (typeof response.data === 'object') {
-                                this.form.errors = _.flatten(_.toArray(response.data));
+                                this.form.errors = _.flatten(_.toArray(response.json()));
                             } else {
                                 this.form.errors = ['Something went wrong. Please try again.'];
                             }

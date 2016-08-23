@@ -257,7 +257,7 @@
             getClients() {
                 this.$http.get('/oauth/clients')
                         .then(response => {
-                            this.clients = response.data;
+                            this.clients = response.json();
                         });
             },
 
@@ -316,8 +316,8 @@
                         $(modal).modal('hide');
                     })
                     .catch(response => {
-                        if (typeof response.data === 'object') {
-                            form.errors = _.flatten(_.toArray(response.data));
+                        if (typeof response.json() === 'object') {
+                            form.errors = _.flatten(_.toArray(response.json()));
                         } else {
                             form.errors = ['Something went wrong. Please try again.'];
                         }

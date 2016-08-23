@@ -1,5 +1,7 @@
 var elixir = require('laravel-elixir');
 
+require('laravel-elixir-vue');
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -12,11 +14,13 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-  mix.sass('app.scss');
-  mix.browserify('app.js');
-  mix.webpack('admin/admin.js');
+  mix.sass('app.scss')
+  	 .webpack('app.js', 'public/js', 'resources/assets/js')
+  	 .webpack('admin.js', 'public/js', 'resources/assets/js')
+  	 .browserSync({
+  	 	proxy: 'bracket'
+  	 });
 
-  mix.browserSync({
-  	proxy: 'bracket'
-  });
+  // I don't care about admin right now..
+  // mix.webpack('admin/admin.js');
 });
