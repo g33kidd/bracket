@@ -43,6 +43,7 @@ router.afterEach(() => {
 	NProgress.done();
 });
 
+// This doesn't work for some reason...
 const view = (path) => {
 	return (resolve) => {
 		require([`${path}.vue`], resolve);
