@@ -6,9 +6,11 @@ var Vue 	  = require('vue');
 var Router 	  = require('vue-router');
 var Resource  = require('vue-resource');
 var NProgress = require('nprogress');
+var VueMoment = require('vue-moment');
 
 Vue.use(Resource);
 Vue.use(Router);
+Vue.use(VueMoment);
 
 NProgress.start();
 NProgress.inc(0.2);
@@ -53,6 +55,9 @@ const view = (path) => {
 var App = Vue.extend({});
 
 Vue.component('admin-header', require('./components/admin/Header.vue'));
+Vue.component('authorized-clients', require('./components/passport/AuthorizedClients.vue'));
+Vue.component('personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue'));
+Vue.component('passport-clients', require('./components/passport/Clients.vue'));
 
 router.map({
 	'/': {
@@ -74,6 +79,11 @@ router.map({
 		name: 'users',
 		navbar: 'Manage Users',
 		component: require('./components/admin/UsersManager.vue')
+	},
+	'/oauth': {
+		name: 'oauth-settings',
+		navbar: 'OAuth Settings',
+		component: require('./components/admin/OauthSettings.vue')
 	}
 });
 router.start(App, 'body');

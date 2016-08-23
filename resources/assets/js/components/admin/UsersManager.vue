@@ -1,26 +1,24 @@
 <template>
 	<div>
-		<div v-if="platforms.length > 0">
-			<div class="m-b-2">
-				<button class="btn btn-primary" id="add-platform" @click="showNewPlatformForm">New Platform</button>
-			</div>
-
+		<div v-if="users.length > 0">
 			<table class="table">
 				<thead class="thead-default">
 					<tr>
 						<th scope="row">ID</th>
 						<th>Name</th>
-						<th>Short Name</th>
-						<th>Slug</th>
+						<th>Username</th>
+						<th>Email</th>
+						<th>Joined</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-for="platform in platforms">
-						<th scope="row">{{ platform.id }}</td>
-							<td>{{ platform.name }}</td>
-							<td>{{ platform.short_name }}</td>
-							<td>{{ platform.slug }}</td>
+					<tr v-for="user in users">
+						<th scope="row">{{ user.id }}</td>
+							<td>{{ user.name }}</td>
+							<td>{{ user.username }}</td>
+							<td>{{ user.email }}</td>
+							<td>{{ user.created_at | moment "MMM Do YYYY, h:mm:ss a" }}</td>
 							<td>
 								<div class="btn-group">
 									<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,7 +27,7 @@
 									<div class="dropdown-menu">
 										<a class="dropdown-item">Edit</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item text-danger" @click="destroy(platform)">Delete</a>
+										<a class="dropdown-item text-danger" @click="destroy(user)">Remove User</a>
 									</div>
 								</div>
 							</td>
@@ -37,7 +35,7 @@
 					</tbody>
 				</table>
 
-				<div class="modal fade" id="modal-add-platform" tabindex="-1" role="dialog" aria-labelledby="modal-add-platform" aria-hidden="true">
+				<!-- <div class="modal fade" id="modal-add-platform" tabindex="-1" role="dialog" aria-labelledby="modal-add-platform" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -68,7 +66,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
 			</div>
 		</div>
@@ -78,14 +76,7 @@
 	export default {
 		data() {
 			return {
-				platforms: [],
-				addForm: {
-					name: '',
-					short_name: '',
-					slug: '',
-					banner: '',
-					logo: ''
-				}
+				users: []
 			};
 		},
 
@@ -99,30 +90,14 @@
 
 		methods: {
 			getUsers() {
-				this.$http.get('/api/platforms').then(response => {
-					this.$set('platforms', response.json());
+				this.$http.get('/api/users').then(response => {
+					this.$set('users', response.json());
 				});
 			},
 
-			newPlatform() {
-				this.$http.post('/api/platforms', this.addForm).then(response => {
-					this.getPlatforms();
-					this.addForm.name = '';
-					this.addForm.short_name = '';
-					this.addForm.slug = '';
-					this.addForm.banner = '';
-					this.addForm.logo = '';
-					$('#modal-add-platform').modal('hide');
-				});
-			},
-
-			showNewPlatformForm() {
-				$('#modal-add-platform').modal('show');
-			},
-
-			destroy(game) {
-				this.$http.delete('/api/platforms/' + platform.id).then(response => {
-                    this.getPlatforms();
+			destroy(user) {
+				this.$http.delete('/api/users/' + user.id).then(response => {
+                    this.getUsers();
                 });
 			}
 		}

@@ -18,7 +18,7 @@
                             Personal Access Tokens
                         </span>
 
-                        <a class="action-link" @click="showCreateTokenForm">
+                        <a class="btn btn-secondary" @click="showCreateTokenForm">
                             Create New Token
                         </a>
                     </div>

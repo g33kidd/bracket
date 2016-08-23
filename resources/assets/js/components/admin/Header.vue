@@ -8,7 +8,7 @@
 	<nav class="navbar navbar-full navbar-light bg-faded">
 		<div class="container">
 			<div class="nav navbar-nav">
-				<li class="nav-item dropdown open" id="menu-dropdown">
+				<li class="nav-item dropdown" id="menu-dropdown">
 					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Navigation</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" v-link="{ path: '/'}">Dashboard</a>

@@ -17,7 +17,7 @@
                         OAuth Clients
                     </span>
 
-                    <a class="action-link" @click="showCreateClientForm">
+                    <a class="btn btn-secondary" @click="showCreateClientForm">
                         Create New Client
                     </a>
                 </div>
