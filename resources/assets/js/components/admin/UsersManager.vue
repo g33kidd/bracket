@@ -84,8 +84,8 @@
 			this.getUsers();
 
 			$('#modal-add-platform').on('shown.bs.modal', () => {
-                $('#add-platform-name').focus();
-            });
+	      $('#add-platform-name').focus();
+      });
 		},
 
 		methods: {
@@ -97,8 +97,8 @@
 
 			destroy(user) {
 				this.$http.delete('/api/users/' + user.id).then(response => {
-                    this.getUsers();
-                });
+          this.getUsers();
+        });
 			}
 		}
 	}

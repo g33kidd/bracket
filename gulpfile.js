@@ -18,9 +18,8 @@ elixir(function(mix) {
   	 .webpack('app.js', 'public/js', 'resources/assets/js')
   	 .webpack('admin.js', 'public/js', 'resources/assets/js')
   	 .browserSync({
-  	 	proxy: 'bracket'
+  	    proxy: 'bracket',
+        notify: false,
+        open: false
   	 });
-
-  // I don't care about admin right now..
-  // mix.webpack('admin/admin.js');
 });

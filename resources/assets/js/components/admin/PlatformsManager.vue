@@ -1,5 +1,8 @@
 <template>
 	<div>
+		<div v-if="platforms.length == 0">
+			<h3>You haven't added any platforms yet. <a class="btn btn-secondary" @click="showNewPlatformForm">Add one now.</a></h3>
+		</div>
 		<div v-if="platforms.length > 0">
 			<div class="m-b-2">
 				<button class="btn btn-primary" id="add-platform" @click="showNewPlatformForm">New Platform</button>
@@ -37,44 +40,48 @@
 					</tbody>
 				</table>
 
-				<div class="modal fade" id="modal-add-platform" tabindex="-1" role="dialog" aria-labelledby="modal-add-platform" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								<h4 class="modal-title" id="exampleModalLabel">Add a new platform</h4>
-							</div>
-							<div class="modal-body">
-								<form>
-									<div class="form-group">
-										<label for="add-game-name" class="form-control-label">Name:</label>
-										<input type="text" class="form-control" id="add-platform-name" v-model="addForm.name" placeholder="Xbox One">
-									</div>
-									<div class="form-group">
-										<label for="add-game-short" class="form-control-label">Short Name:</label>
-										<input type="text" class="form-control" id="add-platform-short" v-model="addForm.short_name" placeholder="XBONE">
-									</div>
-									<div class="form-group">
-										<label for="add-game-slug" class="form-control-label">Slug:</label>
-										<input type="text" class="form-control" id="add-platform-slug" v-model="addForm.slug" placeholder="xbox">
-									</div>
-								</form>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary" @click="newPlatform">Save</button>
-							</div>
+			</div>
+
+			<div class="modal fade" id="modal-add-platform" tabindex="-1" role="dialog" aria-labelledby="modal-add-platform" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="exampleModalLabel">Add a new platform</h4>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="form-group">
+									<label for="add-game-name" class="form-control-label">Name:</label>
+									<input type="text" class="form-control" id="add-platform-name" v-model="addForm.name" placeholder="Xbox One">
+								</div>
+								<div class="form-group">
+									<label for="add-game-short" class="form-control-label">Short Name:</label>
+									<input type="text" class="form-control" id="add-platform-short" v-model="addForm.short_name" placeholder="XBONE">
+								</div>
+								<div class="form-group">
+									<label for="add-game-slug" class="form-control-label">Slug:</label>
+									<input type="text" class="form-control" id="add-platform-slug" v-model="addForm.slug" placeholder="xbox">
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary" @click="newPlatform">Save</button>
 						</div>
 					</div>
 				</div>
-
 			</div>
+
 		</div>
 </template>
 
 <script>
+
+	// WHY IS THIS NOT UPDATING?!?!?!
+
 	export default {
 		data() {
 			return {
@@ -93,8 +100,8 @@
 			this.getPlatforms();
 
 			$('#modal-add-platform').on('shown.bs.modal', () => {
-                $('#add-platform-name').focus();
-            });
+        $('#add-platform-name').focus();
+      });
 		},
 
 		methods: {
@@ -122,8 +129,8 @@
 
 			destroy(platform) {
 				this.$http.delete('/api/platforms/' + platform.id).then(response => {
-                    this.getPlatforms();
-                });
+          this.getPlatforms();
+        });
 			}
 		}
 	}
