@@ -19,6 +19,10 @@ return [
         'secret' => env('MAILGUN_SECRET'),
     ],
 
+    'discord' => [
+        'token' => env('DISCORD_TOKEN', null),
+    ],
+
     'ses' => [
         'key'    => env('SES_KEY'),
         'secret' => env('SES_SECRET'),

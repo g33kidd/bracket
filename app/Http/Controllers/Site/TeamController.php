@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Team;
 
-class TeamController
+class TeamController extends Controller
 {
 
 	public function __construct()

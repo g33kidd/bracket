@@ -1,2 +1,5 @@
-window.$ = window.jQuery = require('jquery');
-require('bootstrap/dist/js/bootstrap.js');
+Vue.component('auth', require('./components/Auth.vue'));
+
+const app = new Vue({
+	el: 'body'
+});

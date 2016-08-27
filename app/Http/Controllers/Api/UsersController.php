@@ -30,6 +30,11 @@ class UsersController extends \App\Http\Controllers\Controller
         return response()->json($user);
     }
 
+    public function verify()
+    {
+        
+    }
+
     public function destroy($id)
     {
         $user = $this->userModel->find($id);

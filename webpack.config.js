@@ -1,18 +1,20 @@
-var path = require('path');
 var webpack = require('webpack');
+var path	= require('path');
 
 module.exports = {
 
 	resolve: {
 		modules: [
-			path.resolve('./resources/assets/js/admin'),
+			path.resolve('./resources/assets/js'),
 			'node_modules'
 		]
 	},
 
 	plugins: [
 		new webpack.ProvidePlugin({
-			'React': 'react'
+			'jQuery': 'jquery',
+			'$': 'jquery',
+			'_': 'lodash'
 		})
 	]
 

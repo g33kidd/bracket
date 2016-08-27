@@ -15,8 +15,7 @@ trait HasTeams {
 	// define the relationship
 	public function teams()
 	{
-		return $this->belongsToMany('App\Models\Team', 'team_user')
-					->withPivot(['is_admin']);
+		return $this->belongsToMany('App\Models\Team', 'team_user');
 	}
 
 }

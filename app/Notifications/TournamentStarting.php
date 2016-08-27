@@ -3,9 +3,11 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use NotificationChannels\Discord\DiscordChannel;
+use NotificationChannels\Discord\DiscordMessage;
 
 class TournamentStarting extends Notification
 {
@@ -29,7 +31,12 @@ class TournamentStarting extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return [DiscordChannel::class];
+    }
+
+    public function toDiscord($notifiable)
+    {
+        return DiscordMessage::create("HAHA! Discord notifications works... spam... TournamentStartingNotificaiton **TEST** `<?php echo 'WOW!'; ?>`");
     }
 
     /**

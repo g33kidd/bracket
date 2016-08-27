@@ -182,6 +182,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Third-party notification channels
+        NotificationChannels\Discord\DiscordServiceProvider::class,
+
     ],
 
     /*

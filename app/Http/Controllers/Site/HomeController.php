@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\DiscordServer;
 use App\Notifications\TournamentStarting;
+use Discord\Discord;
 use Illuminate\Support\Facades\Auth;
 use Reflex\Challonge\Challonge;
 
