@@ -15,12 +15,12 @@ class PostsController extends Controller
         $this->postModel = $postModel;
     }
 
-	public function index()
-	{
-		$posts = $this->postModel->with('user')->get();
+    public function index()
+    {
+        $posts = $this->postModel->with('user')->get();
 
         return response()->json($posts->toArray());
-	}
+    }
 
     public function show($id)
     {
@@ -33,33 +33,31 @@ class PostsController extends Controller
         return response()->json($post);
     }
 
-	public function store(Request $request)
-	{
+    public function store(Request $request)
+    {
         $this->validate($request, [
             'title' => 'required|max:255|unique:posts',
-            'slug' => 'required|max:100',
             'content' => 'required',
             'status' => 'required|in:published,draft',
             'excerpt' => 'required'
         ]);
 
-		$post = new $this->postModel([
+        $post = new $this->postModel([
             'title' => $request->input('title'),
-            'slug' => $request->input('slug'),
+            'slug' => str_slug($request->input('name')),
             'content' => $request->input('content'),
             'status' => $request->input('status'),
             'excerpt' => $request->input('excerpt')
         ]);
         $request->user()->posts()->save($post);
 
-		return response()->json($post);
-	}
+        return response()->json($post);
+    }
 
     public function update(Request $request, $id)
     {
         $this->validate($request, [
             'title' => 'required|max:255|unique:posts',
-            'slug' => 'required|max:100',
             'content' => 'required',
             'status' => 'required|in:published,draft',
             'excerpt' => 'required'
@@ -72,7 +70,7 @@ class PostsController extends Controller
         }
 
         $post->title = $request->input('title');
-        $post->slug = $request->input('slug');
+        $post->slug = str_slug($request->input('name'));
         $post->content = $request->input('content');
         $post->status = $request->input('status');
         $post->excerpt = $request->input('excerpt');
@@ -81,17 +79,17 @@ class PostsController extends Controller
         return response()->json($post);
     }
 
-	public function destroy($id)
-	{
-		$post = $this->postModel->find($id);
+    public function destroy($id)
+    {
+        $post = $this->postModel->find($id);
 
         if (!$post) {
             return $this->recordNotFound();
         }
 
-		$post->delete();
+        $post->delete();
 
-		return response(null, 200);
-	}
+        return response(null, 200);
+    }
 
 }

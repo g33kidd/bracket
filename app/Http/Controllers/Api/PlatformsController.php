@@ -38,14 +38,13 @@ class PlatformsController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'slug' => 'required|max:100',
             'short_name' => 'required|max:100'
         ]);
 
         $platform = new $this->platformModel([
             'name' => $request->input('name'),
             'short_name' => $request->input('short_name'),
-            'slug' => $request->input('slug'),
+            'slug' => str_slug($request->input('name')),
             'logo' => '',
             'banner' => ''
         ]);
@@ -84,7 +83,6 @@ class PlatformsController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'slug' => 'required|max:100',
             'short_name' => 'required|max:100'
         ]);
 
@@ -96,7 +94,7 @@ class PlatformsController extends Controller
 
         $platform->name = $request->input('name');
         $platform->short_name = $request->input('short_name');
-        $platform->slug = $request->input('slug');
+        $platform->slug = str_slug($request->input('name'));
         $platform->logo = $request->input('logo');
         $platform->banner = $request->input('banner');
 

@@ -1,8 +1,8 @@
 <?php
 
-use \App\Models\User;
-use \App\Http\Controllers\Api\UsersController;
-use \App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Http\Controllers\Api\UsersController;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
