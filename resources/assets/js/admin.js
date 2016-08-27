@@ -1,14 +1,19 @@
-// 
+// TODO: Figure out how to clean up this file...
+// it's just a bit messy at this point.
 window.Tether 		= require('tether');
 require('bootstrap/dist/js/bootstrap.js');
 
-var Vue 	  = require('vue');
+var Vue 	  	= require('vue');
 var Router 	  = require('vue-router');
 var Resource  = require('vue-resource');
 var NProgress = require('nprogress');
+var VueMoment = require('vue-moment');
+
+var vm = new Vue({});
 
 Vue.use(Resource);
 Vue.use(Router);
+Vue.use(VueMoment);
 
 NProgress.start();
 NProgress.inc(0.2);
@@ -19,7 +24,7 @@ Vue.transition('fade', {
 });
 
 const router = new Router({
-	saveScrollPosition: true,
+	saveScrollPosition: false,
 	transitionOnLoad: true,
 	root: '/admin',
 	history: true
@@ -35,6 +40,9 @@ Vue.http.interceptors.push((request, next) => {
 });
 
 router.beforeEach(({next}) => {
+	// Close any and all bootstrap modals.
+	$('.modal').modal('hide');
+	// Start the progress bar..
 	NProgress.start();
 	next();
 });
@@ -50,9 +58,12 @@ const view = (path) => {
 	};
 };
 
-var App = Vue.extend({});
-
 Vue.component('admin-header', require('./components/admin/Header.vue'));
+Vue.component('authorized-clients', require('./components/passport/AuthorizedClients.vue'));
+Vue.component('personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue'));
+Vue.component('passport-clients', require('./components/passport/Clients.vue'));
+
+var App = Vue.extend({});
 
 router.map({
 	'/': {
@@ -74,6 +85,13 @@ router.map({
 		name: 'users',
 		navbar: 'Manage Users',
 		component: require('./components/admin/UsersManager.vue')
+	},
+	'/oauth': {
+		name: 'oauth-settings',
+		navbar: 'OAuth Settings',
+		component: require('./components/admin/OauthSettings.vue')
 	}
 });
-router.start(App, 'body');
+
+router.redirect({ '*': '/dashboard' });
+router.start(App, 'app');
