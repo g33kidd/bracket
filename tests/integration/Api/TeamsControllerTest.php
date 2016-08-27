@@ -32,7 +32,7 @@ class TeamsControllerTest extends TestCase
         $this->assertResponseOk();
         $this->seeJsonStructure([
             '*' => [
-                'id', 'name', 'slug', 'description', 'team_information'
+                'id', 'name', 'slug', 'description'
             ]
         ]);
     }
@@ -43,7 +43,7 @@ class TeamsControllerTest extends TestCase
 
         $this->assertResponseOk();
         $this->seeJsonStructure([
-            'id', 'name', 'slug', 'description', 'team_information'
+            'id', 'name', 'slug', 'description'
         ]);
     }
 
@@ -89,15 +89,14 @@ class TeamsControllerTest extends TestCase
             'name' => ''
         ]);
 
-        $this->assertSessionHasErrors(['name', 'description', 'team_information']);
+        $this->assertSessionHasErrors(['name', 'description']);
     }
 
     public function testTeamsStoreAddsNewTeam()
     {
         $this->actingAs($this->user)->post('/api/teams', [
             'name' => 'Bracket Dev Team',
-            'description' => 'Team Description',
-            'team_information' => 'Team Info'
+            'description' => 'Team Description'
         ]);
 
         $this->assertResponseOk();
@@ -113,8 +112,7 @@ class TeamsControllerTest extends TestCase
     {
         $this->actingAs($this->user)->put('/api/teams/999999', [
             'name' => 'Bracket Dev Team',
-            'description' => 'Team Description',
-            'team_information' => 'Team Info'
+            'description' => 'Team Description'
         ]);
 
         $this->assertResponseStatus(404);
@@ -127,19 +125,16 @@ class TeamsControllerTest extends TestCase
     {
         $newName = 'Rocket League Team';
         $newDescription = 'This is my rocket league team\'s description.';
-        $newTeamInfo = 'This is some random team information.';
 
         $this->actingAs($this->user)->put('/api/teams/1', [
             'name' => $newName,
-            'description' => $newDescription,
-            'team_information' => $newTeamInfo
+            'description' => $newDescription
         ]);
 
         $team = Team::find(1);
 
         $this->assertTrue($team->name === $newName);
         $this->assertTrue($team->description === $newDescription);
-        $this->assertTrue($team->team_information === $newTeamInfo);
     }
 
     public function testTeamsUpdateMethodValidatesInput()
@@ -148,6 +143,6 @@ class TeamsControllerTest extends TestCase
             'name' => ''
         ]);
 
-        $this->assertSessionHasErrors(['name', 'description', 'team_information']);
+        $this->assertSessionHasErrors(['name', 'description']);
     }
 }

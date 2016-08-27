@@ -49,7 +49,7 @@ class SendDiscordMessage extends Command
         $discord = new Discord([
             'token' => config('services.discord.token')
         ]);
-        
+
         $discord->on('ready', function($discord) {
             $discord->updatePresence($discord->factory(Game::class, ['name' => "with your minds!"]), false);
             $guild = $discord->guilds->first();

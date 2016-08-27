@@ -36,15 +36,14 @@ class TeamsController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'description' => 'required',
-            'team_information' => 'required'
+            'description' => 'required'
         ]);
 
         $team = new $this->teamModel([
             'name' => $request->input('name'),
             'slug' => str_slug($request->input('name')),
             'description' => $request->input('description'),
-            'team_information' => $request->input('team_information'),
+            'team_information' => 'Some default value... rip',
             'owner_id' => $request->user()->id
         ]);
         $team->save();
@@ -56,8 +55,7 @@ class TeamsController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'description' => 'required',
-            'team_information' => 'required'
+            'description' => 'required'
         ]);
 
         $team = $this->teamModel->find($id);
@@ -69,7 +67,6 @@ class TeamsController extends Controller
         $team->name = $request->input('name');
         $team->slug = str_slug($request->input('name'));
         $team->description = $request->input('description');
-        $team->team_information = $request->input('team_information');
 
         $team->save();
 
