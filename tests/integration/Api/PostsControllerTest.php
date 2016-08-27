@@ -91,7 +91,7 @@ class PostsControllerTest extends TestCase
         $this->actingAs($this->user)->post('/api/posts', []);
 
         $this->assertSessionHasErrors([
-            'title', 'slug', 'content', 'status', 'excerpt'
+            'title', 'content', 'status', 'excerpt'
         ]);
     }
 
@@ -99,7 +99,6 @@ class PostsControllerTest extends TestCase
     {
         $this->actingAs($this->user)->post('/api/posts', [
             'title' => 'Test Post',
-            'slug' => 'test-post',
             'content' => 'Lorem ipsum sit dolor...',
             'status' => 'published',
             'excerpt' => 'Lorem...'
@@ -118,7 +117,6 @@ class PostsControllerTest extends TestCase
     {
         $this->actingAs($this->user)->put('/api/posts/99999', [
             'title' => 'Test Post',
-            'slug' => 'test-post',
             'content' => 'Lorem ipsum sit dolor...',
             'status' => 'published',
             'excerpt' => 'Lorem...'
@@ -133,14 +131,12 @@ class PostsControllerTest extends TestCase
     public function testPostsUpdateAllowsUpdatesToAllFields()
     {
         $newTitle = 'This is an entirely new name.';
-        $newSlug = 'this-is-the-new-slug';
         $newContent = 'Lorem ipsum...';
         $newStatus = 'draft';
         $newExcerpt = 'L...';
 
         $this->actingAs($this->user)->put('/api/posts/1', [
             'title' => $newTitle,
-            'slug' => $newSlug,
             'content' => $newContent,
             'status' => $newStatus,
             'excerpt' => $newExcerpt
@@ -149,7 +145,6 @@ class PostsControllerTest extends TestCase
         $post = Post::find(1);
 
         $this->assertTrue($post->title === $newTitle);
-        $this->assertTrue($post->slug === $newSlug);
         $this->assertTrue($post->status === $newStatus);
         $this->assertTrue($post->excerpt === $newExcerpt);
         $this->assertTrue($post->content === $newContent);
@@ -160,7 +155,7 @@ class PostsControllerTest extends TestCase
         $this->actingAs($this->user)->put('/api/posts/1', []);
 
         $this->assertSessionHasErrors([
-            'title', 'slug', 'content', 'status', 'excerpt'
+            'title', 'content', 'status', 'excerpt'
         ]);
     }
 

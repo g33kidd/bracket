@@ -37,14 +37,13 @@ class GamesController extends Controller
     {
         $this->validate($request, [
           'name' => 'required|max:255',
-          'slug' => 'required|max:100',
           'short_name' => 'required|max:100'
         ]);
 
         $game = new $this->gameModel([
             'name' => $request->input('name'),
             'short_name' => $request->input('short_name'),
-            'slug' => $request->input('slug'),
+            'slug' => str_slug($request->input('name')),
             'logo' => '',
             'banner' => ''
         ]);
@@ -85,7 +84,6 @@ class GamesController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'slug' => 'required|max:100',
             'short_name' => 'required|max:100'
         ]);
 
@@ -100,7 +98,7 @@ class GamesController extends Controller
         // platforms.
         $game->name = $request->input('name');
         $game->short_name = $request->input('short_name');
-        $game->slug = $request->input('slug');
+        $game->slug = str_slug($request->input('name'));
         $game->logo = $request->input('logo');
         $game->banner = $request->input('banner');
 

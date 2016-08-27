@@ -2,41 +2,90 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Team;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class TeamsController extends Controller
 {
 
+    public function __construct(Team $teamModel)
+    {
+        $this->teamModel = $teamModel;
+    }
+
     public function index()
     {
-        $teams = Team::all();
+        $teams = $this->teamModel->all();
         return response()->json($teams->toArray());
     }
 
     public function show($id)
     {
-        $team = Team::findOrFail($id);
-        return response()->json($team->toArray());
+        $team = $this->teamModel->find($id);
+
+        if (!$team) {
+            return $this->recordNotFound();
+        }
+
+        return response()->json($team);
     }
 
     public function store(Request $request)
     {
-        $team = new Team;
-        $team->name = $request->name;
-        $team->slug = str_slug($request->name);
-        $team->description = $request->description;
-        $team->owner_id = $request->owner_id;
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'team_information' => 'required'
+        ]);
+
+        $team = new $this->teamModel([
+            'name' => $request->input('name'),
+            'slug' => str_slug($request->input('name')),
+            'description' => $request->input('description'),
+            'team_information' => $request->input('team_information'),
+            'owner_id' => $request->user()->id
+        ]);
         $team->save();
-        return response()->json($team->toArray());
+
+        return response()->json($team);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'team_information' => 'required'
+        ]);
+
+        $team = $this->teamModel->find($id);
+
+        if (!$team) {
+            return $this->recordNotFound();
+        }
+
+        $team->name = $request->input('name');
+        $team->slug = str_slug($request->input('name'));
+        $team->description = $request->input('description');
+        $team->team_information = $request->input('team_information');
+
+        $team->save();
+
+        return response()->json($team);
     }
 
     public function destroy($id)
     {
-        $team = Team::find($id);
-        $team->destroy();
+        $team = $this->teamModel->find($id);
+
+        if (!$team) {
+            return $this->recordNotFound();
+        }
+
+        $team->delete();
+
         return response(null, 200);
     }
 

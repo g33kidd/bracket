@@ -51,3 +51,13 @@ $factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
         'user_id' => 1
     ];
 });
+
+$factory->define(App\Models\Team::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'slug' => str_replace(' ', '-', $faker->name),
+        'description' => $faker->paragraph,
+        'team_information' => $faker->text($maxNbvChars=500),
+        'owner_id' => 1
+    ];
+});

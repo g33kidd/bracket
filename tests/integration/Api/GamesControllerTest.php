@@ -92,14 +92,13 @@ class GamesControllerTest extends TestCase
             'name' => ''
         ]);
 
-        $this->assertSessionHasErrors(['name', 'short_name', 'slug']);
+        $this->assertSessionHasErrors(['name', 'short_name']);
     }
 
     public function testGamesStoreAddsNewGame()
     {
         $this->actingAs($this->user)->post('/api/games', [
             'name' => 'Rocket League',
-            'slug' => 'rocket-league',
             'short_name' => 'RL'
         ]);
 
@@ -116,7 +115,6 @@ class GamesControllerTest extends TestCase
     {
         $this->actingAs($this->user)->put('/api/games/99999', [
             'name' => 'Rocket League',
-            'slug' => 'rocket-league',
             'short_name' => 'RL'
         ]);
 
@@ -130,14 +128,12 @@ class GamesControllerTest extends TestCase
     {
         $newName = 'This is an entirely new name.';
         $newShortName = 'this is the new short name.';
-        $newSlug = 'this-is-the-new-slug';
         $newLogoPath = '/some/path/to/a/logo.jpg';
         $newBannerPath = '/some/path/to/a/banner.png';
 
         $this->actingAs($this->user)->put('/api/games/1', [
             'name' => $newName,
             'short_name' => $newShortName,
-            'slug' => $newSlug,
             'logo' => $newLogoPath,
             'banner' => $newBannerPath
         ]);
@@ -146,7 +142,6 @@ class GamesControllerTest extends TestCase
 
         $this->assertTrue($game->name === $newName);
         $this->assertTrue($game->short_name === $newShortName);
-        $this->assertTrue($game->slug === $newSlug);
         $this->assertTrue($game->logo === $newLogoPath);
         $this->assertTrue($game->banner == $newBannerPath);
     }
@@ -157,7 +152,7 @@ class GamesControllerTest extends TestCase
             'logo' => ''
         ]);
 
-        $this->assertSessionHasErrors(['name', 'short_name', 'slug']);
+        $this->assertSessionHasErrors(['name', 'short_name']);
     }
 
 }

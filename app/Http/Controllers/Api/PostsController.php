@@ -37,7 +37,6 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:255|unique:posts',
-            'slug' => 'required|max:100',
             'content' => 'required',
             'status' => 'required|in:published,draft',
             'excerpt' => 'required'
@@ -45,7 +44,7 @@ class PostsController extends Controller
 
         $post = new $this->postModel([
             'title' => $request->input('title'),
-            'slug' => $request->input('slug'),
+            'slug' => str_slug($request->input('name')),
             'content' => $request->input('content'),
             'status' => $request->input('status'),
             'excerpt' => $request->input('excerpt')
@@ -59,7 +58,6 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:255|unique:posts',
-            'slug' => 'required|max:100',
             'content' => 'required',
             'status' => 'required|in:published,draft',
             'excerpt' => 'required'
@@ -72,7 +70,7 @@ class PostsController extends Controller
         }
 
         $post->title = $request->input('title');
-        $post->slug = $request->input('slug');
+        $post->slug = str_slug($request->input('name'));
         $post->content = $request->input('content');
         $post->status = $request->input('status');
         $post->excerpt = $request->input('excerpt');

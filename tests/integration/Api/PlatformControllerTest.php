@@ -33,7 +33,7 @@ class PlatformsControllerTest extends TestCase
         $this->assertResponseOk();
 		$this->seeJsonStructure([
             '*' => [
-                'name', 'short_name', 'slug', 'logo', 'banner'
+                'name', 'short_name', 'logo', 'banner'
             ]
         ]);
 	}
@@ -44,7 +44,7 @@ class PlatformsControllerTest extends TestCase
 
         $this->assertResponseOk();
 		$this->seeJsonStructure([
-            'name', 'short_name', 'slug', 'logo', 'banner'
+            'name', 'short_name', 'logo', 'banner'
 		]);
 	}
 
@@ -90,14 +90,13 @@ class PlatformsControllerTest extends TestCase
             'name' => ''
         ]);
 
-        $this->assertSessionHasErrors(['name', 'short_name', 'slug']);
+        $this->assertSessionHasErrors(['name', 'short_name']);
     }
 
     public function testPlatformsStoreAddsNewPlatform()
     {
         $this->actingAs($this->user)->post('/api/platforms', [
             'name' => 'Steam',
-            'slug' => 'steam',
             'short_name' => 'ST'
         ]);
 
@@ -114,7 +113,6 @@ class PlatformsControllerTest extends TestCase
     {
         $this->actingAs($this->user)->put('/api/platforms/99999', [
             'name' => 'Rocket League',
-            'slug' => 'rocket-league',
             'short_name' => 'RL'
         ]);
 
@@ -130,21 +128,19 @@ class PlatformsControllerTest extends TestCase
             'logo' => ''
         ]);
 
-        $this->assertSessionHasErrors(['name', 'short_name', 'slug']);
+        $this->assertSessionHasErrors(['name', 'short_name']);
     }
 
     public function testPlatformsUpdateAllowsUpdatesToAllFields()
     {
         $newName = 'This is an entirely new name.';
         $newShortName = 'this is the new short name.';
-        $newSlug = 'this-is-the-new-slug';
         $newLogoPath = '/some/path/to/a/logo.jpg';
         $newBannerPath = '/some/path/to/a/banner.png';
 
         $this->actingAs($this->user)->put('/api/platforms/1', [
             'name' => $newName,
             'short_name' => $newShortName,
-            'slug' => $newSlug,
             'logo' => $newLogoPath,
             'banner' => $newBannerPath
         ]);
@@ -153,7 +149,6 @@ class PlatformsControllerTest extends TestCase
 
         $this->assertTrue($platform->name === $newName);
         $this->assertTrue($platform->short_name === $newShortName);
-        $this->assertTrue($platform->slug === $newSlug);
         $this->assertTrue($platform->logo === $newLogoPath);
         $this->assertTrue($platform->banner == $newBannerPath);
     }
