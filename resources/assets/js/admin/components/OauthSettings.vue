@@ -13,9 +13,16 @@
 </template>
 
 <script>
+import PersonalAccessTokens from './passport/PersonalAccessTokens.vue';
+import PassportClients from './passport/Clients.vue';
+import AuthorizedClients from './passport/AuthorizedClients.vue';
+
 export default {
-	data() {
-		return {};
+	name: 'OauthSettings',
+	components: {
+		PersonalAccessTokens,
+		PassportClients,
+		AuthorizedClients,
 	}
 }
 </script>
