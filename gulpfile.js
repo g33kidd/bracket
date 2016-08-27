@@ -16,7 +16,7 @@ require('laravel-elixir-vue');
 elixir(function(mix) {
   mix.sass('app.scss')
   	 .webpack('app.js', 'public/js', 'resources/assets/js')
-  	 .webpack('admin.js', 'public/js', 'resources/assets/js')
+  	 .webpack('main.js', 'public/js/admin', 'resources/assets/js/admin')
   	 .browserSync({
   	    proxy: 'bracket',
         notify: false,

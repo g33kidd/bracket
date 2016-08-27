@@ -19,19 +19,8 @@
         ]); ?>
     </script>
 </head>
-<body id="app-layout default">
-	<div id="app">
-		<admin-header></admin-header>
-		<div class="container m-t-2">
-			<router-view
-				class="animated"
-				transition="fade"
-				transition-mode="out-in"
-				keep-alive>
-			</router-view>
-		</div>
-	</div>
-	{{-- If you have scripts that you need, add them here: --}}
-	<script src="/js/admin.js"></script>
+<body id="admin default">
+	<div id="app"></div>
+	<script src="/js/admin/main.js"></script>
 </body>
 </html>
