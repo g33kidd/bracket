@@ -10,34 +10,34 @@ use Illuminate\Http\Request;
 class TeamsController extends Controller
 {
 
-	public function index()
-	{
-		$teams = Team::all();
-		return response()->json($teams->toArray());
-	}
+    public function index()
+    {
+        $teams = Team::all();
+        return response()->json($teams->toArray());
+    }
 
-	public function show($id)
-	{
-		$team = Team::findOrFail($id);
-		return response()->json($team->toArray());
-	}
+    public function show($id)
+    {
+        $team = Team::findOrFail($id);
+        return response()->json($team->toArray());
+    }
 
-	public function store(Request $request)
-	{
-		$team = new Team;
-		$team->name = $request->name;
-		$team->slug = str_slug($request->name);
-		$team->description = $request->description;
-		$team->owner_id = $request->owner_id;
-		$team->save();
-		return response()->json($team->toArray());
-	}
+    public function store(Request $request)
+    {
+        $team = new Team;
+        $team->name = $request->name;
+        $team->slug = str_slug($request->name);
+        $team->description = $request->description;
+        $team->owner_id = $request->owner_id;
+        $team->save();
+        return response()->json($team->toArray());
+    }
 
-	public function destroy($id)
-	{
-		$team = Team::find($id);
-		$team->destroy();
-		return response(null, 200);
-	}
+    public function destroy($id)
+    {
+        $team = Team::find($id);
+        $team->destroy();
+        return response(null, 200);
+    }
 
 }

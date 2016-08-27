@@ -14,32 +14,32 @@ class UsersController extends \App\Http\Controllers\Controller
 
     public function index()
     {
-    	$users = $this->userModel->all();
+        $users = $this->userModel->all();
 
-    	return response()->json($users->toArray());
+        return response()->json($users->toArray());
     }
 
     public function show($id)
     {
-    	$user = $this->userModel->find($id);
+        $user = $this->userModel->find($id);
 
         if (!$user) {
             return $this->recordNotFound();
         }
 
-    	return response()->json($user);
+        return response()->json($user);
     }
 
     public function destroy($id)
     {
-    	$user = $this->userModel->find($id);
+        $user = $this->userModel->find($id);
 
         if (!$user) {
             return $this->recordNotFound();
         }
 
-    	$user->delete();
-    	return response(null, 200);
+        $user->delete();
+        return response(null, 200);
     }
 
 }
