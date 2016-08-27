@@ -8,9 +8,9 @@ Route::auth();
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::group([
-    'namespace' => 'Admin', 
-    'prefix' => 'admin', 
-    'middleware' => 'auth'], 
+	'namespace' => 'Admin',
+	'prefix' => 'admin',
+	'middleware' => 'auth'],
 function() {
     Route::get('/', function() { return view('admin.index'); });
     Route::get('/{any}',  function() {

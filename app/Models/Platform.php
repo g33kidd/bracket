@@ -8,7 +8,14 @@ class Platform extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['name', 'short_name', 'banner', 'logo'];
+    /**
+     * The attributes that should be mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'short_name', 'slug', 'logo', 'banner'
+    ];
 
     public function games()
     {

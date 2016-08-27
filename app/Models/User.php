@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'email', 'password', 'remember_token',
     ];
 
     /**
@@ -27,13 +27,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'name', 'password'
+        'username', 'name', 'password'
     ];
 
     public function acceptInvite($invite)
     {
         $this->teams()->toggle($invite->team);
         $invite->delete();
+    }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post');
     }
 
 }

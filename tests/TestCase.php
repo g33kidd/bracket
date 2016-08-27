@@ -9,6 +9,17 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
      */
     protected $baseUrl = 'http://bracket.dev';
 
+    public function setUp()
+    {
+        parent::setUp();
+
+        try {
+            $this->user = factory(App\Models\User::class)->create();
+        } catch(PDOException $e) {
+            $this->user = null;
+        }
+    }
+
     /**
      * Creates the application.
      *

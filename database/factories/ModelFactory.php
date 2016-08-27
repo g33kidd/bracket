@@ -11,12 +11,43 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     return [
         'username'       => $faker->username,
         'name'           => $faker->name,
         'email'          => $faker->safeEmail,
         'password'       => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(App\Models\Game::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'short_name' => $faker->word,
+        'slug' => str_replace(' ', '-', $faker->name),
+        'logo' => '',
+        'banner' => ''
+    ];
+});
+
+$factory->define(App\Models\Platform::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'short_name' => $faker->word,
+        'slug' => str_replace(' ', '-', $faker->name),
+        'logo' => '',
+        'banner' => ''
+    ];
+});
+
+$factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->name,
+        'slug' => str_replace(' ', '-', $faker->name),
+        'content' => $faker->text($maxNbvChars=500),
+        'excerpt' => $faker->paragraph,
+        'status' => 'published',
+        'user_id' => 1
     ];
 });
