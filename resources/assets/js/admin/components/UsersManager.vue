@@ -91,7 +91,7 @@
 		methods: {
 			getUsers() {
 				this.$http.get('/api/users').then(response => {
-					this.$set('users', response.json());
+					this.users = response.json();
 				});
 			},
 

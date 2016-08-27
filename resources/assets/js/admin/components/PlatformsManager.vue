@@ -76,12 +76,9 @@
 			</div>
 
 		</div>
-</template>
+	</template>
 
-<script>
-
-	// WHY IS THIS NOT UPDATING?!?!?!
-
+	<script>
 	export default {
 		data() {
 			return {
@@ -100,8 +97,8 @@
 			this.getPlatforms();
 
 			$('#modal-add-platform').on('shown.bs.modal', () => {
-        $('#add-platform-name').focus();
-      });
+				$('#add-platform-name').focus();
+			});
 		},
 
 		methods: {
@@ -129,8 +126,8 @@
 
 			destroy(platform) {
 				this.$http.delete('/api/platforms/' + platform.id).then(response => {
-          this.getPlatforms();
-        });
+					this.getPlatforms();
+				});
 			}
 		}
 	}

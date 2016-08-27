@@ -87,7 +87,7 @@
 				</div>
 			</div>
 
-		</div>
+	</div>
 </template>
 
 <script>
@@ -123,17 +123,13 @@
 		methods: {
 			getGames() {
 				this.$http.get('/api/games').then(response => {
-					this.$set('games', response.json());
+					this.games = response.json();
 				});
-
-				console.log(this);
 			},
 
 			getPlatforms() {
 				this.$http.get('/api/platforms').then(response => {
-					Vue.set(this, 'platforms', response.json());
-					// this.games = response.json();
-					// this.$set('platforms', response.json());
+					this.platforms = response.json();
 				});
 			},
 

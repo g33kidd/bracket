@@ -1,75 +1,83 @@
 // TODO: Figure out how to clean up this file...
 // it's just a bit messy at this point.
-// window.Tether = require('tether');
-// require('bootstrap/dist/js/bootstrap.js');
-
-import { sync } from 'vuex-router-sync';
+window.Tether = require('tether');
+require('bootstrap/dist/js/bootstrap.js');
 
 import Vue from 'vue';
 import Router from 'vue-router';
+import Resource from 'vue-resource';
 import NProgress from 'nprogress';
 import VueMoment from 'vue-moment';
 
-// Vue.use(Router);
-// Vue.use(Resource);
-// Vue.use(VueMoment);
+import App from './components/App.vue';
 
-const router = new Router({
+Vue.use(Router);
+Vue.use(Resource);
+Vue.use(VueMoment);
+
+NProgress.start();
+NProgress.inc(0.2);
+
+Vue.transition('fade', {
+	enterClass: 'fadeIn',
+	leaveClass: 'fadeOut'
+});
+
+let router = new Router({
 	saveScrollPosition: false,
 	transitionOnLoad: true,
 	history: true,
-	root: '/admin',
+	root: '/admin'
 });
 
-// var Vue 	  = require('vue');
-// var Router 	  = require('vue-router');
-// var Resource  = require('vue-resource');
-// var NProgress = require('nprogress');
-// var VueMoment = require('vue-moment');
+Vue.http.interceptors.push((request, next) => {
+	NProgress.inc(0.2);
+	request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
+	next((response) => {
+		NProgress.done();
+		return response;
+	});
+});
 
-// var vm = new Vue({});
+router.beforeEach(({next}) => {
+	// Close any and all bootstrap modals.
+	$('.modal').modal('hide');
+	// Start the progress bar..
+	NProgress.start();
+	next();
+});
 
-// Vue.use(Resource);
-// Vue.use(Router);
-// Vue.use(VueMoment);
+router.afterEach(() => {
+	NProgress.done();
+});
 
-// NProgress.start();
-// NProgress.inc(0.2);
+router.map({
+	'/': {
+		name: 'dashboard',
+		navbar: "Dashboard",
+		component: require('./components/Dashboard.vue')
+	},
+	'/games': {
+		name: 'games',
+		navbar: 'Games',
+		component: require('./components/GamesManager.vue')
+	},
+	'/platforms': {
+		name: 'platforms',
+		navbar: 'Platforms',
+		component: require('./components/PlatformsManager.vue')
+	},
+	'/users': {
+		name: 'users',
+		navbar: 'Manage Users',
+		component: require('./components/UsersManager.vue')
+	},
+	'/oauth': {
+		name: 'oauth-settings',
+		navbar: 'OAuth Settings',
+		component: require('./components/OauthSettings.vue')
+	}
+});
 
-// Vue.transition('fade', {
-// 	enterClass: 'fadeIn',
-// 	leaveClass: 'fadeOut'
-// });
-
-// const router = new Router({
-// 	saveScrollPosition: false,
-// 	transitionOnLoad: true,
-// 	root: '/admin',
-// 	history: true
-// });
-
-// Vue.http.interceptors.push((request, next) => {
-// 	NProgress.inc(0.2);
-// 	request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
-// 	next((response) => {
-// 		NProgress.done();
-// 		return response;
-// 	});
-// });
-
-// router.beforeEach(({next}) => {
-// 	// Close any and all bootstrap modals.
-// 	$('.modal').modal('hide');
-// 	// Start the progress bar..
-// 	NProgress.start();
-// 	next();
-// });
-
-// router.afterEach(() => {
-// 	NProgress.done();
-// });
-
-// var App = Vue.extend({});
-
-// router.redirect({ '*': '/dashboard' });
-// router.start(App, '#app');
+router.redirect({ '*': '/dashboard' });
+router.start(App, '#app');
